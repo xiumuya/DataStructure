@@ -1,4 +1,4 @@
-#include "bst.cpp"   //¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"   //äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 
 void Output(BSTNode *bt,KeyType k)
 {
@@ -18,12 +18,12 @@ int main()
 	BSTNode *bt;
 	KeyType keys[]={5,2,3,4,1,6,8,7,9};
 	int n=9;
-	bt=CreateBST(keys,n);		//´´½¨¶ş²æÅÅĞòÊ÷
+	bt=CreateBST(keys,n);		//åˆ›å»ºäºŒå‰æ’åºæ ‘
 	printf("BST:"); DispBST(bt); printf("\n");
 	KeyType k;
 	while (true)
 	{
-		printf("k(ÊäÈë-1½áÊø):"); scanf("%d",&k);
+		printf("k(è¾“å…¥-1ç»“æŸ):"); scanf("%d",&k);
 		if (k==-1) break;
 		Output(bt,k);  printf("\n");
 	}

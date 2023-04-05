@@ -1,4 +1,4 @@
-#include "sqstring.cpp"		//Ë³Ðò´®µÄ»ù±¾ÔËËãËã·¨
+#include "sqstring.cpp"		//é¡ºåºä¸²çš„åŸºæœ¬è¿ç®—ç®—æ³•
 int findpat(SqString s,SqString t)
 {
 	int i=0,j=0,k,start;
@@ -6,9 +6,9 @@ int findpat(SqString s,SqString t)
 	{
 		if (t.data[j]=='*')
 		{
-			j++;				//Ìø¹ý* 
+			j++;				//è·³è¿‡* 
 			k=findpat(SubStr(s,i+1,s.length-i),SubStr(t,j+1,t.length-j));
-			if (k>-1)			//ÕÒµ½ÁË 
+			if (k>-1)			//æ‰¾åˆ°äº† 
 				return start;
 		}
 		else if (s.data[i]==t.data[j])
@@ -36,7 +36,7 @@ int main()
 	StrAssign(t,"b*");
 	printf("t:"); DispStr(t);
 
-	printf("½á¹û:%d\n",findpat(s,t));
+	printf("ç»“æžœ:%d\n",findpat(s,t));
 
 	return 1;
 }

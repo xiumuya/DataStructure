@@ -2,13 +2,13 @@
 
 bool increase(LinkNode *L)
 {
-	LinkNode *p=L->next,*post;	//pÖ¸ÏòÊ×½Úµã
-	post=p->next;				//postÖ¸Ïòp½ÚµãµÄºó¼Ì½Úµã
+	LinkNode *p=L->next,*post;	//pæŒ‡å‘é¦–èŠ‚ç‚¹
+	post=p->next;				//postæŒ‡å‘pèŠ‚ç‚¹çš„åŽç»§èŠ‚ç‚¹
 	while (post!=NULL)
 	{
-		if (post->data>p->data)	//ÈôÕýÐòÔò¼ÌÐøÅÐ¶ÏÏÂÒ»¸ö½Úµã
+		if (post->data>p->data)	//è‹¥æ­£åºåˆ™ç»§ç»­åˆ¤æ–­ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 		{
-			p=post;				//p¡¢postÍ¬²½ºóÒÆ
+			p=post;				//pã€poståŒæ­¥åŽç§»
 			post=post->next;
 		}
 		else

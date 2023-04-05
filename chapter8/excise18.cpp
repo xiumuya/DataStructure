@@ -1,37 +1,37 @@
 #include "graph.cpp"
 
-int vedge[MAXV][MAXV];		//±ß·ÃÎÊÊı×é,vedge[i][j]±íÊ¾(i,j)±ßÊÇ·ñ·ÃÎÊ¹ı
+int vedge[MAXV][MAXV];		//è¾¹è®¿é—®æ•°ç»„,vedge[i][j]è¡¨ç¤º(i,j)è¾¹æ˜¯å¦è®¿é—®è¿‡
 void Traversal(AdjGraph *G,int u,int v,int k,int path[],int d)
-//dÊÇµ½µ±Ç°ÎªÖ¹ÒÑ×ß¹ıµÄÂ·¾¶³¤¶È£¬µ÷ÓÃÊ±³õÖµÎª-1
+//dæ˜¯åˆ°å½“å‰ä¸ºæ­¢å·²èµ°è¿‡çš„è·¯å¾„é•¿åº¦ï¼Œè°ƒç”¨æ—¶åˆå€¼ä¸º-1
 {	int w,i;
 	ArcNode *p;
-	d++; path[d]=v;					//(u,v)¼ÓÈëµ½pathÖĞ
+	d++; path[d]=v;					//(u,v)åŠ å…¥åˆ°pathä¸­
 	
-	vedge[u][v]=vedge[v][u]=1;		//(u,v)±ßÒÑ·ÃÎÊ
-	p=G->adjlist[v].firstarc;		//pÖ¸Ïò¶¥µãvµÄµÚÒ»Ìõ±ß
+	vedge[u][v]=vedge[v][u]=1;		//(u,v)è¾¹å·²è®¿é—®
+	p=G->adjlist[v].firstarc;		//pæŒ‡å‘é¡¶ç‚¹vçš„ç¬¬ä¸€æ¡è¾¹
 	while (p!=NULL)
-	{	w=p->adjvex;				//(v,w)ÓĞÒ»Ìõ±ß
-		if (w==k && d==G->e-1)		//ÕÒµ½Ò»¸ö»ØÂ·£¬Êä³öÖ®
+	{	w=p->adjvex;				//(v,w)æœ‰ä¸€æ¡è¾¹
+		if (w==k && d==G->e-1)		//æ‰¾åˆ°ä¸€ä¸ªå›è·¯ï¼Œè¾“å‡ºä¹‹
 		{	printf("  %d->",k);
 			for (i=0;i<=d;i++)
 				printf("%d->",path[i]);
 			printf("%d\n",w);
 		}
-		if (vedge[v][w]==0)			//(v,w)Î´·ÃÎÊ¹ı,Ôòµİ¹é·ÃÎÊÖ®
+		if (vedge[v][w]==0)			//(v,w)æœªè®¿é—®è¿‡,åˆ™é€’å½’è®¿é—®ä¹‹
 			Traversal(G,v,w,k,path,d);
-		p=p->nextarc;				//ÕÒvµÄÏÂÒ»Ìõ±ß
+		p=p->nextarc;				//æ‰¾vçš„ä¸‹ä¸€æ¡è¾¹
 	}
-	vedge[u][v]=vedge[v][u]=0;		//»Ö¸´»·¾³£ºÊ¹¸Ã±ßµã¿ÉÖØĞÂÊ¹ÓÃ
+	vedge[u][v]=vedge[v][u]=0;		//æ¢å¤ç¯å¢ƒï¼šä½¿è¯¥è¾¹ç‚¹å¯é‡æ–°ä½¿ç”¨
 }
-void FindCPath(AdjGraph *G,int k)	//Êä³ö¾­¹ı¶¥µãkºÍËùÓĞ±ßµÄÈ«²¿»ØÂ·
+void FindCPath(AdjGraph *G,int k)	//è¾“å‡ºç»è¿‡é¡¶ç‚¹kå’Œæ‰€æœ‰è¾¹çš„å…¨éƒ¨å›è·¯
 {	int path[MAXV];
 	int i,j,v;
 	ArcNode *p;
-	for (i=0;i<G->n;i++)			//vedgeÊı×éÖÃ³õÖµ
+	for (i=0;i<G->n;i++)			//vedgeæ•°ç»„ç½®åˆå€¼
 		for (j=0;j<G->n;j++)
 			if (i==j) vedge[i][j]=1;
 			else vedge[i][j]=0;
-	printf("¾­¹ı¶¥µã%dµÄ×ß¹ıËùÓĞ±ßµÄ»ØÂ·:\n",k);
+	printf("ç»è¿‡é¡¶ç‚¹%dçš„èµ°è¿‡æ‰€æœ‰è¾¹çš„å›è·¯:\n",k);
 	p=G->adjlist[k].firstarc; 
 	while (p!=NULL)
 	{	v=p->adjvex;
@@ -46,7 +46,7 @@ int main()
 	int A[MAXV][MAXV]={{0,1,0,0,1},	{1,0,0,0,1},
 						{0,0,0,1,1},{0,0,1,0,1},{1,1,1,1,0}};
 	CreateAdj(G,A,n,e);
-	printf("Í¼GµÄÁÚ½Ó±í:\n");DispAdj(G);	//Êä³öÁÚ½Ó±í
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");DispAdj(G);	//è¾“å‡ºé‚»æ¥è¡¨
 	FindCPath(G,v);
 	printf("\n");
 	DestroyAdj(G);

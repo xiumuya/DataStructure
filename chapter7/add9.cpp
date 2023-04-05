@@ -1,21 +1,21 @@
-#include "btree.cpp"	//¶þ²æÊ÷»ù±¾ÔËËãËã·¨
+#include "btree.cpp"	//äºŒå‰æ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 void LongPath(BTNode *b,ElemType path[],int pathlen,ElemType longpath[],
-	int &longpathlen)	//pathlenºÍlongpathlenµÄ³õÖµÎª0
+	int &longpathlen)	//pathlenå’Œlongpathlençš„åˆå€¼ä¸º0
 {
 	if (b==NULL)
-	{	if (pathlen>longpathlen)	//Èôµ±Ç°Â·¾¶¸ü³¤,½«Â·¾¶±£´æÔÚlongpathÖÐ
+	{	if (pathlen>longpathlen)	//è‹¥å½“å‰è·¯å¾„æ›´é•¿,å°†è·¯å¾„ä¿å­˜åœ¨longpathä¸­
 		{	for (int i=pathlen-1;i>=0;i--)
 				longpath[i]=path[i];
 			longpathlen=pathlen;
 		}
 	}
 	else
-	{	path[pathlen]=b->data;		//½«µ±Ç°½Úµã·ÅÈëÂ·¾¶ÖÐ
-		pathlen++;					//Â·¾¶³¤¶ÈÔö1
+	{	path[pathlen]=b->data;		//å°†å½“å‰èŠ‚ç‚¹æ”¾å…¥è·¯å¾„ä¸­
+		pathlen++;					//è·¯å¾„é•¿åº¦å¢ž1
 		LongPath(b->lchild,path,pathlen,longpath,longpathlen);
-			//µÝ¹éÉ¨Ãè×ó×ÓÊ÷
+			//é€’å½’æ‰«æå·¦å­æ ‘
 		LongPath(b->rchild,path,pathlen,longpath,longpathlen);
-			//µÝ¹éÉ¨ÃèÓÒ×ÓÊ÷
+			//é€’å½’æ‰«æå³å­æ ‘
 	}
 }
 
@@ -23,7 +23,7 @@ void LongPath(BTNode *b,ElemType path[],int pathlen,ElemType longpath[],
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶þ²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 
 	ElemType path[MaxSize],longpath[MaxSize];
@@ -31,8 +31,8 @@ int main()
 
 	LongPath(b,path,0,longpath,longpathlen);
 
-	printf("µÚÒ»Ìõ×î³¤ÄæÂ·¾¶³¤¶È:%d\n",longpathlen);
-	printf("µÚÒ»Ìõ×î³¤ÄæÂ·¾¶:");
+	printf("ç¬¬ä¸€æ¡æœ€é•¿é€†è·¯å¾„é•¿åº¦:%d\n",longpathlen);
+	printf("ç¬¬ä¸€æ¡æœ€é•¿é€†è·¯å¾„:");
 	for (int i=longpathlen-1;i>=0;i--)
 		printf("%c ",longpath[i]);
 	printf("\n");

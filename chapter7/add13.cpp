@@ -3,11 +3,11 @@
 int MinBranch(BTNode *b)
 {	int min1,min2,min;
 	if (b==NULL) return 0;
-	min1=MinBranch(b->lchild);			//µİ¹é±éÀú×ó×ÓÊ÷
-    min2=MinBranch(b->rchild);			//µİ¹é±éÀúÓÒ×ÓÊ÷
-    if(min1==0) return min2+1;			//×ó×ÓÊ÷Îª¿Õ
-    else if(min2==0) return min1+1;		//ÓÒ×ÓÊ÷Îª¿Õ
-    else return min1>min2?min1:min2+1;	//´æÔÚ×óÓÒ×ÓÊ÷
+	min1=MinBranch(b->lchild);			//é€’å½’éå†å·¦å­æ ‘
+    min2=MinBranch(b->rchild);			//é€’å½’éå†å³å­æ ‘
+    if(min1==0) return min2+1;			//å·¦å­æ ‘ä¸ºç©º
+    else if(min2==0) return min1+1;		//å³å­æ ‘ä¸ºç©º
+    else return min1>min2?min1:min2+1;	//å­˜åœ¨å·¦å³å­æ ‘
 }
 
 int main()
@@ -16,7 +16,7 @@ int main()
 	CreateBTree(b,"A(B(,E(G,H)),C(,F(I)))");
 	printf("b:"); DispBTree(b); printf("\n");
 
-	printf("×îĞ¡Ö¦³¤:%d\n",MinBranch(b));
+	printf("æœ€å°æé•¿:%d\n",MinBranch(b));
 
 	DestroyBTree(b);
 	return 1;

@@ -1,36 +1,36 @@
-#include "bst.cpp"		//¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"		//äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 BSTNode* getnodek(BSTNode* bt,int k,BSTNode*& f,BSTNode*& firstL)
 {	BSTNode *p=bt;
     	while(p!=NULL)
     	{	if(k==p->key)
-         		return p;					//²éÕÒ³É¹¦·µ»Øp
+         		return p;					//æŸ¥æ‰¾æˆåŠŸè¿”å›p
         	f=p;
         	if(k>p->key)
-            	p=p->rchild;				//ÔÚÓÒ×ÓÊ÷ÖĞ²éÕÒ
+            	p=p->rchild;				//åœ¨å³å­æ ‘ä¸­æŸ¥æ‰¾
         	else
-        	{	firstL=p;					//³öÏÖ×ó¹Õµã£¬firstR½¨Á¢µÚÒ»¸ö×ó¹Õµã
-        		p=p->lchild;				//ÔÚ×ó×ÓÊ÷ÖĞ²éÕÒ 
+        	{	firstL=p;					//å‡ºç°å·¦æ‹ç‚¹ï¼ŒfirstRå»ºç«‹ç¬¬ä¸€ä¸ªå·¦æ‹ç‚¹
+        		p=p->lchild;				//åœ¨å·¦å­æ ‘ä¸­æŸ¥æ‰¾ 
         	}
     	}
     	return NULL;
 }
-BSTNode* getsucc(BSTNode* bt,int k)		//Çó½âËã·¨
+BSTNode* getsucc(BSTNode* bt,int k)		//æ±‚è§£ç®—æ³•
 {	BSTNode* f=NULL;
 	BSTNode* firstL=NULL;
 	BSTNode* p=getnodek(bt,k,f,firstL);
 	if(p==NULL)
 		return NULL;
-	if(p->rchild!=NULL) 				///Çé¿ö(1)½áµãpÓĞÓÒ×ÓÊ÷
+	if(p->rchild!=NULL) 				///æƒ…å†µ(1)ç»“ç‚¹pæœ‰å³å­æ ‘
 	{	BSTNode* succ=p->rchild;
 		while(succ->lchild!=NULL)
 			succ=succ->lchild;
 		return succ;
 	}
 	if(f==NULL)
-		return NULL; 					//Çé¿ö(2)ÖĞ×ÓÇé¿ö¢Ù
-	if(p==f->lchild) 					//Çé¿ö(2)ÖĞ×ÓÇé¿ö¢Ú 
+		return NULL; 					//æƒ…å†µ(2)ä¸­å­æƒ…å†µâ‘ 
+	if(p==f->lchild) 					//æƒ…å†µ(2)ä¸­å­æƒ…å†µâ‘¡ 
 		return f;
-	else								//Çé¿ö(2)ÖĞ×ÓÇé¿ö¢Û 
+	else								//æƒ…å†µ(2)ä¸­å­æƒ…å†µâ‘¢ 
 		return firstL;
 }
 
@@ -38,17 +38,17 @@ int main()
 {
 	BSTNode *bt;
 	KeyType a[]={5,2,1,6,7,4,8,3,9},n=9;
-	printf("(1)¹¹Ôì¶ş²æÅÅĞòÊ÷bt\n");
-	bt=CreateBST(a,n);		//´´½¨Ò»¿Ã¶ş²æÅÅĞòÊ÷
-	printf("(2)Êä³öBST:");DispBST(bt);printf("\n");
+	printf("(1)æ„é€ äºŒå‰æ’åºæ ‘bt\n");
+	bt=CreateBST(a,n);		//åˆ›å»ºä¸€æ£µäºŒå‰æ’åºæ ‘
+	printf("(2)è¾“å‡ºBST:");DispBST(bt);printf("\n");
 	KeyType k=4;
-	printf("(3)k=%dµÄºó¼Ì½áµã: ",k);
+	printf("(3)k=%dçš„åç»§ç»“ç‚¹: ",k);
 	BSTNode* p=getsucc(bt,k);
 	if(p!=NULL)
 		printf("%d\n",p->key);
 	else
-		printf("²»´æÔÚ\n"); 
+		printf("ä¸å­˜åœ¨\n"); 
 	
-	printf("(4)Ïú»Ùbt"); DestroyBST(bt); printf("\n");
+	printf("(4)é”€æ¯bt"); DestroyBST(bt); printf("\n");
 	return 1;
 }

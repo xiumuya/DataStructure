@@ -12,12 +12,12 @@ bool isomorphism(BTNode *b)
 int main()
 {
 	BTNode *b1,*b2;
-	CreateBTree(b1,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b1,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	CreateBTree(b2,"A(B(D,E),C(F,G))");
 	printf("b1:"); DispBTree(b1); printf("\n");
-	printf("b1µÄ¶Ô³ÆÍ¬¹¹ĞÔ:%d\n",isomorphism(b1));
+	printf("b1çš„å¯¹ç§°åŒæ„æ€§:%d\n",isomorphism(b1));
 	printf("b2:"); DispBTree(b2); printf("\n");
-	printf("b2µÄ¶Ô³ÆÍ¬¹¹ĞÔ:%d\n",isomorphism(b2));
+	printf("b2çš„å¯¹ç§°åŒæ„æ€§:%d\n",isomorphism(b2));
 
 	DestroyBTree(b1);
 	DestroyBTree(b2);

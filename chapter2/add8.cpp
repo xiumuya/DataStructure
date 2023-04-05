@@ -7,25 +7,25 @@ void swap(ElemType &x,ElemType &y)
 
 void Diffence(SqList *A,SqList *B,SqList *&C)
 {
-	int i=0,j=0,k=0;				//k¼ÇÂ¼CÖĞµÄÔªËØ¸öÊı
+	int i=0,j=0,k=0;				//kè®°å½•Cä¸­çš„å…ƒç´ ä¸ªæ•°
 	C=(SqList *)malloc(sizeof(SqList));
 	while (i<A->length && j<B->length)
-	{	if (A->data[i]<B->data[j])	//Ö»½«AÖĞĞ¡µÄÔªËØ·ÅÈëCÖĞ
+	{	if (A->data[i]<B->data[j])	//åªå°†Aä¸­å°çš„å…ƒç´ æ”¾å…¥Cä¸­
 		{	C->data[k]=A->data[i];
 			i++; k++;
 		}
 		else if (A->data[i]>B->data[j])
 			j++;
-		else						//¹«¹²ÔªËØ²»ÄÜ·ÅÈëCÖĞ
+		else						//å…¬å…±å…ƒç´ ä¸èƒ½æ”¾å…¥Cä¸­
 		{	i++;
 			j++;
 		}
 	}
-	while (i<A->length)				//ÈôAÎ´±éÀúÍê£¬½«ÓàÏÂµÄËùÓĞÔªËØ·ÅÈëCÖĞ
+	while (i<A->length)				//è‹¥Aæœªéå†å®Œï¼Œå°†ä½™ä¸‹çš„æ‰€æœ‰å…ƒç´ æ”¾å…¥Cä¸­
 	{	C->data[k]=A->data[i];
 		i++; k++;
 	}
-	C->length=k;					//ĞŞ¸Ä¼¯ºÏ³¤¶È
+	C->length=k;					//ä¿®æ”¹é›†åˆé•¿åº¦
 }
 
 

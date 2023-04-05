@@ -10,7 +10,7 @@ int fun(int n)
 int main()
 {
 	int n=5;
-	printf("n=%d的不同走法数=%d\n",n,fun(n));
+	printf("n=%d鐨勪笉鍚岃蛋娉曟暟=%d\n",n,fun(n));
 	return 1;
 }
 	

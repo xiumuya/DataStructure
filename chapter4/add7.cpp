@@ -1,31 +1,31 @@
 #include "sqstring.cpp"
 
 SqString MaxComStr(SqString s,SqString t)
-{	SqString str;			//strÓÃÓÚ´æ·Å×î³¤¹«¹²×Ó´®
+{	SqString str;			//strç”¨äºå­˜æ”¾æœ€é•¿å…¬å…±å­ä¸²
 	int maxidx=0,maxlen=0,i,j,k,len;
-	i=0;					//i×÷ÎªÉ¨ÃèsµÄÖ¸Õë
+	i=0;					//iä½œä¸ºæ‰«æsçš„æŒ‡é’ˆ
 	while (i<s.length)
-	{	j=0;				//j×÷ÎªÉ¨ÃètµÄÖ¸Õë
+	{	j=0;				//jä½œä¸ºæ‰«ætçš„æŒ‡é’ˆ
 		while (j<t.length)
 		{	if (s.data[i]==t.data[j]) 
-			{	len=1;		//ÕÒÒ»¸ö¹«¹²×Ó´®,ÆäÔÚsÖĞµÄÎ»ÖÃÎªi,³¤¶ÈÎªlen
+			{	len=1;		//æ‰¾ä¸€ä¸ªå…¬å…±å­ä¸²,å…¶åœ¨sä¸­çš„ä½ç½®ä¸ºi,é•¿åº¦ä¸ºlen
 				for (k=1;i+k<s.length && j+k<t.length 
 						&& s.data[i+k]==t.data[j+k];k++)
 					len++;
-				if (len>maxlen)	//½«½Ï´ó³¤¶ÈÕß¸³¸øidxÓëlen
+				if (len>maxlen)	//å°†è¾ƒå¤§é•¿åº¦è€…èµ‹ç»™idxä¸len
 				{	maxidx=i;
 					maxlen=len;
 				}
-				j+=len;		//¼ÌĞøÉ¨ÃètÖĞµÚj+len×Ö·ûÖ®ºóµÄ×Ö·û
+				j+=len;		//ç»§ç»­æ‰«ætä¸­ç¬¬j+lenå­—ç¬¦ä¹‹åçš„å­—ç¬¦
 			}
 			else j++;
 		}
-		i++;					//¼ÌĞøÉ¨ÃèsÖĞµÚi×Ö·ûÖ®ºóµÄ×Ö·û
+		i++;					//ç»§ç»­æ‰«æsä¸­ç¬¬iå­—ç¬¦ä¹‹åçš„å­—ç¬¦
 	}
 	for (i=0;i<maxlen;i++)
 		str.data[i]=s.data[maxidx+i];
 	str.length=maxlen;
-	return(str);				//·µ»Ø×î³¤¹«¹²×Ó´®
+	return(str);				//è¿”å›æœ€é•¿å…¬å…±å­ä¸²
 }
 
 

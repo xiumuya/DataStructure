@@ -1,9 +1,9 @@
-#include "seqlist.cpp"   //Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"   //é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 int BinSearch1(RecType R[],int n,KeyType k)
 {
 	int low=0,high=n-1,mid;
-	int cnum=1;				//³É¹¦²éÕÒĞèÒª1´Î±È½Ï
+	int cnum=1;				//æˆåŠŸæŸ¥æ‰¾éœ€è¦1æ¬¡æ¯”è¾ƒ
 	while (low<=high)
 	{
 		mid=(low+high)/2;
@@ -15,7 +15,7 @@ int BinSearch1(RecType R[],int n,KeyType k)
 			low=mid+1;
 		cnum++;
 	}
-	cnum--;					//²»³É¹¦²éÕÒĞèÒª¼õ1
+	cnum--;					//ä¸æˆåŠŸæŸ¥æ‰¾éœ€è¦å‡1
 	return cnum;
 }
 
@@ -28,6 +28,6 @@ int main()
 	CreateList(R,keys,n);
 	printf("R:"); DispList(R,n);
 	printf("k:"); scanf("%d",&k);
-	printf("±È½Ï´ÎÊı:%d\n",BinSearch1(R,n,k));
+	printf("æ¯”è¾ƒæ¬¡æ•°:%d\n",BinSearch1(R,n,k));
 	return 1;
 }

@@ -1,13 +1,13 @@
-#include "btree.cpp"	//¶ş²æÊ÷»ù±¾ÔËËãËã·¨
+#include "btree.cpp"	//äºŒå‰æ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 void Width1(BTNode *b,int l,int width[])
-{	//lµÄ³õÖµÎª1
+{	//lçš„åˆå€¼ä¸º1
 	if (b!=NULL)
 	{	width[l]++;
 		Width1(b->lchild,l+1,width);
 		Width1(b->rchild,l+1,width);
 	}
 }
-int Width(BTNode *b)	//Çó¶ş²æÊ÷bµÄ¿í¶È
+int Width(BTNode *b)	//æ±‚äºŒå‰æ ‘bçš„å®½åº¦
 {	int i,max=0;
 	int width[MaxSize];
 	for (i=1;i<MaxSize;i++)
@@ -22,10 +22,10 @@ int Width(BTNode *b)	//Çó¶ş²æÊ÷bµÄ¿í¶È
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 
-	printf("¿í¶È:%d\n",Width(b));
+	printf("å®½åº¦:%d\n",Width(b));
 
 	DestroyBTree(b);
 	return 1;

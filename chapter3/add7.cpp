@@ -1,13 +1,13 @@
-#include "SqQueue.cpp"			//°üº¬Ë³Ðò¶ÓµÄÀàÐÍ¶¨ÒåºÍÔËËãº¯Êý
+#include "SqQueue.cpp"			//åŒ…å«é¡ºåºé˜Ÿçš„ç±»åž‹å®šä¹‰å’Œè¿ç®—å‡½æ•°
 bool Delk(SqQueue *&qu,int k)
 {	ElemType e;
 	int i,count=(qu->rear-qu->front+MaxSize)%MaxSize;
 	if (k<=0 || k>count)
 		return false;
 	for (i=1;i<=count;i++)
-	{	deQueue(qu,e);		//³ö¶ÓÔªËØe
-		if (i!=k)				//µÚk¸öÔªËØÖ»³ö²»½ø
-			enQueue(qu,e);	//ÆäËûÔªËØ³ö¶ÓºóÓÖ½ø¶Ó
+	{	deQueue(qu,e);		//å‡ºé˜Ÿå…ƒç´ e
+		if (i!=k)				//ç¬¬kä¸ªå…ƒç´ åªå‡ºä¸è¿›
+			enQueue(qu,e);	//å…¶ä»–å…ƒç´ å‡ºé˜ŸåŽåˆè¿›é˜Ÿ
 	}
 	return true;
 }
@@ -22,8 +22,8 @@ int main()
 	ElemType e;
 	int k=3; 
 	Delk(qu,k);
-	printf("³ö¶ÓµÚ%d¸öÔªËØ\n",k); 
-	printf("¶ÓÖÐÔªËØ: ");
+	printf("å‡ºé˜Ÿç¬¬%dä¸ªå…ƒç´ \n",k); 
+	printf("é˜Ÿä¸­å…ƒç´ : ");
 	while(!QueueEmpty(qu))
 	{
 		deQueue(qu,e);

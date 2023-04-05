@@ -1,22 +1,22 @@
 #include "sqstack.cpp"
 
-void trans(int d,char b[])		//bÓÃÓÚ´æ·Åd×ª»»³ÉµÄ¶ş½øÖÆÊı´®
+void trans(int d,char b[])		//bç”¨äºå­˜æ”¾dè½¬æ¢æˆçš„äºŒè¿›åˆ¶æ•°ä¸²
 {	char e;
 	SqStack *st;
 	InitStack(st);
 	int i=0;
 	while (d!=0)
-	{	e='0'+d%2;			//ÇóÓàÊı²¢×ª»»Îª×Ö·û
+	{	e='0'+d%2;			//æ±‚ä½™æ•°å¹¶è½¬æ¢ä¸ºå­—ç¬¦
 		Push(st,e);
-		d/=2;				//¼ÌĞøÇó¸ü¸ßÎ»
+		d/=2;				//ç»§ç»­æ±‚æ›´é«˜ä½
 	}
 	while (!StackEmpty(st))
-	{	Pop(st,e);			//³öÕ»ÔªËØe
-		b[i]=e;				//½«e´æ·ÅÔÚÊı×ébÖĞ
+	{	Pop(st,e);			//å‡ºæ ˆå…ƒç´ e
+		b[i]=e;				//å°†eå­˜æ”¾åœ¨æ•°ç»„bä¸­
 		i++;
 	}
-	b[i]='\0';				//¼ÓÈë×Ö·û´®½áÊø±êÖ¾
-	DestroyStack(st);		//Ïú»ÙÕ»
+	b[i]='\0';				//åŠ å…¥å­—ç¬¦ä¸²ç»“æŸæ ‡å¿—
+	DestroyStack(st);		//é”€æ¯æ ˆ
 }
 
 int main()

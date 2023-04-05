@@ -1,50 +1,50 @@
-#include "graph.cpp"		//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"		//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
-void InDs2(AdjGraph *G)				//Çó³öÍ¼GÖĞÃ¿¸ö¶¥µãµÄÈë¶È
+void InDs2(AdjGraph *G)				//æ±‚å‡ºå›¾Gä¸­æ¯ä¸ªé¡¶ç‚¹çš„å…¥åº¦
 {	ArcNode *p;
-	int A[MAXV],i;					//A´æ·Å¸÷¶¥µãµÄÈë¶È
-	for (i=0;i<G->n;i++)			//AÖĞÔªËØÖÃ³õÖµ0
+	int A[MAXV],i;					//Aå­˜æ”¾å„é¡¶ç‚¹çš„å…¥åº¦
+	for (i=0;i<G->n;i++)			//Aä¸­å…ƒç´ ç½®åˆå€¼0
 		A[i]=0;
-	for (i=0;i<G->n;i++)			//É¨ÃèËùÓĞÍ·½Úµã
+	for (i=0;i<G->n;i++)			//æ‰«ææ‰€æœ‰å¤´èŠ‚ç‚¹
 	{	p=G->adjlist[i].firstarc;
-		while (p!=NULL)				//É¨Ãè±ß½Úµã
-		{	A[p->adjvex]++;			//±íÊ¾iµ½p->adjvex¶¥µãÓĞÒ»Ìõ±ß
+		while (p!=NULL)				//æ‰«æè¾¹èŠ‚ç‚¹
+		{	A[p->adjvex]++;			//è¡¨ç¤ºiåˆ°p->adjvexé¡¶ç‚¹æœ‰ä¸€æ¡è¾¹
 			p=p->nextarc;
 		}
 	}
-	printf("¸÷¶¥µãÈë¶È:\n");		//Êä³ö¸÷¶¥µãµÄÈë¶È
+	printf("å„é¡¶ç‚¹å…¥åº¦:\n");		//è¾“å‡ºå„é¡¶ç‚¹çš„å…¥åº¦
 	for (i=0;i<G->n;i++)
-		printf("  ¶¥µã%d:%d\n",i,A[i]);
+		printf("  é¡¶ç‚¹%d:%d\n",i,A[i]);
 }
 
-void OutDs2(AdjGraph *G)		//Çó³öÍ¼GÖĞÃ¿¸ö¶¥µãµÄ³ö¶È
+void OutDs2(AdjGraph *G)		//æ±‚å‡ºå›¾Gä¸­æ¯ä¸ªé¡¶ç‚¹çš„å‡ºåº¦
 {	int i,n;
 	ArcNode *p;
-	printf("¸÷¶¥µã³ö¶È:\n");
-	for (i=0;i<G->n;i++)			//É¨ÃèËùÓĞÍ·½Úµã
+	printf("å„é¡¶ç‚¹å‡ºåº¦:\n");
+	for (i=0;i<G->n;i++)			//æ‰«ææ‰€æœ‰å¤´èŠ‚ç‚¹
 	{	n=0;
 		p=G->adjlist[i].firstarc;
-		while (p!=NULL)				//É¨Ãè±ß½Úµã
-		{	n++;					//ÀÛ¼Æ³ö±ßµÄÊı
+		while (p!=NULL)				//æ‰«æè¾¹èŠ‚ç‚¹
+		{	n++;					//ç´¯è®¡å‡ºè¾¹çš„æ•°
 			p=p->nextarc;
 		}
-		printf("  ¶¥µã%d:%d\n",i,n);
+		printf("  é¡¶ç‚¹%d:%d\n",i,n);
 	}
 }
 
 
-void ZeroOutDs2(AdjGraph *G)		//Çó³öÍ¼GÖĞ³ö¶ÈÎª0µÄ¶¥µãÊı
+void ZeroOutDs2(AdjGraph *G)		//æ±‚å‡ºå›¾Gä¸­å‡ºåº¦ä¸º0çš„é¡¶ç‚¹æ•°
 {	int i,n;
 	ArcNode *p;
-	printf("³ö¶ÈÎª0µÄ¶¥µã:");
-	for (i=0;i<G->n;i++)			//É¨ÃèËùÓĞÍ·½Úµã
+	printf("å‡ºåº¦ä¸º0çš„é¡¶ç‚¹:");
+	for (i=0;i<G->n;i++)			//æ‰«ææ‰€æœ‰å¤´èŠ‚ç‚¹
 	{	p=G->adjlist[i].firstarc;
 		n=0;
-		while (p!=NULL)				//É¨Ãè±ß½Úµã
-		{	n++;					//ÀÛ¼Æ³ö±ßµÄÊı
+		while (p!=NULL)				//æ‰«æè¾¹èŠ‚ç‚¹
+		{	n++;					//ç´¯è®¡å‡ºè¾¹çš„æ•°
 			p=p->nextarc;
 		}
-		if (n==0)					//Êä³ö³ö±ßÊıÎª0µÄ¶¥µã±àºÅ
+		if (n==0)					//è¾“å‡ºå‡ºè¾¹æ•°ä¸º0çš„é¡¶ç‚¹ç¼–å·
 			printf("%2d",i);
 	}
 	printf("\n");
@@ -61,9 +61,9 @@ int main()
 		{0,0,0,0,0},
 		{1,0,0,1,0}};
 	int n=5, e=8;
-	CreateAdj(G,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.1(b)µÄÁÚ½Ó±í
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.1(b)çš„é‚»æ¥è¡¨
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨
 
 	InDs2(G);
 	OutDs2(G);

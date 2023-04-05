@@ -10,7 +10,7 @@ void fun(SqList *&L)
 	while (i<j)
 	{	while (L->data[i]<0) i++;
 		while (L->data[j]>=0) j--;
-		if (i<j)	//L->data[i]与L->data[j]交换
+		if (i<j)	//L->data[i]涓嶭->data[j]浜ゆ崲
 			swap(L->data[i], L->data[j]);
 	}
 }
@@ -24,7 +24,7 @@ int main()
 	SqList *L;
 	CreateList(L,a,10);
 	printf("L:");DispList(L);
-	printf("删除值为%d的元素\n",x);
+	printf("鍒犻櫎鍊间负%d鐨勫厓绱燶n",x);
 	fun(L);
 	printf("L:");DispList(L);
 	DestroyList(L);

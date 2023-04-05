@@ -1,11 +1,11 @@
 typedef char ElemType;
 typedef struct lnode
 {
-	int tag;					//½áµãÀàĞÍ±êÊ¶
+	int tag;					//ç»“ç‚¹ç±»å‹æ ‡è¯†
 	union 
 	{
-		ElemType data;			//Ô­×ÓÖµ
-		struct lnode *sublist;	//Ö¸Ïò×Ó±íµÄÖ¸Õë
+		ElemType data;			//åŸå­å€¼
+		struct lnode *sublist;	//æŒ‡å‘å­è¡¨çš„æŒ‡é’ˆ
 	} val;
-	struct lnode *link;			//Ö¸ÏòÏÂÒ»¸öÔªËØ
-} GLNode;						//¹ãÒå±í½áµãÀàĞÍ
+	struct lnode *link;			//æŒ‡å‘ä¸‹ä¸€ä¸ªå…ƒç´ 
+} GLNode;						//å¹¿ä¹‰è¡¨ç»“ç‚¹ç±»å‹

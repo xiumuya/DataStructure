@@ -1,7 +1,7 @@
-#include "seqlist.cpp"   //Ë³Ðò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"   //é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 int SeqSearch1(RecType R[],int n,KeyType k,int i)
-//³õÊ¼µ÷ÓÃÊ±i=0
+//åˆå§‹è°ƒç”¨æ—¶i=0
 {	if (i>=n)
 		return 0;
 	else if (R[i].key==k)
@@ -22,9 +22,9 @@ int main()
 	KeyType k=9;
 	i=SeqSearch1(R,n,k,0);
 	if (i>0)
-		printf("½á¹û:R[%d]=%d\n",i,k);
+		printf("ç»“æžœ:R[%d]=%d\n",i,k);
 	else
-		printf("Î´ÕÒµ½%d\n",k);
+		printf("æœªæ‰¾åˆ°%d\n",k);
 
 	return 1;
 }

@@ -2,12 +2,12 @@
 int maxSubSum(int a[],int n)
 {	int i,j,k;
 	int maxSum=a[0],thisSum; 
-	for (i=0;i<n;i++)				//Á½ÖØÑ­»·Çî¾ÙËùÓĞµÄÁ¬Ğø×ÓĞòÁĞ
+	for (i=0;i<n;i++)				//ä¸¤é‡å¾ªç¯ç©·ä¸¾æ‰€æœ‰çš„è¿ç»­å­åºåˆ—
 	{	for (j=i;j<n;j++)
 		{	thisSum=0;
 			for (k=i;k<=j;k++)
 				thisSum+=a[k];
-			if (thisSum>maxSum)	//Í¨¹ı±È½ÏÇó×î´óÁ¬Ğø×ÓĞòÁĞÖ®ºÍ
+			if (thisSum>maxSum)	//é€šè¿‡æ¯”è¾ƒæ±‚æœ€å¤§è¿ç»­å­åºåˆ—ä¹‹å’Œ
 				maxSum=thisSum;
 		}
 	}
@@ -18,7 +18,7 @@ int main()
 {
 	int a[]={-6,2,4,-7,5,3,2,-1,6,-9,10,-2};
 	int n=sizeof(a)/sizeof(a[0]);
-	printf("½á¹û=%d\n",maxSubSum(a,n));
+	printf("ç»“æœ=%d\n",maxSubSum(a,n));
 
 	return 1;
 }

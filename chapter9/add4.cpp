@@ -1,9 +1,9 @@
-#include "seqlist.cpp"   //Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"   //é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void Binsert(RecType R[],int &n,RecType x)
 {	int low=0,high=n-1,mid,pos,i;
 	bool find=false;
-	while (low<=high && !find)	//¶ş·Ö²éÕÒ
+	while (low<=high && !find)	//äºŒåˆ†æŸ¥æ‰¾
 	{	mid=(low+high)/2;
 		if (x.key<R[mid].key)
 			high=mid-1;
@@ -14,14 +14,14 @@ void Binsert(RecType R[],int &n,RecType x)
 			find=true;
 		}
 	}
-	if (find)				//ÈôÕÒÏàÍ¬ÖµµÄÔªËØ,ÔòÔÚ¸Ãmid´¦²åÈëÔªËØ
+	if (find)				//è‹¥æ‰¾ç›¸åŒå€¼çš„å…ƒç´ ,åˆ™åœ¨è¯¥midå¤„æ’å…¥å…ƒç´ 
 		pos=mid;
-	else 					//ÈôÎ´ÕÒÏàÍ¬ÖµµÄÔªËØ,ÔòÔÚ¸Ãhigh+1´¦²åÈëÔªËØ
+	else 					//è‹¥æœªæ‰¾ç›¸åŒå€¼çš„å…ƒç´ ,åˆ™åœ¨è¯¥high+1å¤„æ’å…¥å…ƒç´ 
 		pos=high+1;
-	for (i=n-1;i>=pos;i--)	//R[pos..n-1]¾ùºóÒÆÒ»Î»
+	for (i=n-1;i>=pos;i--)	//R[pos..n-1]å‡åç§»ä¸€ä½
 		R[i+1]=R[i];
-	R[pos]=x;				//²åÈëÔªËØx
-	n++;					//ÔªËØ¸öÊıÔö¼Ó1
+	R[pos]=x;				//æ’å…¥å…ƒç´ x
+	n++;					//å…ƒç´ ä¸ªæ•°å¢åŠ 1
 }
 
 
@@ -36,7 +36,7 @@ int main()
 	RecType x;
 	while (true)
 	{
-		printf("k(ÊäÈë-1½áÊø):"); scanf("%d",&k);
+		printf("k(è¾“å…¥-1ç»“æŸ):"); scanf("%d",&k);
 		if (k==-1) break;
 		x.key=k;
 		Binsert(R,n,x);

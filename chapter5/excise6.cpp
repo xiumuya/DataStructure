@@ -1,4 +1,4 @@
-#include "sqstring.cpp"		//Ë³Ðò´®µÄ»ù±¾ÔËËãËã·¨
+#include "sqstring.cpp"		//é¡ºåºä¸²çš„åŸºæœ¬è¿ç®—ç®—æ³•
 SqString invert(SqString s)
 {	SqString s1,s2;
 	if (StrLength(s)>0)

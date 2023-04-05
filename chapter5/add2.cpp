@@ -1,4 +1,4 @@
-#include "SqString.cpp"		//°üº¬Ë³Ğò´®µÄ¶¨ÒåºÍ»ù±¾ÔËËãº¯Êı
+#include "SqString.cpp"		//åŒ…å«é¡ºåºä¸²çš„å®šä¹‰å’ŒåŸºæœ¬è¿ç®—å‡½æ•°
 bool Find(SqString s,char x)
 {	SqString s1;
 	if (s.length==0)
@@ -6,7 +6,7 @@ bool Find(SqString s,char x)
 	else if (s.data[0]==x)			//a1=x
 		return true;
 	else
-	{	s1=SubStr(s,2,s.length-1);	//s1="a2¡­an"
+	{	s1=SubStr(s,2,s.length-1);	//s1="a2â€¦an"
 		return(Find(s1,x));
 	}
 }

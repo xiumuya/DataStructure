@@ -1,38 +1,38 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 #define MaxSize 100
 
-int partition(RecType R[],int s,int t)	//Ò»ÌË»®·Ö
+int partition(RecType R[],int s,int t)	//ä¸€è¶Ÿåˆ’åˆ†
 {	int i=s,j=t;
-	RecType tmp=R[i];			//ÒÔR[i]Îª»ù×¼
-	while (i<j)  				//´ÓÁ½¶Ë½»ÌæÏòÖĞ¼äÉ¨Ãè,Ö±ÖÁi=jÎªÖ¹
+	RecType tmp=R[i];			//ä»¥R[i]ä¸ºåŸºå‡†
+	while (i<j)  				//ä»ä¸¤ç«¯äº¤æ›¿å‘ä¸­é—´æ‰«æ,ç›´è‡³i=jä¸ºæ­¢
 	{	while (j>i && R[j].key>=tmp.key)
-			j--;				//´ÓÓÒÏò×óÉ¨Ãè,ÕÒÒ»¸öĞ¡ÓÚtmp.keyµÄR[j]
-		R[i]=R[j];				//ÕÒµ½ÕâÑùµÄR[j],·ÅÈëR[i]´¦
+			j--;				//ä»å³å‘å·¦æ‰«æ,æ‰¾ä¸€ä¸ªå°äºtmp.keyçš„R[j]
+		R[i]=R[j];				//æ‰¾åˆ°è¿™æ ·çš„R[j],æ”¾å…¥R[i]å¤„
 		while (i<j && R[i].key<=tmp.key)
-			i++;				//´Ó×óÏòÓÒÉ¨Ãè,ÕÒÒ»¸ö´óÓÚtmp.keyµÄR[i]
-		R[j]=R[i];				//ÕÒµ½ÕâÑùµÄR[i],·ÅÈëR[j]´¦
+			i++;				//ä»å·¦å‘å³æ‰«æ,æ‰¾ä¸€ä¸ªå¤§äºtmp.keyçš„R[i]
+		R[j]=R[i];				//æ‰¾åˆ°è¿™æ ·çš„R[i],æ”¾å…¥R[j]å¤„
 	}
 	R[i]=tmp;
 	return i;
 }
 
-void QuickSort2(RecType R[],int n)	//¶ÔR[0..n-1]½øĞĞ¿ìËÙÅÅĞò
+void QuickSort2(RecType R[],int n)	//å¯¹R[0..n-1]è¿›è¡Œå¿«é€Ÿæ’åº
 {	int i,low,high;
-	int front=-1,rear=-1;			//¶ÓÊ×¡¢¶ÓÎ²Ö¸Õë
+	int front=-1,rear=-1;			//é˜Ÿé¦–ã€é˜Ÿå°¾æŒ‡é’ˆ
 	struct 
 	{	int low;
 		int high;
 	} Qu[MaxSize];
-	rear++;								//½ø¶Ó
+	rear++;								//è¿›é˜Ÿ
 	Qu[rear].low=0;Qu[rear].high=n-1;
-	while (front!=rear)					//¶Ó²»¿ÕÈ¡³öÒ»¸ö×ÓÇø¼ä½øĞĞ»®·Ö
+	while (front!=rear)					//é˜Ÿä¸ç©ºå–å‡ºä¸€ä¸ªå­åŒºé—´è¿›è¡Œåˆ’åˆ†
 	{	front=(front+1)%MaxSize;
-		low=Qu[front].low;high=Qu[front].high;	//³ö¶Ó
+		low=Qu[front].low;high=Qu[front].high;	//å‡ºé˜Ÿ
 		i=partition(R,low,high);
 		rear=(rear+1)%MaxSize;
-		Qu[rear].low=low;Qu[rear].high=i-1;//×óÇø¼ä½ø¶Ó
+		Qu[rear].low=low;Qu[rear].high=i-1;//å·¦åŒºé—´è¿›é˜Ÿ
 		rear=(rear+1)%MaxSize;
-		Qu[rear].low=i+1;Qu[rear].high=high;//ÓÒÇø¼ä½ø¶Ó
+		Qu[rear].low=i+1;Qu[rear].high=high;//å³åŒºé—´è¿›é˜Ÿ
 	}
 }
 
@@ -44,11 +44,11 @@ int main()
 	int a[]={1,2,3,4,5,10,9,8,7,5};
 	//int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 
 	QuickSort2(R,n);
 	
-	printf("ÅÅĞòºóR:"); DispList(R,n);
+	printf("æ’åºåR:"); DispList(R,n);
 	return 1;
 }
 

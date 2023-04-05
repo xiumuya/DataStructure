@@ -8,9 +8,9 @@ ElemType ancestor(SqBinTree a,int i,int j)
 	while (p!=q)
 	{ 
 		if (p>q)
-			p=p/2;		//ÏòÉÏÕÒiµÄ×æÏÈ
+			p=p/2;		//å‘ä¸Šæ‰¾içš„ç¥–å…ˆ
 		else
-			q=q/2;		//ÏòÉÏÕÒjµÄ×æÏÈ
+			q=q/2;		//å‘ä¸Šæ‰¾jçš„ç¥–å…ˆ
 	} 
 	return a[p];
 }
@@ -19,6 +19,6 @@ int main()
 {	
 	SqBinTree bt="#ABCDE#F##GH##I##";
 	int i=2,j=7;
-	printf("×î½üµÄ¹«¹²×æÏÈ:%c\n",ancestor(bt,i,j));
+	printf("æœ€è¿‘çš„å…¬å…±ç¥–å…ˆ:%c\n",ancestor(bt,i,j));
 	return 1;
 }

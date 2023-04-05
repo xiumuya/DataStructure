@@ -1,19 +1,19 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void DBubbleSort(RecType R[],int n)	//¶ÔR[0..n-1]°´µİÔöĞò½øĞĞË«ÏòÃ°ÅİÅÅĞò
+void DBubbleSort(RecType R[],int n)	//å¯¹R[0..n-1]æŒ‰é€’å¢åºè¿›è¡ŒåŒå‘å†’æ³¡æ’åº
 {	int i=0,j;
-	bool exchange=true;			//exchange±êÊ¶±¾ÌËÊÇ·ñ½øĞĞÁËÔªËØ½»»»
+	bool exchange=true;			//exchangeæ ‡è¯†æœ¬è¶Ÿæ˜¯å¦è¿›è¡Œäº†å…ƒç´ äº¤æ¢
 	while (exchange) 
 	{	exchange=false;
 		for (j=n-i-1;j>i;j--)
-			if (R[j].key<R[j-1].key)	//ÓÉºóÏòÇ°Ã°ÅİĞ¡ÔªËØ
+			if (R[j].key<R[j-1].key)	//ç”±åå‘å‰å†’æ³¡å°å…ƒç´ 
 			{	exchange=true;
-				swap(R[j],R[j-1]);		//R[j]ºÍR[j-1]½»»»
+				swap(R[j],R[j-1]);		//R[j]å’ŒR[j-1]äº¤æ¢
 			}
 		for (j=i;j<n-i-1;j++)
-			if (R[j].key>R[j+1].key)  	//ÓÉÇ°ÏòºóÃ°Åİ´óÔªËØ
+			if (R[j].key>R[j+1].key)  	//ç”±å‰å‘åå†’æ³¡å¤§å…ƒç´ 
 			{	exchange=true;
-				swap(R[j],R[j+1]);		//R[j]ºÍR[j+1]½»»»
+				swap(R[j],R[j+1]);		//R[j]å’ŒR[j+1]äº¤æ¢
 			}
 		if (!exchange) return;
 		i++;
@@ -25,9 +25,9 @@ int main()
 	int n=10;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 	DBubbleSort(R,n);
-	printf("ÅÅĞòºóR:"); DispList(R,n);
+	printf("æ’åºåR:"); DispList(R,n);
 	return 1;
 }
 

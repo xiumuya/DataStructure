@@ -7,7 +7,7 @@ void swap(ElemType &x,ElemType &y)
 
 void Union(SqList *A,SqList *B,SqList *&C)
 {
-	int i=0,j=0,k=0;			//k¼ÇÂ¼CÖĞµÄÔªËØ¸öÊı
+	int i=0,j=0,k=0;			//kè®°å½•Cä¸­çš„å…ƒç´ ä¸ªæ•°
 	C=(SqList *)malloc(sizeof(SqList));
 	while (i<A->length && j<B->length)
 	{	if (A->data[i]<B->data[j])
@@ -18,20 +18,20 @@ void Union(SqList *A,SqList *B,SqList *&C)
 		{	C->data[k]=B->data[j];
 			j++; k++;
 		}
-		else					//¹«¹²ÔªËØÖ»¸´ÖÆÒ»´Î
+		else					//å…¬å…±å…ƒç´ åªå¤åˆ¶ä¸€æ¬¡
 		{	C->data[k]=A->data[i];
 			i++; j++; k++;
 		}
 	}
-	while (i<A->length)			//ÈôAÎ´±éÀúÍê£¬½«ÓàÏÂµÄËùÓĞÔªËØ¸´ÖÆµ½CÖĞ
+	while (i<A->length)			//è‹¥Aæœªéå†å®Œï¼Œå°†ä½™ä¸‹çš„æ‰€æœ‰å…ƒç´ å¤åˆ¶åˆ°Cä¸­
 	{	C->data[k]=A->data[i];
 		i++; k++;
 	}
-	while (j<B->length)			//ÈôBÎ´±éÀúÍê£¬½«ÓàÏÂµÄËùÓĞÔªËØ¸´ÖÆµ½CÖĞ
+	while (j<B->length)			//è‹¥Bæœªéå†å®Œï¼Œå°†ä½™ä¸‹çš„æ‰€æœ‰å…ƒç´ å¤åˆ¶åˆ°Cä¸­
 	{	C->data[k]=B->data[j];
 		j++; k++;
 	}
-	C->length=k;				//ĞŞ¸ÄË³Ğò±íµÄ³¤¶È
+	C->length=k;				//ä¿®æ”¹é¡ºåºè¡¨çš„é•¿åº¦
 }
 
 

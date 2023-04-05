@@ -1,15 +1,15 @@
 #include "btree.cpp"
 BTNode* parent(BTNode *b,char x)
 {	if(b==NULL) return NULL;
-	if(b->lchild!=NULL && b->lchild->data==x)		//½áµãxÊÇ½áµãbµÄ×óº¢×Ó
+	if(b->lchild!=NULL && b->lchild->data==x)		//ç»“ç‚¹xæ˜¯ç»“ç‚¹bçš„å·¦å­©å­
 		return b;
-	if(b->rchild!=NULL && b->rchild->data==x)		//½áµãxÊÇ½áµãbµÄÓÒº¢×Ó
+	if(b->rchild!=NULL && b->rchild->data==x)		//ç»“ç‚¹xæ˜¯ç»“ç‚¹bçš„å³å­©å­
 		return b;
-	BTNode* p=parent(b->lchild,x);					//ÔÚ×ó×ÓÊ÷ÖĞ²éÕÒ 
-	if(p!=NULL)										//ÔÚ×ó×ÓÊ÷ÖĞÕÒµ½Ë«Ç×pÊ±·µ»Øp 
+	BTNode* p=parent(b->lchild,x);					//åœ¨å·¦å­æ ‘ä¸­æŸ¥æ‰¾ 
+	if(p!=NULL)										//åœ¨å·¦å­æ ‘ä¸­æ‰¾åˆ°åŒäº²pæ—¶è¿”å›p 
 		return p;
 	else
-		return parent(b->rchild,x);					//·µ»ØÔÚÓÒ×ÓÊ÷ÖĞµÄ²éÕÒ½á¹û 
+		return parent(b->rchild,x);					//è¿”å›åœ¨å³å­æ ‘ä¸­çš„æŸ¥æ‰¾ç»“æœ 
 }
 
 BTNode* parent1(BTNode *b,char x)
@@ -18,29 +18,29 @@ BTNode* parent1(BTNode *b,char x)
 	int front=0,rear=0;
 	if(b==NULL || b->data==x)
 		return NULL; 
-	rear=(rear+1)%MaxSize;				//¸ù½áµã½ø¶Ó 
+	rear=(rear+1)%MaxSize;				//æ ¹ç»“ç‚¹è¿›é˜Ÿ 
 	qu[rear]=b;
-	while(front!=rear)					//¶Ó²»¿ÕÊ±Ñ­»·
+	while(front!=rear)					//é˜Ÿä¸ç©ºæ—¶å¾ªç¯
 	{
-		front=(front+1)%MaxSize;		//³ö¶Ó½áµãp 
+		front=(front+1)%MaxSize;		//å‡ºé˜Ÿç»“ç‚¹p 
 		BTNode* p=qu[front];
-		if(p->lchild!=NULL)				//½áµãp´æÔÚ×óº¢×Ó 
+		if(p->lchild!=NULL)				//ç»“ç‚¹på­˜åœ¨å·¦å­©å­ 
 		{
-			if(p->lchild->data==x)		//×óº¢×ÓÊÇ½áµãx 
+			if(p->lchild->data==x)		//å·¦å­©å­æ˜¯ç»“ç‚¹x 
 				return p;
 			else
 			{
-				rear=(rear+1)%MaxSize;	//×óº¢×Ó½ø¶Ó 
+				rear=(rear+1)%MaxSize;	//å·¦å­©å­è¿›é˜Ÿ 
 				qu[rear]=p->lchild;
 			}
 		}
-		if(p->rchild!=NULL)				//½áµãp´æÔÚÓÒº¢×Ó 
+		if(p->rchild!=NULL)				//ç»“ç‚¹på­˜åœ¨å³å­©å­ 
 		{
-			if(p->rchild->data==x)		//ÓÒº¢×ÓÊÇ½áµãx 
+			if(p->rchild->data==x)		//å³å­©å­æ˜¯ç»“ç‚¹x 
 				return p;
 			else
 			{
-				rear=(rear+1)%MaxSize;	//ÓÒº¢×Ó½ø¶Ó 
+				rear=(rear+1)%MaxSize;	//å³å­©å­è¿›é˜Ÿ 
 				qu[rear]=p->rchild;
 			}
 		}
@@ -51,13 +51,13 @@ BTNode* parent1(BTNode *b,char x)
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷b:");DispBTree(b);printf("\n");
+	printf("äºŒå‰æ ‘b:");DispBTree(b);printf("\n");
 	char x='G';
 	BTNode* p=parent1(b,x);
 	if(p!=NULL)
-		printf("%cµÄË«Ç×ÊÇ%c\n",x,p->data);
+		printf("%cçš„åŒäº²æ˜¯%c\n",x,p->data);
 	else
-		printf("%cµÄË«Ç×²»´æÔÚ\n",x);
+		printf("%cçš„åŒäº²ä¸å­˜åœ¨\n",x);
 	DestroyBTree(b);
 	return 1;
 }

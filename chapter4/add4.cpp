@@ -1,15 +1,15 @@
 #include "sqstring.cpp"
 
 void DelAll1(SqString &s,char c)
-{	int k=0,i=0;					//k¼ÇÂ¼ÖµµÈÓÚcµÄ×Ö·û¸öÊý
+{	int k=0,i=0;					//kè®°å½•å€¼ç­‰äºŽcçš„å­—ç¬¦ä¸ªæ•°
 	while (i<s.length)
 	{	if (s.data[i]==c)
 			k++;
 		else
-			s.data[i-k]=s.data[i];	//µ±Ç°×Ö·ûÇ°ÒÆk¸öÎ»ÖÃ
+			s.data[i-k]=s.data[i];	//å½“å‰å­—ç¬¦å‰ç§»kä¸ªä½ç½®
 		i++;
 	}
-	s.length-= k;					//´®sµÄ³¤¶ÈµÝ¼õ
+	s.length-= k;					//ä¸²sçš„é•¿åº¦é€’å‡
 }
 
 int main()
@@ -17,7 +17,7 @@ int main()
 	SqString s;
 	StrAssign(s,"abacd");
 	printf("s:");DispStr(s);
-	printf("É¾³ýËùÓÐa\n");
+	printf("åˆ é™¤æ‰€æœ‰a\n");
 	DelAll1(s,'a'); 
 	printf("s:");DispStr(s);
 

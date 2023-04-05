@@ -7,9 +7,9 @@ void swap(ElemType &x,ElemType &y)
 bool Rearrangement(SqList *&L,int k1,int k2)
 {
 	int i=0,j=L->length-1;
-	if (k1>k2)					//²ÎÊı´íÎó·µ»Ø¼Ù
+	if (k1>k2)					//å‚æ•°é”™è¯¯è¿”å›å‡
 		return false;
-	while (i<j)					//½«ËùÓĞĞ¡ÓÚµÈÓÚk1µÄÔªËØÇ°ÒÆ
+	while (i<j)					//å°†æ‰€æœ‰å°äºç­‰äºk1çš„å…ƒç´ å‰ç§»
 	{	while (L->data[i]<=k1) i++;
 		while (L->data[j]>k1) j--;
 		if (i<j)
@@ -19,7 +19,7 @@ bool Rearrangement(SqList *&L,int k1,int k2)
 		}
 	}
 	j=L->length-1;
-	while (i<j)					//½«ËùÓĞ´óÓÚµÈÓÚk2µÄÔªËØºóÒÆ
+	while (i<j)					//å°†æ‰€æœ‰å¤§äºç­‰äºk2çš„å…ƒç´ åç§»
 	{	while (L->data[i]<k2) i++;
 		while (L->data[j]>=k2) j--;
 		if (i<j)
@@ -28,7 +28,7 @@ bool Rearrangement(SqList *&L,int k1,int k2)
 			j--;
 		}
 	}	
-	return true;			//²Ù×÷³É¹¦·µ»ØÕæ
+	return true;			//æ“ä½œæˆåŠŸè¿”å›çœŸ
 }
 
 

@@ -1,15 +1,15 @@
-#include "btree.cpp"	//¶ş²æÊ÷»ù±¾ÔËËãËã·¨
+#include "btree.cpp"	//äºŒå‰æ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 void Link(BTNode *b,BTNode *&head,BTNode *&tail)
 {	
 	if (b!=NULL)
 	{
-		if (b->lchild==NULL && b->rchild==NULL)	//Ò¶×Ó½Úµã
+		if (b->lchild==NULL && b->rchild==NULL)	//å¶å­èŠ‚ç‚¹
 		{
-			if (head==NULL)						//µÚÒ»¸öÒ¶×Ó½Úµã
+			if (head==NULL)						//ç¬¬ä¸€ä¸ªå¶å­èŠ‚ç‚¹
 			{	head=b;
 				tail=b;
 			}
-			else								//ÆäËûÒ¶×Ó½Úµã
+			else								//å…¶ä»–å¶å­èŠ‚ç‚¹
 			{	tail->rchild=b;
 				tail=b;
 			}
@@ -22,17 +22,17 @@ void Link(BTNode *b,BTNode *&head,BTNode *&tail)
 int main()
 {
 	BTNode *b,*tail,*head=NULL;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//¡¶½Ì³Ì¡·Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//ã€Šæ•™ç¨‹ã€‹å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 
 	Link(b,head,tail);
-	printf("µ¥Á´±í:");
+	printf("å•é“¾è¡¨:");
 	while (head!=NULL)
 	{	printf("%c ",head->data);
 		head=head->rchild;
 	}
 	printf("\n");
 
-	//DestroyBTree(b);Ö¸Õë·¢Éú¸Ä±ä£¬ÎŞ·¨Ïú»Ù
+	//DestroyBTree(b);æŒ‡é’ˆå‘ç”Ÿæ”¹å˜ï¼Œæ— æ³•é”€æ¯
 	return 1;
 }

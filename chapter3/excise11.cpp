@@ -3,24 +3,24 @@
 void fun()
 {
 	ElemType a,e;
-	SqQueue *qu;						//¶¨Òå¶ÓÁÐÖ¸Õë
+	SqQueue *qu;						//å®šä¹‰é˜Ÿåˆ—æŒ‡é’ˆ
 	InitQueue(qu);
 	while (true)
-	{	printf("ÊäÈëa:");
+	{	printf("è¾“å…¥a:");
 		scanf("%s",&a);
-		if (a>='0' && a<='9')			//ÎªÊý×Ö×Ö·û
+		if (a>='0' && a<='9')			//ä¸ºæ•°å­—å­—ç¬¦
 		{
 			if (!enQueue(qu,a)) 
-				printf("  ¶ÓÁÐÂú,²»ÄÜ½ø¶Ó\n");
+				printf("  é˜Ÿåˆ—æ»¡,ä¸èƒ½è¿›é˜Ÿ\n");
 		}
-		else if (a>='a' && a<='z')		//ÎªÐ¡Ð´×ÖÄ¸
+		else if (a>='a' && a<='z')		//ä¸ºå°å†™å­—æ¯
 		{
 			if (!deQueue(qu,e)) 
-				printf("  ¶ÓÁÐ¿Õ,²»ÄÜ³ö¶Ó\n");
+				printf("  é˜Ÿåˆ—ç©º,ä¸èƒ½å‡ºé˜Ÿ\n");
 			else
-				printf("  ³ö¶ÓÔªËØ:%c\n",e);
+				printf("  å‡ºé˜Ÿå…ƒç´ :%c\n",e);
 		}
-		else break;						//ÎªÆäËû×Ö·û
+		else break;						//ä¸ºå…¶ä»–å­—ç¬¦
 	}
 	DestroyQueue(qu);
 }

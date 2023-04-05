@@ -1,16 +1,16 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void OeSort(RecType R[],int n)
 {	int i;
 	bool sorted=false;
 	while (!sorted)
 	{	sorted=true;
-		for (i=0;i<n-1;i+=2)		//ÆæÊıÉ¨Ãè
+		for (i=0;i<n-1;i+=2)		//å¥‡æ•°æ‰«æ
 			if (R[i].key>R[i+1].key)
 			{	sorted=false;
 				swap(R[i],R[i+1]);
 			}
-		for (i=1;i<n-1;i+=2)		//Å¼ÊıÉ¨Ãè
+		for (i=1;i<n-1;i+=2)		//å¶æ•°æ‰«æ
 			if (R[i].key>R[i+1].key)
 			{	sorted=false;
 				swap(R[i],R[i+1]);
@@ -24,11 +24,11 @@ int main()
 	int n=10;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 
 	OeSort(R,n);
 	
-	printf("ÅÅĞòºóR:"); DispList(R,n);
+	printf("æ’åºåR:"); DispList(R,n);
 	return 1;
 }
 

@@ -1,12 +1,12 @@
 #include "btree.cpp"
-void Output(BTNode *p)			//Êä³öÒÔpÎª¸ù½áµãµÄ×ÓÊ÷
+void Output(BTNode *p)			//è¾“å‡ºä»¥pä¸ºæ ¹ç»“ç‚¹çš„å­æ ‘
 {	if (p!=NULL)
 	{	printf("%c ",p->data);
 		Output(p->lchild);
 		Output(p->rchild);
 	}
 }
-void Child(BTNode *b,char x)	//Êä³öx½áµãµÄ×ÓËï
+void Child(BTNode *b,char x)	//è¾“å‡ºxç»“ç‚¹çš„å­å­™
 {	if (b!=NULL)
 	{	if (b->data==x)
 		{	if (b->lchild!=NULL)
@@ -22,8 +22,8 @@ void Child(BTNode *b,char x)	//Êä³öx½áµãµÄ×ÓËï
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷:");DispBTree(b);printf("\n");
-	printf("AµÄ×ÓËï:");
+	printf("äºŒå‰æ ‘:");DispBTree(b);printf("\n");
+	printf("Açš„å­å­™:");
 	Child(b,'A');
 	DestroyBTree(b);
 	return 1;

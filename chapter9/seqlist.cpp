@@ -1,11 +1,11 @@
-//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 #include "seqlist.h"
-void CreateList(RecType R[],KeyType keys[],int n)	//´´½¨Ë³Ğò±í
+void CreateList(RecType R[],KeyType keys[],int n)	//åˆ›å»ºé¡ºåºè¡¨
 {
 	for (int i=0;i<n;i++)
 		R[i].key=keys[i];
 }
-void DispList(RecType R[],int n)	//Êä³öË³Ğò±í
+void DispList(RecType R[],int n)	//è¾“å‡ºé¡ºåºè¡¨
 {
 	for (int i=0;i<n;i++)
 		printf("%d ",R[i].key);

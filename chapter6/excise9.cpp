@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define M 3			//行数常量
-#define N 4			//列数常量
+#define M 3			//琛屾暟甯搁噺
+#define N 4			//鍒楁暟甯搁噺
 void Find(int B[M][N],int x,int &i,int &j)
 {	i=0;j=N-1;
 	while (B[i][j]!=x)

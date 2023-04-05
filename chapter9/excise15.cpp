@@ -1,17 +1,17 @@
-#define MaxSize 100			//¶¨Òå×î´ó¹şÏ£±í³¤¶È
-#define NULLKEY -1				//¶¨Òå¿Õ¹Ø¼ü×ÖÖµ
-typedef int KeyType;			//¹Ø¼ü×ÖÀàĞÍ
-typedef char * InfoType;		//ÆäËûÊı¾İÀàĞÍ
+#define MaxSize 100			//å®šä¹‰æœ€å¤§å“ˆå¸Œè¡¨é•¿åº¦
+#define NULLKEY -1				//å®šä¹‰ç©ºå…³é”®å­—å€¼
+typedef int KeyType;			//å…³é”®å­—ç±»å‹
+typedef char * InfoType;		//å…¶ä»–æ•°æ®ç±»å‹
 typedef struct
-{	KeyType key;				//¹Ø¼ü×ÖÓò
-	InfoType data;			//ÆäËûÊı¾İÓò
-	int count;				//Ì½²â´ÎÊıÓò
-} HashTable[MaxSize];			//¹şÏ£±íÀàĞÍ
-int SearchHT1(HashTable ha,int p,int m,KeyType k)	//ÔÚ¹şÏ£±íÖĞ²éÕÒ¹Ø¼ü×Ök
+{	KeyType key;				//å…³é”®å­—åŸŸ
+	InfoType data;			//å…¶ä»–æ•°æ®åŸŸ
+	int count;				//æ¢æµ‹æ¬¡æ•°åŸŸ
+} HashTable[MaxSize];			//å“ˆå¸Œè¡¨ç±»å‹
+int SearchHT1(HashTable ha,int p,int m,KeyType k)	//åœ¨å“ˆå¸Œè¡¨ä¸­æŸ¥æ‰¾å…³é”®å­—k
 {	int adr,adr1,i=1,sign;
-	adr=adr1=k % p;			//Çó¹şÏ£º¯ÊıÖµ
+	adr=adr1=k % p;			//æ±‚å“ˆå¸Œå‡½æ•°å€¼
 	sign=1;
-	while (ha[adr].key!=NULLKEY && ha[adr].key!=k)	//ÕÒµ½µÄÎ»ÖÃ²»¿Õ
+	while (ha[adr].key!=NULLKEY && ha[adr].key!=k)	//æ‰¾åˆ°çš„ä½ç½®ä¸ç©º
 	{	adr=(adr1+sign*i*i) % m;
 		if (sign==1)
 			sign=-1;
@@ -20,9 +20,9 @@ int SearchHT1(HashTable ha,int p,int m,KeyType k)	//ÔÚ¹şÏ£±íÖĞ²éÕÒ¹Ø¼ü×Ök
 			i++;
 		}
 	}
-	if (ha[adr].key==k)			//²éÕÒ³É¹¦
+	if (ha[adr].key==k)			//æŸ¥æ‰¾æˆåŠŸ
 		return adr;
-	else						//²éÕÒÊ§°Ü
+	else						//æŸ¥æ‰¾å¤±è´¥
 		return -1;
 }
 

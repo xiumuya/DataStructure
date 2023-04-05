@@ -1,28 +1,28 @@
 #include "linklist.cpp"
 
-void Sort(LinkNode *&L)		//¶Ôµ¥Á´±íLµİ¼õÅÅĞò
+void Sort(LinkNode *&L)		//å¯¹å•é“¾è¡¨Lé€’å‡æ’åº
 {	LinkNode *p,*q,*pre;
-	p=L->next->next;		//pÖ¸ÏòµÚ2¸öÊı¾İ½Úµã
+	p=L->next->next;		//pæŒ‡å‘ç¬¬2ä¸ªæ•°æ®èŠ‚ç‚¹
 	L->next->next=NULL;
 	while (p!=NULL)
 	{	q=p->next;
 		pre=L;
 		while (pre->next!=NULL && pre->next->data>p->data)
 			pre=pre->next;
-		p->next=pre->next;	//ÔÚ½ÚµãpreÖ®ºó²åÈëp½Úµã
+		p->next=pre->next;	//åœ¨èŠ‚ç‚¹preä¹‹åæ’å…¥pèŠ‚ç‚¹
 		pre->next=p;
 		p=q;
 	}
 }
 
-void fun(LinkNode *&L)			//Íê³É±¾ÌâµÄËã·¨
-{	printf("ÅÅĞòÇ°µ¥Á´±íL:"); 
-	DispList(L);				//µ÷ÓÃ»ù±¾ÔËËãËã·¨
+void fun(LinkNode *&L)			//å®Œæˆæœ¬é¢˜çš„ç®—æ³•
+{	printf("æ’åºå‰å•é“¾è¡¨L:"); 
+	DispList(L);				//è°ƒç”¨åŸºæœ¬è¿ç®—ç®—æ³•
 	Sort(L);
-	printf("ÅÅĞòºóµ¥Á´±íL:"); 
-	DispList(L);				//µ÷ÓÃ»ù±¾ÔËËãËã·¨
-	printf("ÊÍ·Åµ¥Á´±íL\n");
-	DestroyList(L);				//µ÷ÓÃ»ù±¾ÔËËãËã·¨
+	printf("æ’åºåå•é“¾è¡¨L:"); 
+	DispList(L);				//è°ƒç”¨åŸºæœ¬è¿ç®—ç®—æ³•
+	printf("é‡Šæ”¾å•é“¾è¡¨L\n");
+	DestroyList(L);				//è°ƒç”¨åŸºæœ¬è¿ç®—ç®—æ³•
 }
 
 int main()

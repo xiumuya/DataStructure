@@ -1,9 +1,9 @@
 #include"glist.cpp"
 void Change(GLNode *&g,ElemType s,ElemType t)
 {	if (g!=NULL)
-	{	if (g->tag==1)			//×Ó±íµÄÇé¿ö
+	{	if (g->tag==1)			//å­è¡¨çš„æƒ…å†µ
 			Change(g->val.sublist,s,t);
-		else if (g->val.data==s)	//Ô­×ÓÇÒdataÓòÖµÎªsµÄÇé¿ö
+		else if (g->val.data==s)	//åŸå­ä¸”dataåŸŸå€¼ä¸ºsçš„æƒ…å†µ
 			g->val.data=t;
 		Change(g->link,s,t);
 	}

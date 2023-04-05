@@ -3,10 +3,10 @@
 int Add(int A[],int B[],int C[])
 {	int i=0,j=0,k=0,sum;
 	while (A[i]!=-1 && B[j]!=-1)
-	{	if (A[i]==B[j])				//°´ÁĞÓÅÏÈ±È½Ï
-		{	if (A[i+1]==B[j+1])		//±È½ÏÁĞºÅ
+	{	if (A[i]==B[j])				//æŒ‰åˆ—ä¼˜å…ˆæ¯”è¾ƒ
+		{	if (A[i+1]==B[j+1])		//æ¯”è¾ƒåˆ—å·
 			{	sum=A[i+2]+B[j+2];
-				if (sum!=0)			//ºÍ²»ÎªÁãÊ±
+				if (sum!=0)			//å’Œä¸ä¸ºé›¶æ—¶
 				{	C[k]=A[i];C[k+1]=A[i+1];C[k+2]=sum;
 					k=k+3;
 				}
@@ -50,7 +50,7 @@ int main()
 	int B[]={0,0,1,0,3,2,1,2,3,2,1,4,2,3,5,-1};
 	int C[MAXN];
 	int k=Add(A,B,C);
-	printf("CµÄ½á¹û");
+	printf("Cçš„ç»“æœ");
 	for(int i=0;i<k;i++)
 	{
 		if(i%3==0) printf("\n");

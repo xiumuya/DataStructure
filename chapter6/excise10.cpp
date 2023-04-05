@@ -1,12 +1,12 @@
 #include"tuples.cpp"
 bool diagonal(TSMatrix a,ElemType &sum)
 {	sum=0;
-	if (a.rows!=a.cols)				//行号不等于列号，返回false
-	{	printf("不是对角矩阵\n");
+	if (a.rows!=a.cols)				//琛屽彿涓嶇瓑浜庡垪鍙凤紝杩斿洖false
+	{	printf("涓嶆槸瀵硅鐭╅樀\n");
 		return false;
 	}
 	for (int i=0;i<a.nums;i++)
-		if (a.data[i].r==a.data[i].c)	//行号等于列号
+		if (a.data[i].r==a.data[i].c)	//琛屽彿绛変簬鍒楀彿
 			sum+=a.data[i].d;
 	return true;
 }

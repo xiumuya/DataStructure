@@ -1,22 +1,22 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void BinInsertSort1(RecType R[],int n) //¶ÔR[0..n-1]°´µİ¼õÓĞĞò½øĞĞÕÛ°ë²åÈëÅÅĞò
+void BinInsertSort1(RecType R[],int n) //å¯¹R[0..n-1]æŒ‰é€’å‡æœ‰åºè¿›è¡ŒæŠ˜åŠæ’å…¥æ’åº
 {	int i,j,low,high,mid;
 	RecType tmp;
 	for (i=1;i<n;i++)
 	{	if (R[i-1].key<R[i].key)
-		{	tmp=R[i];					//½«R[i]±£´æµ½tmpÖĞ
+		{	tmp=R[i];					//å°†R[i]ä¿å­˜åˆ°tmpä¸­
 			low=0;high=i-1;
-			while (low<=high)			//ÔÚR[low..high]ÖĞÕÛ°ë²éÕÒÓĞĞò²åÈëµÄÎ»ÖÃ
-			{	mid=(low+high)/2;		//È¡ÖĞ¼äÎ»ÖÃ
+			while (low<=high)			//åœ¨R[low..high]ä¸­æŠ˜åŠæŸ¥æ‰¾æœ‰åºæ’å…¥çš„ä½ç½®
+			{	mid=(low+high)/2;		//å–ä¸­é—´ä½ç½®
 				if (tmp.key>R[mid].key)
-					high=mid-1;		//²åÈëµãÔÚ×ó°ëÇø
+					high=mid-1;		//æ’å…¥ç‚¹åœ¨å·¦åŠåŒº
 				else
-					low=mid+1;		//²åÈëµãÔÚÓÒ°ëÇø
+					low=mid+1;		//æ’å…¥ç‚¹åœ¨å³åŠåŒº
 			}
-			for (j=i-1;j>=high+1;j--)	//ÔªËØºóÒÆ
+			for (j=i-1;j>=high+1;j--)	//å…ƒç´ åç§»
 				R[j+1]=R[j];
-			R[high+1]=tmp;			//²åÈëR[i]
+			R[high+1]=tmp;			//æ’å…¥R[i]
 		}
 	}
 }
@@ -28,11 +28,11 @@ int main()
 	int n=10;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 
 	BinInsertSort1(R,n);
 	
-	printf("ÅÅĞòºóR:"); DispList(R,n);
+	printf("æ’åºåR:"); DispList(R,n);
 	return 1;
 }
 

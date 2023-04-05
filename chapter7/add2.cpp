@@ -4,31 +4,31 @@ typedef char ElemType;
 typedef ElemType SqBinTree[MaxSize];
 
 void PreOrder1(SqBinTree a,int i)
-//aÊı×é´æ´¢¶ş²æÊ÷£¨´óĞ¡ÎªMaxSize£©,i³õÖµÎª1
+//aæ•°ç»„å­˜å‚¨äºŒå‰æ ‘ï¼ˆå¤§å°ä¸ºMaxSizeï¼‰,iåˆå€¼ä¸º1
 {
 	if (i<MaxSize)
 	{
 		if (a[i]!='#')
-		{	printf("%c ",a[i]);		//·ÃÎÊ¸ù½Úµã
-			PreOrder1(a,2*i);		//±éÀú×ó×ÓÊ÷
-			PreOrder1(a,2*i+1);		//±éÀúÓÒ×ÓÊ÷
+		{	printf("%c ",a[i]);		//è®¿é—®æ ¹èŠ‚ç‚¹
+			PreOrder1(a,2*i);		//éå†å·¦å­æ ‘
+			PreOrder1(a,2*i+1);		//éå†å³å­æ ‘
 		}
 	}
 }
 
-void PreOrder2(SqBinTree a) //aÊı×é´æ´¢¶ş²æÊ÷£¨´óĞ¡ÎªMaxSize£©
+void PreOrder2(SqBinTree a) //aæ•°ç»„å­˜å‚¨äºŒå‰æ ‘ï¼ˆå¤§å°ä¸ºMaxSizeï¼‰
 {	int St[MaxSize],top=-1,i=1;
-	top++;						//¸ù½Úµã1½øÕ»
+	top++;						//æ ¹èŠ‚ç‚¹1è¿›æ ˆ
 	St[top]=i;
 	while (top>-1)
 	{
-		i=St[top];top--;		//³öÕ»½Úµãi
+		i=St[top];top--;		//å‡ºæ ˆèŠ‚ç‚¹i
 		printf("%c ",a[i]);
-		if (2*i+1<MaxSize && a[2*i+1]!='#')	//ÓÒº¢×Ó½øÕ»
+		if (2*i+1<MaxSize && a[2*i+1]!='#')	//å³å­©å­è¿›æ ˆ
 		{	top++;
 			St[top]=2*i+1;
 		}
-		if (2*i<MaxSize && a[2*i]!='#')		//×óº¢×Ó½øÕ»
+		if (2*i<MaxSize && a[2*i]!='#')		//å·¦å­©å­è¿›æ ˆ
 		{	top++;
 			St[top]=2*i;
 		}
@@ -38,7 +38,7 @@ void PreOrder2(SqBinTree a) //aÊı×é´æ´¢¶ş²æÊ÷£¨´óĞ¡ÎªMaxSize£©
 int main()
 {	
 	SqBinTree bt="#ABCDE#F##GH##I##";
-	printf("  ÏÈĞò±éÀúµÄµİ¹éËã·¨:"); PreOrder1(bt,1);printf("\n");
-	printf("ÏÈĞò±éÀúµÄ·Çµİ¹éËã·¨:"); PreOrder2(bt);printf("\n");
+	printf("  å…ˆåºéå†çš„é€’å½’ç®—æ³•:"); PreOrder1(bt,1);printf("\n");
+	printf("å…ˆåºéå†çš„éé€’å½’ç®—æ³•:"); PreOrder2(bt);printf("\n");
 	return 1;
 }

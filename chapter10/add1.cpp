@@ -1,20 +1,20 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 typedef struct
-{	KeyType key;	//¹Ø¼ü×Ö
-	int no;			//ĞòºÅ
-} IndexType;		//Ë÷ÒıÀàĞÍ
+{	KeyType key;	//å…³é”®å­—
+	int no;			//åºå·
+} IndexType;		//ç´¢å¼•ç±»å‹
 
-void CreateIndex(RecType R[],IndexType idx[],int n) //½¨Á¢RµÄË÷Òıidx
+void CreateIndex(RecType R[],IndexType idx[],int n) //å»ºç«‹Rçš„ç´¢å¼•idx
 {
 	IndexType tmp;
 	int i,j;
-	for (i=0;i<n;i++)			//½¨Á¢idx
+	for (i=0;i<n;i++)			//å»ºç«‹idx
 	{
 		idx[i].key=R[i].key;
 		idx[i].no=i;
 	}
-	for (i=1;i<n;i++)			//¶Ôidx°´keyÅÅĞò
+	for (i=1;i<n;i++)			//å¯¹idxæŒ‰keyæ’åº
 	{	if (idx[i].key<idx[i-1].key) 
 		{	tmp=idx[i];
 			j=i-1; 
@@ -35,22 +35,22 @@ int main()
 	int n=10;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("Êı¾İ:\n");
-	printf("Î»  ÖÃ:");
+	printf("æ•°æ®:\n");
+	printf("ä½  ç½®:");
 	for (int i=0;i<n;i++)
 		printf("%3d",i);
 	printf("\n");
-	printf("¹Ø¼ü×Ö:");
+	printf("å…³é”®å­—:");
 	for (i=0;i<n;i++)
 		printf("%3d",R[i].key);
 	printf("\n");
 	CreateIndex(R,idx,n);
-	printf("Ë÷Òı:\n");
-	printf("¹Ø¼ü×Ö:");
+	printf("ç´¢å¼•:\n");
+	printf("å…³é”®å­—:");
 	for (i=0;i<n;i++)
 		printf("%3d",idx[i].key);
 	printf("\n");
-	printf("Î»  ÖÃ:");
+	printf("ä½  ç½®:");
 	for (i=0;i<n;i++)
 		printf("%3d",idx[i].no);
 	printf("\n");

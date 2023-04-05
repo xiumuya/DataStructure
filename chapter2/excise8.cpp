@@ -18,7 +18,7 @@ int main()
 	ElemType a[]={1,2,3,4};
 	CreateListR(L,a,n);
 	printf("L:");DispList(L);
-	printf("ÖĞ¼äÎ»ÖÃµÄÔªËØ:%d\n",Midnode(L));
+	printf("ä¸­é—´ä½ç½®çš„å…ƒç´ :%d\n",Midnode(L));
 	DestroyList(L);
 	return 1;
 }

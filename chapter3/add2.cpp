@@ -2,15 +2,15 @@
 
 void DispStack(SqStack *st)
 {	ElemType x;
-	SqStack *tmpst;			//¶¨ÒåÁÙÊ±Õ»
-	InitStack(tmpst);			//³õÊ¼»¯ÁÙÊ±Õ»
-	while (!StackEmpty(st))		//ÁÙÊ±Õ»tmpstÖĞ°üº¬stÕ»ÖĞµÄÄæ×ªÔªËØ
+	SqStack *tmpst;			//å®šä¹‰ä¸´æ—¶æ ˆ
+	InitStack(tmpst);			//åˆå§‹åŒ–ä¸´æ—¶æ ˆ
+	while (!StackEmpty(st))		//ä¸´æ—¶æ ˆtmpstä¸­åŒ…å«stæ ˆä¸­çš„é€†è½¬å…ƒç´ 
 	{	Pop(st,x);
 		printf("%c ",x);
 		Push(tmpst,x);
 	}
 	printf("\n");
-	while (!StackEmpty(tmpst))	//»Ö¸´stÕ»ÖĞÔ­À´µÄÄÚÈİ
+	while (!StackEmpty(tmpst))	//æ¢å¤stæ ˆä¸­åŸæ¥çš„å†…å®¹
 	{	Pop(tmpst,x);
 		Push(st,x);
 	}

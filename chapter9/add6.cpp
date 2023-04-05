@@ -1,20 +1,20 @@
-#include "bst.cpp"   //¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"   //äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 
 bool Findseq(BSTNode *bt,int k,int a[],int n)
 {	BSTNode *p=bt;
 	int i=0;
-	if (a[n-1]!=k)						//Î´ÕÒµ½k£¬·µ»Øfalse
+	if (a[n-1]!=k)						//æœªæ‰¾åˆ°kï¼Œè¿”å›false
 		return false;
 	while (i<n && p!=NULL)
 	{
-		if (p->key!=a[i])				//Èô²»µÈ£¬±íÊ¾a²»ÊÇkµÄ²éÕÒĞòÁĞ
-			return false;				//·µ»Øfalse
-		if (k<p->key) p=p->lchild;		//ÔÚ×ó×ÓÊ÷ÖĞ²éÕÒ
-		else if (k>p->key) p=p->rchild;	//ÔÚÓÒ×ÓÊ÷ÖĞ²éÕÒ
-		i++;							//²éÕÒĞòÁĞÖ¸ÏòÏÂÒ»¸ö¹Ø¼ü×Ö
+		if (p->key!=a[i])				//è‹¥ä¸ç­‰ï¼Œè¡¨ç¤ºaä¸æ˜¯kçš„æŸ¥æ‰¾åºåˆ—
+			return false;				//è¿”å›false
+		if (k<p->key) p=p->lchild;		//åœ¨å·¦å­æ ‘ä¸­æŸ¥æ‰¾
+		else if (k>p->key) p=p->rchild;	//åœ¨å³å­æ ‘ä¸­æŸ¥æ‰¾
+		i++;							//æŸ¥æ‰¾åºåˆ—æŒ‡å‘ä¸‹ä¸€ä¸ªå…³é”®å­—
 	}
-	if (p!=NULL) return true;			//ÕÒµ½ÁËk£¬·µ»Øtrue
-	else return false;					//Î´ÕÒµ½k£¬·µ»Øfalse
+	if (p!=NULL) return true;			//æ‰¾åˆ°äº†kï¼Œè¿”å›true
+	else return false;					//æœªæ‰¾åˆ°kï¼Œè¿”å›false
 }
 
 
@@ -23,7 +23,7 @@ int main()
 	BSTNode *bt;
 	KeyType keys[]={5,2,3,4,1,6,8,7,9};
 	int m=9;
-	bt=CreateBST(keys,m);		//´´½¨¶ş²æÅÅĞòÊ÷
+	bt=CreateBST(keys,m);		//åˆ›å»ºäºŒå‰æ’åºæ ‘
 	printf("BST:"); DispBST(bt); printf("\n");
 	int n=4;
 	KeyType a[]={5,2,3,9};

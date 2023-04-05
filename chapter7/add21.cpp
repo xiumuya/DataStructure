@@ -1,5 +1,5 @@
 #include "btree.cpp"
-void addparent11(BTNode* b,BTNode* p)	//½áµãbµÄË«Ç×Îª½áµãp 
+void addparent11(BTNode* b,BTNode* p)	//ç»“ç‚¹bçš„åŒäº²ä¸ºç»“ç‚¹p 
 {
 	if (b!=NULL)
 	{
@@ -9,30 +9,30 @@ void addparent11(BTNode* b,BTNode* p)	//½áµãbµÄË«Ç×Îª½áµãp
 	}
 }
 
-void addparent1(BTNode *&b)		//½â·¨1£ºµİ¹éÏÈĞò±éÀúÇó½â 
+void addparent1(BTNode *&b)		//è§£æ³•1ï¼šé€’å½’å…ˆåºéå†æ±‚è§£ 
 {
 	addparent11(b,NULL);
 }
 
-void addparent2(BTNode *&b)		//½â·¨2£º²ã´Î±éÀúÇó½â 
+void addparent2(BTNode *&b)		//è§£æ³•2ï¼šå±‚æ¬¡éå†æ±‚è§£ 
 {
-	BTNode* Qu[MaxSize];			//¶¨ÒåË³Ğò·ÇÑ­»·¶ÓÁĞ
-	int front,rear;					//¶¨Òå¶ÓÊ×ºÍ¶ÓÎ²Ö¸Õë
-	front=rear=0;					//ÖÃ¶ÓÁĞÎª¿Õ¶Ó
+	BTNode* Qu[MaxSize];			//å®šä¹‰é¡ºåºéå¾ªç¯é˜Ÿåˆ—
+	int front,rear;					//å®šä¹‰é˜Ÿé¦–å’Œé˜Ÿå°¾æŒ‡é’ˆ
+	front=rear=0;					//ç½®é˜Ÿåˆ—ä¸ºç©ºé˜Ÿ
 	rear++;	
-	Qu[rear]=b;						//¸ù½áµã½ø¶Ó
-	b->parent=NULL;					//¸ù½áµãµÄË«Ç×ÎªNULL 
-	while (rear!=front)				//¶ÓÁĞ²»Îª¿Õ
+	Qu[rear]=b;						//æ ¹ç»“ç‚¹è¿›é˜Ÿ
+	b->parent=NULL;					//æ ¹ç»“ç‚¹çš„åŒäº²ä¸ºNULL 
+	while (rear!=front)				//é˜Ÿåˆ—ä¸ä¸ºç©º
 	{	front++;
-		b=Qu[front];				//³ö¶Ó½áµãb 
-		if (b->lchild!=NULL)		//Èô´æÔÚ×óº¢×Ó
+		b=Qu[front];				//å‡ºé˜Ÿç»“ç‚¹b 
+		if (b->lchild!=NULL)		//è‹¥å­˜åœ¨å·¦å­©å­
 		{	b->lchild->parent=b;
-			rear++;					//×óº¢×Ó½ø¶Ó 
+			rear++;					//å·¦å­©å­è¿›é˜Ÿ 
 			Qu[rear]=b->lchild;
 		}
-		if (b->rchild!=NULL)		//Èô´æÔÚÓÒº¢×Ó
+		if (b->rchild!=NULL)		//è‹¥å­˜åœ¨å³å­©å­
 		{	b->rchild->parent=b;
-			rear++;					//ÓÒº¢×Ó½ø¶Ó 
+			rear++;					//å³å­©å­è¿›é˜Ÿ 
 			Qu[rear]=b->rchild;
 		}
 	}
@@ -60,7 +60,7 @@ void disppath(BTNode *b)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	addparent1(b);
 	disppath(b);

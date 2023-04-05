@@ -1,16 +1,16 @@
-#include "seqlist.cpp"			//Ë³Ðò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void HeapInsert(RecType R[],KeyType k,int &n)	//½«k²åÈëµ½¶ÑR[1..n]ÖÐ
+void HeapInsert(RecType R[],KeyType k,int &n)	//å°†kæ’å…¥åˆ°å †R[1..n]ä¸­
 {
 	int i,j;
 	n++;
-	R[n].key=k;								//Ôö¼ÓÐÂÖµµ½Ô­±íÎ²²¿ÇÒ±í³¤¼Ó1
+	R[n].key=k;								//å¢žåŠ æ–°å€¼åˆ°åŽŸè¡¨å°¾éƒ¨ä¸”è¡¨é•¿åŠ 1
 	i=n/2;j=n;
-	while (i>0)								//µ÷ÕûÎª¶Ñ
+	while (i>0)								//è°ƒæ•´ä¸ºå †
 	{
 		if (R[i].key<R[j].key)
-			swap(R[i],R[j]);				//½»»»
-		j=i;i=i/2;							//¼ÌÐø×Ôµ×ÏòÉÏ²éÕÒ
+			swap(R[i],R[j]);				//äº¤æ¢
+		j=i;i=i/2;							//ç»§ç»­è‡ªåº•å‘ä¸ŠæŸ¥æ‰¾
 	}
 }
 
@@ -20,12 +20,12 @@ int main()
 	int n=5;
 	int a[]={0,8,7,6,5,4};
 	CreateList1(R,a,n);
-	printf("²åÈëÇ°R:"); DispList1(R,n);
+	printf("æ’å…¥å‰R:"); DispList1(R,n);
 	
 	KeyType k=10;
 	HeapInsert(R,k,n);
 	
-	printf("²åÈëºóR:"); DispList1(R,n);
+	printf("æ’å…¥åŽR:"); DispList1(R,n);
 	return 1;
 }
 

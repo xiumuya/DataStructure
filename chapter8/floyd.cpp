@@ -1,4 +1,4 @@
-//FloydËã·¨
+//Floydç®—æ³•
 #include "graph.cpp"
 void Disp(int A[MAXV][MAXV],int path[MAXV][MAXV],int n,int k)
 {
@@ -10,7 +10,7 @@ void Disp(int A[MAXV][MAXV],int path[MAXV][MAXV],int n,int k)
 			if (A[i][j]!=INF)
 				printf("%4d",A[i][j]);
 			else
-				printf("%4s","¡Ş");
+				printf("%4s","âˆ");
 		printf("\t\t");
 		for (j=0;j<n;j++)
 			printf("%4d",path[i][j]);
@@ -20,52 +20,52 @@ void Disp(int A[MAXV][MAXV],int path[MAXV][MAXV],int n,int k)
 
 void Dispath(MatGraph g,int A[][MAXV],int path[][MAXV])
 {	int i,j,k,s;
-	int apath[MAXV],d;		//´æ·ÅÒ»Ìõ×î¶ÌÂ·¾¶ÖĞ¼ä¶¥µã(·´Ïò)¼°Æä¶¥µã¸öÊı
+	int apath[MAXV],d;		//å­˜æ”¾ä¸€æ¡æœ€çŸ­è·¯å¾„ä¸­é—´é¡¶ç‚¹(åå‘)åŠå…¶é¡¶ç‚¹ä¸ªæ•°
 	for (i=0;i<g.n;i++)
 		for (j=0;j<g.n;j++)
-		{	if (A[i][j]!=INF && i!=j)			//Èô¶¥µãiºÍjÖ®¼ä´æÔÚÂ·¾¶
-			{	printf("  ´Ó%dµ½%dµÄÂ·¾¶Îª:",i,j);
+		{	if (A[i][j]!=INF && i!=j)			//è‹¥é¡¶ç‚¹iå’Œjä¹‹é—´å­˜åœ¨è·¯å¾„
+			{	printf("  ä»%dåˆ°%dçš„è·¯å¾„ä¸º:",i,j);
 				k=path[i][j];
-				d=0; apath[d]=j;				//Â·¾¶ÉÏÌí¼ÓÖÕµã
-				while (k!=-1 && k!=i)			//Â·¾¶ÉÏÌí¼ÓÖĞ¼äµã
+				d=0; apath[d]=j;				//è·¯å¾„ä¸Šæ·»åŠ ç»ˆç‚¹
+				while (k!=-1 && k!=i)			//è·¯å¾„ä¸Šæ·»åŠ ä¸­é—´ç‚¹
 				{	d++; apath[d]=k;
 					k=path[i][k];
 				}
-				d++; apath[d]=i;				//Â·¾¶ÉÏÌí¼ÓÆğµã
-				printf("%d",apath[d]);			//Êä³öÆğµã
-				for (s=d-1;s>=0;s--)			//Êä³öÂ·¾¶ÉÏµÄÖĞ¼ä¶¥µã
+				d++; apath[d]=i;				//è·¯å¾„ä¸Šæ·»åŠ èµ·ç‚¹
+				printf("%d",apath[d]);			//è¾“å‡ºèµ·ç‚¹
+				for (s=d-1;s>=0;s--)			//è¾“å‡ºè·¯å¾„ä¸Šçš„ä¸­é—´é¡¶ç‚¹
 					printf(",%d",apath[s]);
-				printf("\tÂ·¾¶³¤¶ÈÎª:%d\n",A[i][j]);
+				printf("\tè·¯å¾„é•¿åº¦ä¸º:%d\n",A[i][j]);
 			}
 		}
 }
 
-void Floyd(MatGraph g)							//FloydËã·¨
+void Floyd(MatGraph g)							//Floydç®—æ³•
 {	int A[MAXV][MAXV],path[MAXV][MAXV];
 	int i,j,k;
 	for (i=0;i<g.n;i++)
 		for (j=0;j<g.n;j++) 
 		{	A[i][j]=g.edges[i][j];
 			if (i!=j && g.edges[i][j]<INF)
-				path[i][j]=i;					//¶¥µãiµ½jÓĞ±ßÊ±
+				path[i][j]=i;					//é¡¶ç‚¹iåˆ°jæœ‰è¾¹æ—¶
 			else
-				path[i][j]=-1;					//¶¥µãiµ½jÃ»ÓĞ±ßÊ±
+				path[i][j]=-1;					//é¡¶ç‚¹iåˆ°jæ²¡æœ‰è¾¹æ—¶
 		}
-	for (k=0;k<g.n;k++)							//ÒÀ´Î¿¼²ìËùÓĞ¶¥µã
+	for (k=0;k<g.n;k++)							//ä¾æ¬¡è€ƒå¯Ÿæ‰€æœ‰é¡¶ç‚¹
 	{
 		printf("k=%d\n",k);
 		for (i=0;i<g.n;i++)
 			for (j=0;j<g.n;j++)
 				if (A[i][j]>A[i][k]+A[k][j])
 				{
-					A[i][j]=A[i][k]+A[k][j];	//ĞŞ¸Ä×î¶ÌÂ·¾¶³¤¶È
-					path[i][j]=path[k][j];		//ĞŞ¸Ä×î¶ÌÂ·¾¶
+					A[i][j]=A[i][k]+A[k][j];	//ä¿®æ”¹æœ€çŸ­è·¯å¾„é•¿åº¦
+					path[i][j]=path[k][j];		//ä¿®æ”¹æœ€çŸ­è·¯å¾„
 					printf("A[%d][%d]=%d,path[%d][%d]=%d\n",i,j,A[i][j],i,j,path[i][j]);
 				}
 		//Disp(A,path,g.n,k);
 
 	}
-	Dispath(g,A,path);							//Êä³ö×î¶ÌÂ·¾¶
+	Dispath(g,A,path);							//è¾“å‡ºæœ€çŸ­è·¯å¾„
 }
 
 int main()
@@ -79,10 +79,10 @@ int main()
 		{INF,INF,7,  INF,0,   6},
 		{INF,INF,8,  INF,6,   0} };
 	int n=6, e=8;
-	CreateMat(g,A,n,e);			//½¨Á¢Í¼µÄÁÚ½Ó¾ØÕó
-	printf("Í¼GµÄÁÚ½Ó¾ØÕó:\n");
-	DispMat(g);					//Êä³öÁÚ½Ó¾ØÕó
-	printf("¸÷¶¥µã¶ÔµÄ×î¶ÌÂ·¾¶:\n");
+	CreateMat(g,A,n,e);			//å»ºç«‹å›¾çš„é‚»æ¥çŸ©é˜µ
+	printf("å›¾Gçš„é‚»æ¥çŸ©é˜µ:\n");
+	DispMat(g);					//è¾“å‡ºé‚»æ¥çŸ©é˜µ
+	printf("å„é¡¶ç‚¹å¯¹çš„æœ€çŸ­è·¯å¾„:\n");
 	Floyd(g);
 	return 1;
 }

@@ -1,20 +1,20 @@
 #include "sqstring.cpp"
 typedef struct
-{	char c;				//×Ö·û
-	int num;			//×Ö·û¼ÆÊı
+{	char c;				//å­—ç¬¦
+	int num;			//å­—ç¬¦è®¡æ•°
 } CType;
 int fun(SqString s,CType cnum[])
 {
-	int i,j,k=0;		//k¼ÇÂ¼cnumÖĞµÄÔªËØ¸öÊı
+	int i,j,k=0;		//kè®°å½•cnumä¸­çš„å…ƒç´ ä¸ªæ•°
 	for (i=0;i<s.length;i++)
-	{	if (k==0)		//cnumÖĞÃ»ÓĞÔªËØÊ±,½«s.data[i]Ö±½Ó·Åµ½cnumÖĞ
+	{	if (k==0)		//cnumä¸­æ²¡æœ‰å…ƒç´ æ—¶,å°†s.data[i]ç›´æ¥æ”¾åˆ°cnumä¸­
 		{	cnum[k].c=s.data[i];
 			cnum[k].num=1;
 			k++;
 		}
-		else			//cnumÖĞ´æÔÚÔªËØÊ±,²éÕÒÊÇ·ñÓĞÏàÍ¬µÄ×Ö·û
+		else			//cnumä¸­å­˜åœ¨å…ƒç´ æ—¶,æŸ¥æ‰¾æ˜¯å¦æœ‰ç›¸åŒçš„å­—ç¬¦
 		{	for (j=0;j<k && s.data[i]!=cnum[j].c;j++);
-			if (j>=k)	//s.data[i]²»ÔÚcnumÊı×éÖĞ
+			if (j>=k)	//s.data[i]ä¸åœ¨cnumæ•°ç»„ä¸­
 			{	cnum[k].c=s.data[i];
 				cnum[k].num=1;
 				k++;
@@ -30,9 +30,9 @@ int main()
 	char str[MaxSize];
 	SqString s;
 	CType cnum[MaxSize];
-	printf("ÊäÈë´®:"); gets(str);
+	printf("è¾“å…¥ä¸²:"); gets(str);
 	StrAssign(s,str);
-	printf("Í³¼Æ½á¹ûÈçÏÂ:\n");
+	printf("ç»Ÿè®¡ç»“æœå¦‚ä¸‹:\n");
 	k=fun(s,cnum);
 	for (i=0;i<k;i++)
 		printf("  %c %d\n",cnum[i].c,cnum[i].num);

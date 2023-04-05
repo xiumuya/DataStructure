@@ -1,27 +1,27 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-KeyType QuickSelect(RecType R[],int s,int t,int k)	//ÔÚR[s..t]ĞòÁĞÖĞÕÒµÚkĞ¡µÄÔªËØ
+KeyType QuickSelect(RecType R[],int s,int t,int k)	//åœ¨R[s..t]åºåˆ—ä¸­æ‰¾ç¬¬kå°çš„å…ƒç´ 
 {	int i=s,j=t;
 	RecType tmp;
-	if (s<t) 					//Çø¼äÄÚÖÁÉÙ´æÔÚ2¸öÔªËØµÄÇé¿ö
-	{	tmp=R[s];				//ÓÃÇø¼äµÄµÚ1¸ö¼ÇÂ¼×÷Îª»ù×¼
-		while (i!=j)			//´ÓÇø¼äÁ½¶Ë½»ÌæÏòÖĞ¼äÉ¨Ãè,Ö±ÖÁi=jÎªÖ¹
+	if (s<t) 					//åŒºé—´å†…è‡³å°‘å­˜åœ¨2ä¸ªå…ƒç´ çš„æƒ…å†µ
+	{	tmp=R[s];				//ç”¨åŒºé—´çš„ç¬¬1ä¸ªè®°å½•ä½œä¸ºåŸºå‡†
+		while (i!=j)			//ä»åŒºé—´ä¸¤ç«¯äº¤æ›¿å‘ä¸­é—´æ‰«æ,ç›´è‡³i=jä¸ºæ­¢
 		{	while (j>i && R[j].key>=tmp.key) 
-				j--;			//´ÓÓÒÏò×óÉ¨Ãè,ÕÒµÚ1¸ö¹Ø¼ü×ÖĞ¡ÓÚtmpµÄR[j]
-			R[i]=R[j];			//½«R[j]Ç°ÒÆµ½R[i]µÄÎ»ÖÃ
+				j--;			//ä»å³å‘å·¦æ‰«æ,æ‰¾ç¬¬1ä¸ªå…³é”®å­—å°äºtmpçš„R[j]
+			R[i]=R[j];			//å°†R[j]å‰ç§»åˆ°R[i]çš„ä½ç½®
 			while (i<j && R[i].key<=tmp.key) 
-				i++;			//´Ó×óÏòÓÒÉ¨Ãè,ÕÒµÚ1¸ö¹Ø¼ü×Ö´óÓÚtmpµÄR[i]
-			R[j]=R[i];			//½«R[i]ºóÒÆµ½R[j]µÄÎ»ÖÃ
+				i++;			//ä»å·¦å‘å³æ‰«æ,æ‰¾ç¬¬1ä¸ªå…³é”®å­—å¤§äºtmpçš„R[i]
+			R[j]=R[i];			//å°†R[i]åç§»åˆ°R[j]çš„ä½ç½®
 		}
 		R[i]=tmp;
 		if (k-1==i) return R[i].key;
-		else if (k-1<i) return QuickSelect(R,s,i-1,k);	//ÔÚ×óÇø¼äÖĞµİ¹é²éÕÒ
-		else return QuickSelect(R,i+1,t,k);				//ÔÚÓÒÇø¼äÖĞµİ¹é²éÕÒ
+		else if (k-1<i) return QuickSelect(R,s,i-1,k);	//åœ¨å·¦åŒºé—´ä¸­é€’å½’æŸ¥æ‰¾
+		else return QuickSelect(R,i+1,t,k);				//åœ¨å³åŒºé—´ä¸­é€’å½’æŸ¥æ‰¾
 	}
-	else if (s==t && s==k-1)	//Çø¼äÄÚÖ»ÓĞÒ»¸öÔªËØÇÒÎªR[k-1]
+	else if (s==t && s==k-1)	//åŒºé—´å†…åªæœ‰ä¸€ä¸ªå…ƒç´ ä¸”ä¸ºR[k-1]
 		return R[k-1].key;
 	else
-		return -1;				//k´íÎó·µ»ØÌØÊâÖµ-1
+		return -1;				//ké”™è¯¯è¿”å›ç‰¹æ®Šå€¼-1
 }
 
 int main()
@@ -30,10 +30,10 @@ int main()
 	int n=10;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 
 	int k=20;
-	printf("µÚ%dĞ¡µÄÔªËØ¹Ø¼ü×Ö:%d\n",k,QuickSelect(R,0,n-1,k));
+	printf("ç¬¬%då°çš„å…ƒç´ å…³é”®å­—:%d\n",k,QuickSelect(R,0,n-1,k));
 	return 1;
 }
 

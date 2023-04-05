@@ -1,12 +1,12 @@
-//Á´Õ»ÔËËãËã·¨
+//é“¾æ ˆè¿ç®—ç®—æ³•
 #include <stdio.h>
 #include <malloc.h>
 typedef char ElemType;
 typedef struct linknode
 {	
-	ElemType data;				//Êı¾İÓò
-	struct linknode *next;		//Ö¸ÕëÓò
-} LinkStNode;					//Á´Õ»ÀàĞÍ¶¨Òå
+	ElemType data;				//æ•°æ®åŸŸ
+	struct linknode *next;		//æŒ‡é’ˆåŸŸ
+} LinkStNode;					//é“¾æ ˆç±»å‹å®šä¹‰
 void InitStack(LinkStNode *&s)
 {
 	s=(LinkStNode *)malloc(sizeof(LinkStNode));
@@ -21,7 +21,7 @@ void DestroyStack(LinkStNode *&s)
 		s=p;
 		p=p->next;
 	}
-	free(s);	//sÖ¸ÏòÎ²½Úµã,ÊÍ·ÅÆä¿Õ¼ä
+	free(s);	//sæŒ‡å‘å°¾èŠ‚ç‚¹,é‡Šæ”¾å…¶ç©ºé—´
 }
 bool StackEmpty(LinkStNode *s)
 {
@@ -30,22 +30,22 @@ bool StackEmpty(LinkStNode *s)
 void Push(LinkStNode *&s,ElemType e)
 {	LinkStNode *p;
 	p=(LinkStNode *)malloc(sizeof(LinkStNode));
-	p->data=e;				//ĞÂ½¨ÔªËØe¶ÔÓ¦µÄ½Úµãp
-	p->next=s->next;		//²åÈëp½Úµã×÷Îª¿ªÊ¼½Úµã
+	p->data=e;				//æ–°å»ºå…ƒç´ eå¯¹åº”çš„èŠ‚ç‚¹p
+	p->next=s->next;		//æ’å…¥pèŠ‚ç‚¹ä½œä¸ºå¼€å§‹èŠ‚ç‚¹
 	s->next=p;
 }
 bool Pop(LinkStNode *&s,ElemType &e)
 {	LinkStNode *p;
-	if (s->next==NULL)		//Õ»¿ÕµÄÇé¿ö
+	if (s->next==NULL)		//æ ˆç©ºçš„æƒ…å†µ
 		return false;
-	p=s->next;				//pÖ¸Ïò¿ªÊ¼½Úµã
+	p=s->next;				//pæŒ‡å‘å¼€å§‹èŠ‚ç‚¹
 	e=p->data;
-	s->next=p->next;		//É¾³ıp½Úµã
-	free(p);				//ÊÍ·Åp½Úµã
+	s->next=p->next;		//åˆ é™¤pèŠ‚ç‚¹
+	free(p);				//é‡Šæ”¾pèŠ‚ç‚¹
 	return true;
 }
 bool GetTop(LinkStNode *s,ElemType &e)
-{	if (s->next==NULL)		//Õ»¿ÕµÄÇé¿ö
+{	if (s->next==NULL)		//æ ˆç©ºçš„æƒ…å†µ
 		return false;
 	e=s->next->data;
 	return true;

@@ -1,31 +1,31 @@
 #include "graph.cpp"
 typedef struct
-{	int v;									//¶¥µã±àºÅ
-	int level;								//¶¥µãµÄ²ã´Î
-} QType;									//»·ÐÎ¶ÓÁÐÔªËØÀàÐÍ
+{	int v;									//é¡¶ç‚¹ç¼–å·
+	int level;								//é¡¶ç‚¹çš„å±‚æ¬¡
+} QType;									//çŽ¯å½¢é˜Ÿåˆ—å…ƒç´ ç±»åž‹
 int visited[MAXV];
 void ShortPath(AdjGraph *G,int i)
-{	QType qu[MAXV];							//¶¨Òå»·ÐÎ¶ÓÁÐqu 
-	int front=0,rear=0,u,w,lev;				//lev±£´æ´Óiµ½·ÃÎÊ¶¥µãµÄ²ãÊý
+{	QType qu[MAXV];							//å®šä¹‰çŽ¯å½¢é˜Ÿåˆ—qu 
+	int front=0,rear=0,u,w,lev;				//levä¿å­˜ä»Žiåˆ°è®¿é—®é¡¶ç‚¹çš„å±‚æ•°
 	ArcNode *p;
 	visited[i]=1;
-	rear++;qu[rear].v=i;qu[rear].level=0;	//¶¥µãiÒÑ·ÃÎÊ,½«Æä½ø¶Ó
-	while (front!=rear)						//¶Ó·Ç¿ÕÔòÖ´ÐÐ
-	{	front=(front+1)% MAXV;				//³ö¶Ó
+	rear++;qu[rear].v=i;qu[rear].level=0;	//é¡¶ç‚¹iå·²è®¿é—®,å°†å…¶è¿›é˜Ÿ
+	while (front!=rear)						//é˜Ÿéžç©ºåˆ™æ‰§è¡Œ
+	{	front=(front+1)% MAXV;				//å‡ºé˜Ÿ
 		u=qu[front].v;
 		lev=qu[front].level;
 		if (u!=i) 
-			printf("  ¶¥µã%dµ½¶¥µã%dµÄ×î¶Ì¾àÀëÊÇ:%d\n",i,u,lev);
-		p=G->adjlist[u].firstarc;			//È¡kµÄ±ß±íÍ·Ö¸Õë
-		while (p!=NULL)						//ÒÀ´ÎËÑË÷ÁÚ½Óµã
-		{	w=p->adjvex;					//ÕÒµ½¶¥µãuµÄÁÚ½Óµãw 
-			if (visited[w]==0)				//Èô¶¥µãwÎ´·ÃÎÊ¹ý
-			{	visited[w]=1;				//·ÃÎÊ¶¥µãw 
+			printf("  é¡¶ç‚¹%dåˆ°é¡¶ç‚¹%dçš„æœ€çŸ­è·ç¦»æ˜¯:%d\n",i,u,lev);
+		p=G->adjlist[u].firstarc;			//å–kçš„è¾¹è¡¨å¤´æŒ‡é’ˆ
+		while (p!=NULL)						//ä¾æ¬¡æœç´¢é‚»æŽ¥ç‚¹
+		{	w=p->adjvex;					//æ‰¾åˆ°é¡¶ç‚¹uçš„é‚»æŽ¥ç‚¹w 
+			if (visited[w]==0)				//è‹¥é¡¶ç‚¹wæœªè®¿é—®è¿‡
+			{	visited[w]=1;				//è®¿é—®é¡¶ç‚¹w 
 				rear=(rear+1)% MAXV;
-				qu[rear].v=w;				//·ÃÎÊ¹ýµÄÁÚ½Óµã½ø¶Ó
+				qu[rear].v=w;				//è®¿é—®è¿‡çš„é‚»æŽ¥ç‚¹è¿›é˜Ÿ
 				qu[rear].level=lev+1;
 			}
-			p=p->nextarc;					//ÕÒ¶¥µãuµÄÏÂÒ»¸öÁÚ½Óµã
+			p=p->nextarc;					//æ‰¾é¡¶ç‚¹uçš„ä¸‹ä¸€ä¸ªé‚»æŽ¥ç‚¹
 		}
 	}
 }
@@ -36,10 +36,10 @@ int main()
 	int A[MAXV][MAXV]={{0,1,0,1,1},{1,0,1,1,0},
 		{0,1,0,1,1},{1,1,1,0,1},{1,0,1,1,0}};
 	CreateAdj(G,A,n,e);
-	printf("Í¼GµÄÁÚ½Ó±í:\n");DispAdj(G);	//Êä³öÁÚ½Ó±í
+	printf("å›¾Gçš„é‚»æŽ¥è¡¨:\n");DispAdj(G);	//è¾“å‡ºé‚»æŽ¥è¡¨
 	for (int i=0;i<n;i++)
 		visited[i]=0;
-	printf("¶¥µã1µ½ÆäËû¸÷¶¥µãµÄ×î¶Ì¾àÀëÈçÏÂ:\n");
+	printf("é¡¶ç‚¹1åˆ°å…¶ä»–å„é¡¶ç‚¹çš„æœ€çŸ­è·ç¦»å¦‚ä¸‹:\n");
 	ShortPath(G,1);
 	return 1;
 }

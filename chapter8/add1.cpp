@@ -1,4 +1,4 @@
-#include "graph.cpp"		//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"		//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
 void AddEdge(AdjGraph *&G,int i,int j,int w)
 {
@@ -19,14 +19,14 @@ int main()
 		{0,0,0,0,1},{1,0,0,0,0}};	
 
 	AdjGraph *G;
-	CreateAdj(G,A,n,e);			////½¨Á¢Í¼8.19µÄÁÚ½Ó±í
-	printf("Í¼G:\n");DispAdj(G);//Êä³öÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			////å»ºç«‹å›¾8.19çš„é‚»æ¥è¡¨
+	printf("å›¾G:\n");DispAdj(G);//è¾“å‡ºé‚»æ¥è¡¨
 
 	int i=1,j=4,w=1;
-	printf("Ôö¼Ó±ß<%d,%d>:%d\n",i,j,w);
+	printf("å¢åŠ è¾¹<%d,%d>:%d\n",i,j,w);
 	AddEdge(G,i,j,w);
-	printf("Í¼G:\n");DispAdj(G);//Êä³öÁÚ½Ó±í
+	printf("å›¾G:\n");DispAdj(G);//è¾“å‡ºé‚»æ¥è¡¨
 
-	DestroyAdj(G);				//Ïú»ÙÁÚ½Ó±í
+	DestroyAdj(G);				//é”€æ¯é‚»æ¥è¡¨
 	return 1;
 }

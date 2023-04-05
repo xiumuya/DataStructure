@@ -4,30 +4,30 @@ void DFSTrav(MatGraph g,int parent,int child,int &len)
 {	int clen,v=0,maxlen;
 	clen=len;
 	maxlen=len;
-	while (v<g.n && g.edges[child][v]==0)	//ÕÒchildµÄµÚÒ»¸öÁÚ½Óµãv
+	while (v<g.n && g.edges[child][v]==0)	//æ‰¾childçš„ç¬¬ä¸€ä¸ªé‚»æŽ¥ç‚¹v
 		v++;
-	while (v<g.n)							//´æÔÚÁÚ½ÓµãÊ±Ñ­»·
+	while (v<g.n)							//å­˜åœ¨é‚»æŽ¥ç‚¹æ—¶å¾ªçŽ¯
 	{	if (v!=parent)
 		{	len=len+g.edges[child][v];
 			DFSTrav(g,child,v,len);
-			if (len>maxlen)					//±È½ÏÕÒ×î´óÖµ
+			if (len>maxlen)					//æ¯”è¾ƒæ‰¾æœ€å¤§å€¼
 				maxlen=len;
 		}
 		v++;
-		while (v<g.n && g.edges[child][v]==0)//ÕÒchildµÄÏÂÒ»¸öÁÚ½Óµã
+		while (v<g.n && g.edges[child][v]==0)//æ‰¾childçš„ä¸‹ä¸€ä¸ªé‚»æŽ¥ç‚¹
 			v++;
 		len=clen;
 	}
 	len=maxlen;
 }
 int Diameter(MatGraph g,int v)
-{	int maxlen1=0;		//´æ·Åµ½Ä¿Ç°ÕÒµ½¸ùvµ½Ò¶½ÚµãµÄ×î´óÖµ
-	int maxlen2=0;		//´æ·Åµ½Ä¿Ç°ÕÒµ½¸ùvµ½Ò¶½ÚµãµÄ´Î´óÖµ
-	int len=0;			//¼ÇÂ¼Éî¶ÈÓÅÏÈ±éÀúÖÐµ½Ä³¸öÒ¶½ÚµãµÄ¾àÀë
-	int w=0;			//´æ·ÅvµÄÁÚ½Ó¶¥µã
-	while (w<g.n && g.edges[v][w]==0)	//ÕÒÓëvÏàÁÚµÄµÚÒ»¸ö¶¥µãw
+{	int maxlen1=0;		//å­˜æ”¾åˆ°ç›®å‰æ‰¾åˆ°æ ¹våˆ°å¶èŠ‚ç‚¹çš„æœ€å¤§å€¼
+	int maxlen2=0;		//å­˜æ”¾åˆ°ç›®å‰æ‰¾åˆ°æ ¹våˆ°å¶èŠ‚ç‚¹çš„æ¬¡å¤§å€¼
+	int len=0;			//è®°å½•æ·±åº¦ä¼˜å…ˆéåŽ†ä¸­åˆ°æŸä¸ªå¶èŠ‚ç‚¹çš„è·ç¦»
+	int w=0;			//å­˜æ”¾vçš„é‚»æŽ¥é¡¶ç‚¹
+	while (w<g.n && g.edges[v][w]==0)	//æ‰¾ä¸Žvç›¸é‚»çš„ç¬¬ä¸€ä¸ªé¡¶ç‚¹w
 		w++;
-	while (w<g.n)						//´æÔÚÁÚ½ÓµãÊ±Ñ­»·
+	while (w<g.n)						//å­˜åœ¨é‚»æŽ¥ç‚¹æ—¶å¾ªçŽ¯
 	{	len=g.edges[v][w];
 		DFSTrav(g,v,w,len);
 		if (len>maxlen1)
@@ -37,16 +37,16 @@ int Diameter(MatGraph g,int v)
 		else if (len>maxlen2)
 			maxlen2=len;
 		w++;
-		while (w<g.n && g.edges[v][w]==0)	//ÕÒvµÄÏÂÒ»¸öÁÚ½Óµãw
+		while (w<g.n && g.edges[v][w]==0)	//æ‰¾vçš„ä¸‹ä¸€ä¸ªé‚»æŽ¥ç‚¹w
 			w++;
 	}
 	return maxlen1+maxlen2;
 }
-int MaxDiameter(MatGraph g)		//ÇógµÄÖ±¾¶
+int MaxDiameter(MatGraph g)		//æ±‚gçš„ç›´å¾„
 {
 	int i,diam,d;
 	diam=Diameter(g,0);
-	for (i=1;i<g.n;i++)			//ÕÒ³ö´ÓËùÓÐ¶¥µã³ö·¢Ö±¾¶µÄ×î´óÖµ
+	for (i=1;i<g.n;i++)			//æ‰¾å‡ºä»Žæ‰€æœ‰é¡¶ç‚¹å‡ºå‘ç›´å¾„çš„æœ€å¤§å€¼
 	{	d=Diameter(g,i);
 		if (diam<d) diam=d;
 	}
@@ -60,9 +60,9 @@ int main()
 		{0,0,2,0,0,0},{0,12,0,0,0,0},{0,5,0,0,0,0}};
 	int n=6,e=5;
 	CreateMat(g,A,n,e);
-	printf("Í¼GµÄÁÚ½Ó¾ØÕó:\n");DispMat(g);
+	printf("å›¾Gçš„é‚»æŽ¥çŸ©é˜µ:\n");DispMat(g);
 
-	printf("TµÄÖ±¾¶=%d\n",MaxDiameter(g));
+	printf("Tçš„ç›´å¾„=%d\n",MaxDiameter(g));
 
 	return 1;
 }

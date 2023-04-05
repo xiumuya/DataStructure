@@ -4,18 +4,18 @@ void Union1(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 {	LinkNode *pa=ha->next,*pb=hb->next,*pc,*rc;
 	hc=(LinkNode *)malloc(sizeof(LinkNode));
 	rc=hc;
-	while (pa!=NULL)		//½«A¸´ÖÆµ½CÖĞ
+	while (pa!=NULL)		//å°†Aå¤åˆ¶åˆ°Cä¸­
 	{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 		pc->data=pa->data;
 		rc->next=pc;
 		rc=pc;
 		pa=pa->next;
 	}
-	while (pb!=NULL)		//½«BÖĞ²»ÊôÓÚAµÄÔªËØ¸´ÖÆµ½CÖĞ
+	while (pb!=NULL)		//å°†Bä¸­ä¸å±äºAçš„å…ƒç´ å¤åˆ¶åˆ°Cä¸­
 	{	pa=ha->next;
 		while (pa!=NULL && pa->data!=pb->data)
 			pa=pa->next;
-		if (pa==NULL)		//pb->data²»ÔÚAÖĞ
+		if (pa==NULL)		//pb->dataä¸åœ¨Aä¸­
 		{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 			pc->data=pb->data;
 			rc->next=pc;
@@ -31,21 +31,21 @@ void Union2(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 	hc=(LinkNode *)malloc(sizeof(LinkNode));
 	rc=hc;
 	while (pa!=NULL && pb!=NULL)
-	{	if (pa->data<pb->data)		//½«½ÏĞ¡µÄ½Úµãpa¸´ÖÆµ½hcÖĞ
+	{	if (pa->data<pb->data)		//å°†è¾ƒå°çš„èŠ‚ç‚¹paå¤åˆ¶åˆ°hcä¸­
 		{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 			pc->data=pa->data;
 			rc->next=pc;
 			rc=pc;
 			pa=pa->next;
 		}
-		else if (pa->data>pb->data)	//½«½ÏĞ¡µÄ½Úµãpb¸´ÖÆµ½hcÖĞ
+		else if (pa->data>pb->data)	//å°†è¾ƒå°çš„èŠ‚ç‚¹pbå¤åˆ¶åˆ°hcä¸­
 		{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 			pc->data=pb->data;
 			rc->next=pc;
 			rc=pc;
 			pb=pb->next;
 		}
-		else						//ÏàµÈµÄ½ÚµãÖ»¸´ÖÆÒ»¸öµ½hcÖĞ
+		else						//ç›¸ç­‰çš„èŠ‚ç‚¹åªå¤åˆ¶ä¸€ä¸ªåˆ°hcä¸­
 		{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 			pc->data=pa->data;
 			rc->next=pc;
@@ -54,7 +54,7 @@ void Union2(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 			pb=pb->next;
 		}
 	}
-	if (pb!=NULL) pa=pb;			//ÈÃpaÖ¸ÏòÃ»ÓĞÉ¨ÃèÍêµÄµ¥Á´±í½Úµã
+	if (pb!=NULL) pa=pb;			//è®©paæŒ‡å‘æ²¡æœ‰æ‰«æå®Œçš„å•é“¾è¡¨èŠ‚ç‚¹
 	while (pa!=NULL)				
 	{	pc=(LinkNode *)malloc(sizeof(LinkNode));
 		pc->data=pa->data;
@@ -62,7 +62,7 @@ void Union2(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 		rc=pc;
 		pa=pa->next;
 	}
-	rc->next=NULL;				//Î²½ÚµãnextÓòÖÃÎª¿Õ
+	rc->next=NULL;				//å°¾èŠ‚ç‚¹nextåŸŸç½®ä¸ºç©º
 }
 
 int main()

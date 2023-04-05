@@ -1,26 +1,26 @@
 #include "graph.cpp"
 
-int visited[MAXV];				//È«¾Ö±äÁ¿
-void MDFS(MatGraph g,int v)		//»ùÓÚÁÚ½Ó¾ØÕóµÄÉî¶ÈÓÅÏÈ±éÀúËã·¨
+int visited[MAXV];				//å…¨å±€å˜é‡
+void MDFS(MatGraph g,int v)		//åŸºäºé‚»æ¥çŸ©é˜µçš„æ·±åº¦ä¼˜å…ˆéå†ç®—æ³•
 {	int w;
-	visited[v]=1;				//ÖÃ·ÃÎÊ±ê¼Ç
-	for (w=0;w<g.n;w++)			//ÕÒ¶¥µãvµÄËùÓĞÁÚ½Óµã
+	visited[v]=1;				//ç½®è®¿é—®æ ‡è®°
+	for (w=0;w<g.n;w++)			//æ‰¾é¡¶ç‚¹vçš„æ‰€æœ‰é‚»æ¥ç‚¹
 		if (g.edges[v][w]!=0 && g.edges[v][w]!=INF && visited[w]==0)
-			MDFS(g,w);			//ÕÒ¶¥µãvµÄÎ´·ÃÎÊ¹ıµÄÁÚ½Óµãw
+			MDFS(g,w);			//æ‰¾é¡¶ç‚¹vçš„æœªè®¿é—®è¿‡çš„é‚»æ¥ç‚¹w
 }
-int DGRoot(MatGraph g)			//»ùÓÚÉî¶ÈÓÅÏÈ±éÀúÇóÍ¼µÄ¸ù
+int DGRoot(MatGraph g)			//åŸºäºæ·±åº¦ä¼˜å…ˆéå†æ±‚å›¾çš„æ ¹
 {
 	int i,j,k,n;
 	for (i=0;i<g.n;i++)
 	{	for (j=0;j<g.n;j++)
 			visited[j]=0;
 		MDFS(g,i);
-		n=0;					//ÀÛ¼Æ´Ó¶¥µãi³ö·¢·ÃÎÊµ½µÄ¶¥µã¸öÊı
+		n=0;					//ç´¯è®¡ä»é¡¶ç‚¹iå‡ºå‘è®¿é—®åˆ°çš„é¡¶ç‚¹ä¸ªæ•°
 		for (k=0;k<g.n;k++)
 			if (visited[k]==1) n++;
-		if (n==g.n) return(i);	//Èô·ÃÎÊËùÓĞ¶¥µã,Ôò¶¥µãiÎª¸ù
+		if (n==g.n) return(i);	//è‹¥è®¿é—®æ‰€æœ‰é¡¶ç‚¹,åˆ™é¡¶ç‚¹iä¸ºæ ¹
 	}
-	return(-1);					//Í¼Ã»ÓĞ¸ù
+	return(-1);					//å›¾æ²¡æœ‰æ ¹
 }
 
 int main()
@@ -29,11 +29,11 @@ int main()
 	int A[MAXV][MAXV]={{0,INF,1,INF,INF},{INF,0,INF,1,INF},
 			{INF,INF,0,INF,INF},{INF,INF,INF,0,INF},{1,1,1,1,0}};
 	int n=5, e=6;
-	CreateMat(g,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.1(a)µÄÁÚ½Ó¾ØÕó
-	printf("Í¼GµÄÁÚ½Ó¾ØÕó:\n");
-	DispMat(g);					//Êä³öÁÚ½Ó¾ØÕóg
+	CreateMat(g,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.1(a)çš„é‚»æ¥çŸ©é˜µ
+	printf("å›¾Gçš„é‚»æ¥çŸ©é˜µ:\n");
+	DispMat(g);					//è¾“å‡ºé‚»æ¥çŸ©é˜µg
 
-	printf("¸ù:%d\n",DGRoot(g));
+	printf("æ ¹:%d\n",DGRoot(g));
 
 	return 1;
 }

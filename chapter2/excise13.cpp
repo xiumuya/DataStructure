@@ -3,37 +3,37 @@
 void Insert(DLinkNode *&ha, DLinkNode *&hb,int i)
 {	DLinkNode *p=ha->next,*post;
 	int lena=1,j;
-	while (p->next!=ha)				//Çó³öhaµÄ³¤¶Èlena
+	while (p->next!=ha)				//æ±‚å‡ºhaçš„é•¿åº¦lena
 	{	lena++;
 		p=p->next;
 	}
-	if (i==0)						//½«hb²åÈëµ½haµÄÇ°Ãæ
-	{	p=hb->prior;				//pÖ¸ÏòhbµÄÎ²½Úµã
-		p->next=ha->next;			//½«½ÚµãpÁ´µ½haµÄÊ×½ÚµãÇ°Ãæ
+	if (i==0)						//å°†hbæ’å…¥åˆ°haçš„å‰é¢
+	{	p=hb->prior;				//pæŒ‡å‘hbçš„å°¾èŠ‚ç‚¹
+		p->next=ha->next;			//å°†èŠ‚ç‚¹pé“¾åˆ°haçš„é¦–èŠ‚ç‚¹å‰é¢
 		ha->next->prior=p;
 		ha->next=hb->next;
-		hb->next->prior=ha; 		//½«haÍ·½ÚµãÓëhbµÄÊ×½ÚµãÁ´ÆğÀ´
+		hb->next->prior=ha; 		//å°†haå¤´èŠ‚ç‚¹ä¸hbçš„é¦–èŠ‚ç‚¹é“¾èµ·æ¥
 	}
-	else if (i<lena)				//½«hb²åÈëµ½haÖĞ¼ä
+	else if (i<lena)				//å°†hbæ’å…¥åˆ°haä¸­é—´
 	{	j=1;
 		p=ha->next;
-		while (j<i)					//ÔÚhaÖĞ²éÕÒµÚi¸ö½Úµãp
+		while (j<i)					//åœ¨haä¸­æŸ¥æ‰¾ç¬¬iä¸ªèŠ‚ç‚¹p
 		{	p=p->next;
 			j++;
 		}
-		post=p->next;				//postÖ¸Ïòp½ÚµãµÄºó¼Ì½Úµã
-		p->next=hb->next;			//½«hbµÄÊ×½Úµã×÷Îªp½ÚµãµÄºó¼Ì½Úµã	
+		post=p->next;				//postæŒ‡å‘pèŠ‚ç‚¹çš„åç»§èŠ‚ç‚¹
+		p->next=hb->next;			//å°†hbçš„é¦–èŠ‚ç‚¹ä½œä¸ºpèŠ‚ç‚¹çš„åç»§èŠ‚ç‚¹	
 		hb->next->prior=p;			
-		hb->prior->next=post;		//½«post½Úµã×÷ÎªhbÎ²½ÚµãµÄºó¼Ì½Úµã
+		hb->prior->next=post;		//å°†postèŠ‚ç‚¹ä½œä¸ºhbå°¾èŠ‚ç‚¹çš„åç»§èŠ‚ç‚¹
 		post->prior=hb->prior;
 	}
-	else							//½«hbÁ´µ½haÖ®ºó
-	{	ha->prior->next=hb->next; 	//ha->priorÖ¸ÏòhaµÄÎ²½Úµã
+	else							//å°†hbé“¾åˆ°haä¹‹å
+	{	ha->prior->next=hb->next; 	//ha->prioræŒ‡å‘haçš„å°¾èŠ‚ç‚¹
 		hb->next->prior=ha->prior;
 		hb->prior->next=ha;
 		ha->prior=hb->prior;
 	}
-	free(hb);						//ÊÍ·ÅhbÍ·½Úµã
+	free(hb);						//é‡Šæ”¾hbå¤´èŠ‚ç‚¹
 }
 
 int main()

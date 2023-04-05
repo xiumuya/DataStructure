@@ -1,20 +1,20 @@
-#include "linklist.cpp"			//µ¥Á´±í»ù±¾ÔËËãËã·¨
+#include "linklist.cpp"			//å•é“¾è¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void SelSort(LinkNode *&L)
 {
 	LinkNode *p=L->next,*q,*minp;
 	ElemType tmp;
-	while(p->next!=NULL)			//ÖÁÉÙÓĞÁ½¸öÊı¾İ½Úµã
+	while(p->next!=NULL)			//è‡³å°‘æœ‰ä¸¤ä¸ªæ•°æ®èŠ‚ç‚¹
     {
-		minp=p;						//minpÖ¸Ïòp½Úµã¿ªÊ¼µÄ×îĞ¡½Úµã
+		minp=p;						//minpæŒ‡å‘pèŠ‚ç‚¹å¼€å§‹çš„æœ€å°èŠ‚ç‚¹
 		q=p->next;
-		while (q!=NULL)				//ÕÒ×îĞ¡½Úµãminp
+		while (q!=NULL)				//æ‰¾æœ€å°èŠ‚ç‚¹minp
 		{
 			if (q->data<minp->data)
 				minp=q;
 			q=q->next;
 		}
-		if (minp!=p)				//Èôminp½Úµã²»ÊÇp½Úµã£¬½»»»Á½¸ö½ÚµãÖµ
+		if (minp!=p)				//è‹¥minpèŠ‚ç‚¹ä¸æ˜¯pèŠ‚ç‚¹ï¼Œäº¤æ¢ä¸¤ä¸ªèŠ‚ç‚¹å€¼
 		{
 			tmp=minp->data;
 			minp->data=p->data;
@@ -31,11 +31,11 @@ int main()
 	int a[]={1,2,3,4,5,10,9,8,7,5};
 	//int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateListR(L,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(L);
+	printf("æ’åºå‰R:"); DispList(L);
 
 	SelSort(L);
 	
-	printf("ÅÅĞòºóL:"); DispList(L);
+	printf("æ’åºåL:"); DispList(L);
 
 	DestroyList(L);
 

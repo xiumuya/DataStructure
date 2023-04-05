@@ -3,10 +3,10 @@ void FindMinNode(BTNode *b,char &min)
 {	if (b==NULL) return;
 	if(b->data<min)
 		min=b->data;
-	FindMinNode(b->lchild,min);		//ÔÚ×ó×ÓÊ÷ÖĞÕÒ×îĞ¡½áµãÖµ
-	FindMinNode(b->rchild,min); 	//ÔÚÓÒ×ÓÊ÷ÖĞÕÒ×îĞ¡½áµãÖµ
+	FindMinNode(b->lchild,min);		//åœ¨å·¦å­æ ‘ä¸­æ‰¾æœ€å°ç»“ç‚¹å€¼
+	FindMinNode(b->rchild,min); 	//åœ¨å³å­æ ‘ä¸­æ‰¾æœ€å°ç»“ç‚¹å€¼
 }
-char MinNode(BTNode *b)				//Êä³ö×îĞ¡½áµãÖµ
+char MinNode(BTNode *b)				//è¾“å‡ºæœ€å°ç»“ç‚¹å€¼
 {	if (b!=NULL)
 	{	char min=b->data;
 		FindMinNode(b,min);
@@ -17,8 +17,8 @@ char MinNode(BTNode *b)				//Êä³ö×îĞ¡½áµãÖµ
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷:");DispBTree(b);printf("\n");
-	printf("×îĞ¡½áµãÖµ=%c\n",MinNode(b));
+	printf("äºŒå‰æ ‘:");DispBTree(b);printf("\n");
+	printf("æœ€å°ç»“ç‚¹å€¼=%c\n",MinNode(b));
 
 	DestroyBTree(b);
 	return 1;

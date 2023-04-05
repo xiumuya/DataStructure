@@ -1,4 +1,4 @@
-#include "linklist.cpp"		//单链表的基本运算算法
+#include "linklist.cpp"		//鍗曢摼琛ㄧ殑鍩烘湰杩愮畻绠楁硶
 
 void traverse(LinkNode *L)
 {

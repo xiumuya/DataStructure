@@ -1,28 +1,28 @@
-#include "graph.cpp"  //Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"  //å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
 int visited[MAXV];
 void findpath(AdjGraph *G,int u,int v,int path[],int d,int length)
-{	//d±íÊ¾pathÖĞ¶¥µã¸öÊı£¬³õÊ¼Îª0£»length±íÊ¾Â·¾¶³¤¶È£¬³õÊ¼Îª0
+{	//dè¡¨ç¤ºpathä¸­é¡¶ç‚¹ä¸ªæ•°ï¼Œåˆå§‹ä¸º0ï¼›lengthè¡¨ç¤ºè·¯å¾„é•¿åº¦ï¼Œåˆå§‹ä¸º0
 	int w,i;
 	ArcNode *p;
-	path[d]=u; d++; 				//¶¥µãu¼ÓÈëµ½Â·¾¶ÖĞ£¬dÔö1
-	visited[u]=1;					//ÖÃÒÑ·ÃÎÊ±ê¼Ç
-	if (u==v && d>0)				//ÕÒµ½Ò»ÌõÂ·¾¶ÔòÊä³ö
+	path[d]=u; d++; 				//é¡¶ç‚¹uåŠ å…¥åˆ°è·¯å¾„ä¸­ï¼Œdå¢1
+	visited[u]=1;					//ç½®å·²è®¿é—®æ ‡è®°
+	if (u==v && d>0)				//æ‰¾åˆ°ä¸€æ¡è·¯å¾„åˆ™è¾“å‡º
 	{
-		printf("  Â·¾¶³¤¶È:%d, Â·¾¶:",length);
+		printf("  è·¯å¾„é•¿åº¦:%d, è·¯å¾„:",length);
 		for (i=0;i<d;i++)
 			printf("%2d",path[i]);
 		printf("\n");
 	}
-	p=G->adjlist[u].firstarc;		//pÖ¸Ïò¶¥µãuµÄµÚÒ»¸öÁÚ½Óµã
+	p=G->adjlist[u].firstarc;		//pæŒ‡å‘é¡¶ç‚¹uçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹
 	while (p!=NULL)
 	{
-		w=p->adjvex;				//wÎª¶¥µãuµÄÁÚ½Óµã
-		if (visited[w]==0)			//Èôw¶¥µãÎ´·ÃÎÊ,µİ¹é·ÃÎÊËü
+		w=p->adjvex;				//wä¸ºé¡¶ç‚¹uçš„é‚»æ¥ç‚¹
+		if (visited[w]==0)			//è‹¥wé¡¶ç‚¹æœªè®¿é—®,é€’å½’è®¿é—®å®ƒ
 			findpath(G,w,v,path,d,p->weight+length);
-		p=p->nextarc;				//pÖ¸Ïò¶¥µãuµÄÏÂÒ»¸öÁÚ½Óµã
+		p=p->nextarc;				//pæŒ‡å‘é¡¶ç‚¹uçš„ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹
 	}
-	visited[u]=0;					//»Ö¸´»·¾³,Ê¹¸Ã¶¥µã¿ÉÖØĞÂÊ¹ÓÃ
+	visited[u]=0;					//æ¢å¤ç¯å¢ƒ,ä½¿è¯¥é¡¶ç‚¹å¯é‡æ–°ä½¿ç”¨
 }
 
 int main()
@@ -37,12 +37,12 @@ int main()
 		{INF,INF,INF,INF,1,0,8},
 		{INF,INF,INF,INF,INF,INF,0}};
 	int n=7, e=12;
-	CreateAdj(G,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.35µÄÁÚ½Ó±í
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.35çš„é‚»æ¥è¡¨
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨
 	int u=0,v=5;
 	int path[MAXV];
-	printf("´Ó%d->%dµÄËùÓĞÂ·¾¶:\n",u,v);
+	printf("ä»%d->%dçš„æ‰€æœ‰è·¯å¾„:\n",u,v);
 	findpath(G,u,v,path,0,0);
 
 	DestroyAdj(G);

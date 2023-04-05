@@ -4,14 +4,14 @@ LinkNode *Findlist(LinkNode *str1,LinkNode *str2)
 {
 	int m,n;
 	LinkNode *p,*q;
-	m=ListLength(str1);			//Çóµ¥Á´±ístr1µÄ³¤¶Èm
-	n=ListLength(str2);			//Çóµ¥Á´±ístr2µÄ³¤¶Èn
-	for (p=str1;m>n;m--)		//Èôm´ó£¬Ôòstr1ºóÒÆm-n+1¸ö½Úµã
+	m=ListLength(str1);			//æ±‚å•é“¾è¡¨str1çš„é•¿åº¦m
+	n=ListLength(str2);			//æ±‚å•é“¾è¡¨str2çš„é•¿åº¦n
+	for (p=str1;m>n;m--)		//è‹¥må¤§ï¼Œåˆ™str1åŽç§»m-n+1ä¸ªèŠ‚ç‚¹
 		p=p->next;
-	for (q=str2;m<n;n--)		//Èôn´ó£¬Ôòstr1ºóÒÆn-m+1¸ö½Úµã
+	for (q=str2;m<n;n--)		//è‹¥nå¤§ï¼Œåˆ™str1åŽç§»n-m+1ä¸ªèŠ‚ç‚¹
 		q=q->next;
 	while (p->next!=NULL && p->next!=q->next)
-	{	p=p->next;				//p¡¢qÁ½²½ºóÒÆÕÒµÚÒ»¸öÖ¸ÕëÖµÏàµÈµÄ½Úµã
+	{	p=p->next;				//pã€qä¸¤æ­¥åŽç§»æ‰¾ç¬¬ä¸€ä¸ªæŒ‡é’ˆå€¼ç›¸ç­‰çš„èŠ‚ç‚¹
 		q=q->next;
 	}
 	return p->next;

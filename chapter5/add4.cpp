@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-bool isn(int x,int y)	//x整除y时返回true
+bool isn(int x,int y)	//x鏁撮櫎y鏃惰繑鍥瀟rue
 {
 	if (x % y==0)
 		return true;
@@ -15,7 +15,7 @@ int fun(int n,int m)
 	{
 		if (isn(5*fun(n+1,m),4))
 			return (5*fun(n+1,m)/4+1);
-		else		//当m不合适时返回-1
+		else		//褰搈涓嶅悎閫傛椂杩斿洖-1
 			return -1;
 	}
 }
@@ -34,7 +34,7 @@ int pnumber()
 }
 int main()
 {
-	printf("结果:%d\n",pnumber());
+	printf("缁撴灉:%d\n",pnumber());
 	return 1;
 }
 	

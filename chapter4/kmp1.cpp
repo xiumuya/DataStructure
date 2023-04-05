@@ -1,6 +1,6 @@
-//¸Ä½øµÄKMPËã·¨
+//æ”¹è¿›çš„KMPç®—æ³•
 #include "sqstring.cpp"
-void GetNextval(SqString t,int nextval[])  //ÓÉÄ£Ê½´®tÇó³önextvalÖµ
+void GetNextval(SqString t,int nextval[])  //ç”±æ¨¡å¼ä¸²tæ±‚å‡ºnextvalå€¼
 {
 	int j=0,k=-1;
 	nextval[0]=-1;
@@ -18,7 +18,7 @@ void GetNextval(SqString t,int nextval[])  //ÓÉÄ£Ê½´®tÇó³önextvalÖµ
 	}
 
 }
-int KMPIndex1(SqString s,SqString t)    //ĞŞÕıµÄKMPËã·¨
+int KMPIndex1(SqString s,SqString t)    //ä¿®æ­£çš„KMPç®—æ³•
 {
 	int nextval[MaxSize],i=0,j=0;
 	GetNextval(t,nextval);
@@ -42,6 +42,6 @@ int main()
 	StrAssign(t,"abcac");
 	printf("s:");DispStr(s);
 	printf("t:");DispStr(t);
-	printf("Î»ÖÃ:%d\n",KMPIndex1(s,t));
+	printf("ä½ç½®:%d\n",KMPIndex1(s,t));
 	return 1;
 }

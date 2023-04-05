@@ -5,16 +5,16 @@ bool subseq(LinkNode *ha,LinkNode *hb)
 	LinkNode *pa=ha->next,*pb,*pa1,*pb1;
 	while (pa!=NULL)
 	{
-		pb=hb->next;		//pbÖ¸ÏòhbµÄÊ×½Úµã
+		pb=hb->next;		//pbæŒ‡å‘hbçš„é¦–èŠ‚ç‚¹
 		pa1=pa; pb1=pb;
 		while (pa1!=NULL && pb1!=NULL && pa1->data==pb1->data)
-		{					//ÈôÏàµÈ£¬¼ÌĞø±È½ÏºóĞø½Úµã
+		{					//è‹¥ç›¸ç­‰ï¼Œç»§ç»­æ¯”è¾ƒåç»­èŠ‚ç‚¹
 			pa1=pa1->next;
 			pb1=pb1->next;
 		}
-		if (pb1==NULL)		//Æ¥Åä³É¹¦·µ»Øtrue
+		if (pb1==NULL)		//åŒ¹é…æˆåŠŸè¿”å›true
 			return true;
-		pa=pa->next;		//´ÓhaµÄÏÂÒ»¸ö½Úµã¼ÌĞøÆ¥Åä
+		pa=pa->next;		//ä»haçš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹ç»§ç»­åŒ¹é…
 	}
 	return false;
 }

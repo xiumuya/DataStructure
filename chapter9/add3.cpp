@@ -1,7 +1,7 @@
-#include "seqlist.cpp"   //Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"   //é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 int BinSearch1(RecType R[],int low,int high,KeyType k)
-{	//³õÊ¼µ÷ÓÃÊ±:low=0,high=n-1
+{	//åˆå§‹è°ƒç”¨æ—¶:low=0,high=n-1
 	int mid;
 	if (low<=high) 
 	{	mid=(low+high)/2;
@@ -26,13 +26,13 @@ int main()
 	KeyType k;
 	while (true)
 	{
-		printf("k(ÊäÈë-1½áÊø):"); scanf("%d",&k);
+		printf("k(è¾“å…¥-1ç»“æŸ):"); scanf("%d",&k);
 		if (k==-1) break;
 		i=BinSearch1(R,0,n-1,k);
 		if (i>0)
-			printf("½á¹û:R[%d]=%d\n",i,k);
+			printf("ç»“æœ:R[%d]=%d\n",i,k);
 		else
-			printf("Î´ÕÒµ½%d\n",k);
+			printf("æœªæ‰¾åˆ°%d\n",k);
 		printf("R:"); DispList(R,n);
 	}
 

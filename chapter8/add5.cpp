@@ -1,4 +1,4 @@
-#include "graph.cpp"		//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"		//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 #define MaxSize 100
 
 //-------DFS------------------------------------
@@ -6,14 +6,14 @@ int visited[MAXV];
 void DFS(AdjGraph *G,int v)  
 {
 	ArcNode *p;
-	visited[v]=1;                   //ÖÃÒÑ·ÃÎÊ±ê¼Ç
-	//printf("%d  ",v); 			//Êä³ö±»·ÃÎÊ¶¥µãµÄ±àºÅ
-	p=G->adjlist[v].firstarc;      	//pÖ¸Ïò¶¥µãvµÄµÚÒ»Ìõ»¡µÄ»¡Í·½áµã
+	visited[v]=1;                   //ç½®å·²è®¿é—®æ ‡è®°
+	//printf("%d  ",v); 			//è¾“å‡ºè¢«è®¿é—®é¡¶ç‚¹çš„ç¼–å·
+	p=G->adjlist[v].firstarc;      	//pæŒ‡å‘é¡¶ç‚¹vçš„ç¬¬ä¸€æ¡å¼§çš„å¼§å¤´ç»“ç‚¹
 	while (p!=NULL) 
 	{
-		if (visited[p->adjvex]==0)	//Èôp->adjvex¶¥µãÎ´·ÃÎÊ,µİ¹é·ÃÎÊËü
+		if (visited[p->adjvex]==0)	//è‹¥p->adjvexé¡¶ç‚¹æœªè®¿é—®,é€’å½’è®¿é—®å®ƒ
 			DFS(G,p->adjvex);    
-		p=p->nextarc;              	//pÖ¸Ïò¶¥µãvµÄÏÂÒ»Ìõ»¡µÄ»¡Í·½áµã
+		p=p->nextarc;              	//pæŒ‡å‘é¡¶ç‚¹vçš„ä¸‹ä¸€æ¡å¼§çš„å¼§å¤´ç»“ç‚¹
 	}
 }
 //------BFS-------------------------------------
@@ -21,7 +21,7 @@ typedef int ElemType;
 typedef struct 
 {	
 	ElemType data[MaxSize];
-	int front,rear;		//¶ÓÊ×ºÍ¶ÓÎ²Ö¸Õë
+	int front,rear;		//é˜Ÿé¦–å’Œé˜Ÿå°¾æŒ‡é’ˆ
 } SqQueue;
 void InitQueue(SqQueue *&q)
 {	q=(SqQueue *)malloc (sizeof(SqQueue));
@@ -36,14 +36,14 @@ bool QueueEmpty(SqQueue *q)
 	return(q->front==q->rear);
 }
 bool enQueue(SqQueue *&q,ElemType e)
-{	if ((q->rear+1)%MaxSize==q->front)	//¶ÓÂúÉÏÒç³ö
+{	if ((q->rear+1)%MaxSize==q->front)	//é˜Ÿæ»¡ä¸Šæº¢å‡º
 		return false;
 	q->rear=(q->rear+1)%MaxSize;
 	q->data[q->rear]=e;
 	return true;
 }
 bool deQueue(SqQueue *&q,ElemType &e)
-{	if (q->front==q->rear)				//¶Ó¿ÕÏÂÒç³ö
+{	if (q->front==q->rear)				//é˜Ÿç©ºä¸‹æº¢å‡º
 		return false;
 	q->front=(q->front+1)%MaxSize;
 	e=q->data[q->front];
@@ -54,26 +54,26 @@ void BFS(AdjGraph *G,int v)
 {
 	int w,i;
 	ArcNode *p;
-	SqQueue *qu;							//¶¨Òå»·ĞÎ¶ÓÁĞÖ¸Õë
-	InitQueue(qu);							//³õÊ¼»¯¶ÓÁĞ
-	//int visited[MAXV];            		//¶¨Òå¶¥µã·ÃÎÊ±êÖ¾Êı×é
-	//for (i=0;i<G->n;i++) visited[i]=0;	//·ÃÎÊ±êÖ¾Êı×é³õÊ¼»¯
-	//printf("%2d",v); 						//Êä³ö±»·ÃÎÊ¶¥µãµÄ±àºÅ
-	visited[v]=1;              				//ÖÃÒÑ·ÃÎÊ±ê¼Ç
+	SqQueue *qu;							//å®šä¹‰ç¯å½¢é˜Ÿåˆ—æŒ‡é’ˆ
+	InitQueue(qu);							//åˆå§‹åŒ–é˜Ÿåˆ—
+	//int visited[MAXV];            		//å®šä¹‰é¡¶ç‚¹è®¿é—®æ ‡å¿—æ•°ç»„
+	//for (i=0;i<G->n;i++) visited[i]=0;	//è®¿é—®æ ‡å¿—æ•°ç»„åˆå§‹åŒ–
+	//printf("%2d",v); 						//è¾“å‡ºè¢«è®¿é—®é¡¶ç‚¹çš„ç¼–å·
+	visited[v]=1;              				//ç½®å·²è®¿é—®æ ‡è®°
 	enQueue(qu,v);
-	while (!QueueEmpty(qu))       			//¶Ó²»¿ÕÑ­»·
+	while (!QueueEmpty(qu))       			//é˜Ÿä¸ç©ºå¾ªç¯
 	{	
-		deQueue(qu,w);						//³ö¶ÓÒ»¸ö¶¥µãw
-		p=G->adjlist[w].firstarc; 			//Ö¸ÏòwµÄµÚÒ»¸öÁÚ½Óµã
-		while (p!=NULL)						//²éÕÒwµÄËùÓĞÁÚ½Óµã
+		deQueue(qu,w);						//å‡ºé˜Ÿä¸€ä¸ªé¡¶ç‚¹w
+		p=G->adjlist[w].firstarc; 			//æŒ‡å‘wçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹
+		while (p!=NULL)						//æŸ¥æ‰¾wçš„æ‰€æœ‰é‚»æ¥ç‚¹
 		{	
-			if (visited[p->adjvex]==0) 		//Èôµ±Ç°ÁÚ½ÓµãÎ´±»·ÃÎÊ
+			if (visited[p->adjvex]==0) 		//è‹¥å½“å‰é‚»æ¥ç‚¹æœªè¢«è®¿é—®
 			{
-				//printf("%2d",p->adjvex);  //·ÃÎÊ¸ÃÁÚ½Óµã
-				visited[p->adjvex]=1;		//ÖÃÒÑ·ÃÎÊ±ê¼Ç
-				enQueue(qu,p->adjvex);		//¸Ã¶¥µã½ø¶Ó
+				//printf("%2d",p->adjvex);  //è®¿é—®è¯¥é‚»æ¥ç‚¹
+				visited[p->adjvex]=1;		//ç½®å·²è®¿é—®æ ‡è®°
+				enQueue(qu,p->adjvex);		//è¯¥é¡¶ç‚¹è¿›é˜Ÿ
            	}
-           	p=p->nextarc;              		//ÕÒÏÂÒ»¸öÁÚ½Ó¶¥µã
+           	p=p->nextarc;              		//æ‰¾ä¸‹ä¸€ä¸ªé‚»æ¥é¡¶ç‚¹
 		}
 	}
 	printf("\n");
@@ -84,7 +84,7 @@ bool DFSTrave(AdjGraph *G,int i,int j)
 {	int k;
 	for (k=0;k<G->n;k++)
 		visited[k]=0;
-	DFS(G,i);			//´Ó¶¥µãi¿ªÊ¼½øĞĞÉî¶ÈÓÅÏÈ±éÀú
+	DFS(G,i);			//ä»é¡¶ç‚¹iå¼€å§‹è¿›è¡Œæ·±åº¦ä¼˜å…ˆéå†
 	if (visited[j]==0)
 		return false;
 	else
@@ -94,7 +94,7 @@ bool BFSTrave(AdjGraph *G,int i,int j)
 {	int k;
 	for (k=0;k<G->n;k++)
 		visited[k]=0;
-	BFS(G,i);			//´Ó¶¥µãi¿ªÊ¼½øĞĞ¹ã¶ÈÓÅÏÈ±éÀú
+	BFS(G,i);			//ä»é¡¶ç‚¹iå¼€å§‹è¿›è¡Œå¹¿åº¦ä¼˜å…ˆéå†
 	if (visited[j]==0)
 		return false;
 	else
@@ -109,15 +109,15 @@ int main()
 		{0,0,0,0,1,0},{1,0,0,0,0,0},{0,0,0,0,0,0}};	
 
 	AdjGraph *G;
-	CreateAdj(G,A,n,e);			////½¨Á¢Í¼µÄÁÚ½Ó±í
-	printf("Í¼G:\n");DispAdj(G);//Êä³öÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			////å»ºç«‹å›¾çš„é‚»æ¥è¡¨
+	printf("å›¾G:\n");DispAdj(G);//è¾“å‡ºé‚»æ¥è¡¨
 
 	for (int k=0;k<G->n;k++)
 		visited[k]=0;
 
 	int i=4,j=1;
-	printf("¶¥µã%dµ½%dÊÇ·ñÓĞÂ·¾¶:%d\n",i,j,BFSTrave(G,i,j));	
+	printf("é¡¶ç‚¹%dåˆ°%dæ˜¯å¦æœ‰è·¯å¾„:%d\n",i,j,BFSTrave(G,i,j));	
 
-	DestroyAdj(G);				//Ïú»ÙÁÚ½Ó±í
+	DestroyAdj(G);				//é”€æ¯é‚»æ¥è¡¨
 	return 1;
 }

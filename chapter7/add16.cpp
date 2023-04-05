@@ -17,10 +17,10 @@ int LessNodes(BTNode *b,char x)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	
-	printf("½á¹û:%d\n",LessNodes(b,'E'));
+	printf("ç»“æœ:%d\n",LessNodes(b,'E'));
 
 	DestroyBTree(b);
 	return 1;

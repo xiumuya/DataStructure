@@ -1,21 +1,21 @@
 #include"glist.cpp"
 
 bool Same(GLNode *g1,GLNode *g2)
-{	if (g1==NULL && g2==NULL)				//¾ùÎªNULLµÄÇé¿ö
-		return true;						//·µ»ØÕæ
-	else if (g1==NULL || g2==NULL)			//Ò»¸öÎªNULL,ÁíÒ»²»ÎªNULLµÄÇé¿ö
-		return false;						//·µ»Ø¼Ù
-	else									//¾ù²»¿ÕµÄÇé¿ö
-	{	if (g1->tag==0 && g2->tag==0)		//¾ùÎªÔ­×ÓµÄÇé¿ö
-		{	if (g1->val.data!=g2->val.data)	//Ô­×Ó²»ÏàµÈ
-				return false;				//·µ»Ø¼Ù
-			return(Same(g1->link,g2->link));	//·µ»ØĞÖµÜ±È½ÏµÄ½á¹û
+{	if (g1==NULL && g2==NULL)				//å‡ä¸ºNULLçš„æƒ…å†µ
+		return true;						//è¿”å›çœŸ
+	else if (g1==NULL || g2==NULL)			//ä¸€ä¸ªä¸ºNULL,å¦ä¸€ä¸ä¸ºNULLçš„æƒ…å†µ
+		return false;						//è¿”å›å‡
+	else									//å‡ä¸ç©ºçš„æƒ…å†µ
+	{	if (g1->tag==0 && g2->tag==0)		//å‡ä¸ºåŸå­çš„æƒ…å†µ
+		{	if (g1->val.data!=g2->val.data)	//åŸå­ä¸ç›¸ç­‰
+				return false;				//è¿”å›å‡
+			return(Same(g1->link,g2->link));	//è¿”å›å…„å¼Ÿæ¯”è¾ƒçš„ç»“æœ
 		}
-		else if (g1->tag==1 && g2->tag==1)	//¾ùÎª×Ó±íµÄÇé¿ö
+		else if (g1->tag==1 && g2->tag==1)	//å‡ä¸ºå­è¡¨çš„æƒ…å†µ
 			return(Same(g1->val.sublist,g2->val.sublist) 
 				& Same(g1->link,g2->link));
-		else								//Ò»¸öÎªÔ­×Ó,ÁíÒ»Îª×Ó±íµÄÇé¿ö
-			return false;					//·µ»Ø¼Ù
+		else								//ä¸€ä¸ªä¸ºåŸå­,å¦ä¸€ä¸ºå­è¡¨çš„æƒ…å†µ
+			return false;					//è¿”å›å‡
 	}
 }
 

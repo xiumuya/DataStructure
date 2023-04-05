@@ -1,11 +1,11 @@
-#include "SqStack.cpp"			//°üº¬Ë³ĞòÕ»µÄ¶¨Òå¼°ÔËËãº¯Êı
+#include "SqStack.cpp"			//åŒ…å«é¡ºåºæ ˆçš„å®šä¹‰åŠè¿ç®—å‡½æ•°
 bool Findk(SqStack *st,int k,ElemType &e)
 {	int i=0;
 	bool flag=false;
 	ElemType x;
-	SqStack *tmpst;			//¶¨ÒåÁÙÊ±Õ»
-	InitStack(tmpst);			//³õÊ¼»¯ÁÙÊ±Õ»
-	while (!StackEmpty(st))		//ÁÙÊ±Õ»tmpstÖĞ°üº¬stÕ»ÖĞµÄÄæ×ªÔªËØ
+	SqStack *tmpst;			//å®šä¹‰ä¸´æ—¶æ ˆ
+	InitStack(tmpst);			//åˆå§‹åŒ–ä¸´æ—¶æ ˆ
+	while (!StackEmpty(st))		//ä¸´æ—¶æ ˆtmpstä¸­åŒ…å«stæ ˆä¸­çš„é€†è½¬å…ƒç´ 
 	{	i++;
 		Pop(st,x);
 		if (i==k)
@@ -14,7 +14,7 @@ bool Findk(SqStack *st,int k,ElemType &e)
 		}
 		Push(tmpst,x);
 	}
-	while (!StackEmpty(tmpst))	//»Ö¸´stÕ»ÖĞÔ­À´µÄÄÚÈİ
+	while (!StackEmpty(tmpst))	//æ¢å¤stæ ˆä¸­åŸæ¥çš„å†…å®¹
 	{	Pop(tmpst,x);
 		Push(st,x);
 	}

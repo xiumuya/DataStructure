@@ -1,13 +1,13 @@
-#include "bst.cpp"		//¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"		//äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 #define MaxSize 100 
 void SearchPath(BSTNode *bt,KeyType k,KeyType path[],int d)
-{	//d±íÊ¾pathÖĞ×îºó¹Ø¼ü×ÖµÄÏÂ±ê£¬³õÊ¼ÖµÎª-1
+{	//dè¡¨ç¤ºpathä¸­æœ€åå…³é”®å­—çš„ä¸‹æ ‡ï¼Œåˆå§‹å€¼ä¸º-1
 	if (bt==NULL)
 		return;
 	else if (k==bt->key)
 	{
 		d++;
-		path[d]=bt->key;		//Ìí¼Óµ½Â·¾¶ÖĞ
+		path[d]=bt->key;		//æ·»åŠ åˆ°è·¯å¾„ä¸­
 		for (int i=0;i<=d;i++)
 			printf("%2d",path[i]);
 		printf("\n");
@@ -15,11 +15,11 @@ void SearchPath(BSTNode *bt,KeyType k,KeyType path[],int d)
 	else
 	{
 		d++;
-		path[d]=bt->key;		//Ìí¼Óµ½Â·¾¶ÖĞ
+		path[d]=bt->key;		//æ·»åŠ åˆ°è·¯å¾„ä¸­
 		if (k<bt->key)
-			SearchPath(bt->lchild,k,path,d);	//ÔÚ×ó×ÓÊ÷ÖĞµİ¹é²éÕÒ
+			SearchPath(bt->lchild,k,path,d);	//åœ¨å·¦å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
 		else
-			SearchPath(bt->rchild,k,path,d);		//ÔÚÓÒ×ÓÊ÷ÖĞµİ¹é²éÕÒ
+			SearchPath(bt->rchild,k,path,d);		//åœ¨å³å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
 	}
 }
 
@@ -28,11 +28,11 @@ int main()
 	BSTNode *bt;
 	KeyType k=3;
 	KeyType a[]={5,2,1,6,7,4,8,3,9},n=9;
-	printf("(1)¹¹Ôì¶ş²æÅÅĞòÊ÷bt\n");
-	bt=CreateBST(a,n);		//´´½¨Ò»¿Ã¶ş²æÅÅĞòÊ÷
-	printf("(2)Êä³öBST:");DispBST(bt);printf("\n");
+	printf("(1)æ„é€ äºŒå‰æ’åºæ ‘bt\n");
+	bt=CreateBST(a,n);		//åˆ›å»ºä¸€æ£µäºŒå‰æ’åºæ ‘
+	printf("(2)è¾“å‡ºBST:");DispBST(bt);printf("\n");
 	int path[MaxSize];
-	printf("(3)²éÕÒ%d¹Ø¼ü×Ö:",k);SearchPath(bt,k,path,-1);
-	printf("(4)Ïú»Ùbt"); DestroyBST(bt); printf("\n");
+	printf("(3)æŸ¥æ‰¾%då…³é”®å­—:",k);SearchPath(bt,k,path,-1);
+	printf("(4)é”€æ¯bt"); DestroyBST(bt); printf("\n");
 	return 1;
 }

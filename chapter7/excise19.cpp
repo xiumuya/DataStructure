@@ -5,7 +5,7 @@ BTNode *Swap(BTNode *b)
 	if (b==NULL)
 		t=NULL;
 	else
-	{	t=(BTNode *)malloc(sizeof(BTNode));	//¸´ÖÆÒ»¸ö¸ù½Úµã
+	{	t=(BTNode *)malloc(sizeof(BTNode));	//å¤åˆ¶ä¸€ä¸ªæ ¹èŠ‚ç‚¹
 		t->data=b->data;
 		t1=Swap(b->lchild);
 		t2=Swap(b->rchild);
@@ -18,9 +18,9 @@ BTNode *Swap(BTNode *b)
 int main()
 {	BTNode *b,*b1;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("½»»»Ç°µÄ¶ş²æÊ÷:");DispBTree(b);printf("\n");
+	printf("äº¤æ¢å‰çš„äºŒå‰æ ‘:");DispBTree(b);printf("\n");
 	b1=Swap(b);
-	printf("½»»»ºóµÄ¶ş²æÊ÷:");DispBTree(b1);printf("\n");
+	printf("äº¤æ¢åçš„äºŒå‰æ ‘:");DispBTree(b1);printf("\n");
 	DestroyBTree(b);
 	DestroyBTree(b1);
 	return 1;

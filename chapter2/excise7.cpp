@@ -2,11 +2,11 @@
 void Reverse(LinkNode *&L)
 {	LinkNode *p=L->next,*q;
 	L->next=NULL;
-	while (p!=NULL)				//ɨ�����еĽڵ�
-	{	q=p->next;				//q��ʱ����p�ڵ�ĺ�̽ڵ�
-		p->next=L->next;		//���ǽ�p�ڵ���Ϊ�׽ڵ����
+	while (p!=NULL)				//扫描所有的节点
+	{	q=p->next;				//q临时保存p节点的后继节点
+		p->next=L->next;		//总是将p节点作为首节点插入
 		L->next=p;
-		p=q;					//��pָ����һ���ڵ�
+		p=q;					//让p指向下一个节点
 	}
 }
 

@@ -1,7 +1,7 @@
 #include "btree.cpp"
 
 int LevelLeafkCount(BTNode *b,int h,int k)
-{	//hµÄ³õÖµÎª1
+{	//hçš„åˆå€¼ä¸º1
 	int num1,num2,num=0;
 	if (b!=NULL)
 	{	if (h==k && b->lchild==NULL && b->rchild==NULL)
@@ -13,7 +13,7 @@ int LevelLeafkCount(BTNode *b,int h,int k)
 	}
 	else return 0;
 }
-int LevelLeafk(BTNode *b,int k)	//ÇóbÖĞµÚk²ãÉÏÒ¶×Ó½Úµã¸öÊı
+int LevelLeafk(BTNode *b,int k)	//æ±‚bä¸­ç¬¬kå±‚ä¸Šå¶å­èŠ‚ç‚¹ä¸ªæ•°
 {
 	return LevelLeafkCount(b,1,k);
 }
@@ -22,11 +22,11 @@ int LevelLeafk(BTNode *b,int k)	//ÇóbÖĞµÚk²ãÉÏÒ¶×Ó½Úµã¸öÊı
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	int k=4;
 
-	printf("µÚ%d²ãÉÏÒ¶×Ó½áµã¸öÊı:%d\n",k,LevelLeafk(b,k));
+	printf("ç¬¬%då±‚ä¸Šå¶å­ç»“ç‚¹ä¸ªæ•°:%d\n",k,LevelLeafk(b,k));
 
 	DestroyBTree(b);
 	return 1;

@@ -2,56 +2,56 @@
 #define MaxSize 100
 typedef char ElemType;
 typedef struct 
-{	ElemType S[MaxSize];		//´æ·Å¹²ÏíÕ»ÖĞµÄÔªËØ
-	int top1,top2;				//Á½¸öÕ»¶¥Ö¸Õë
-} StackType;					//ÉùÃ÷¹²ÏíÕ»ÀàĞÍ
-//-----Õ»³õÊ¼»¯Ëã·¨------
+{	ElemType S[MaxSize];		//å­˜æ”¾å…±äº«æ ˆä¸­çš„å…ƒç´ 
+	int top1,top2;				//ä¸¤ä¸ªæ ˆé¡¶æŒ‡é’ˆ
+} StackType;					//å£°æ˜å…±äº«æ ˆç±»å‹
+//-----æ ˆåˆå§‹åŒ–ç®—æ³•------
 void InitStack1(StackType &st)
 {	st.top1=-1;
 	st.top2=MaxSize;
 }
-//-----ÅĞÕ»¿ÕËã·¨------
-bool StackEmpty1(StackType st,int i)	//i=1:Õ»1£¬i=2:Õ»2
+//-----åˆ¤æ ˆç©ºç®—æ³•------
+bool StackEmpty1(StackType st,int i)	//i=1:æ ˆ1ï¼Œi=2:æ ˆ2
 {	if (i==1)
 		return(st.top1==-1);
 	else 	//i=2
 		return(st.top2==MaxSize);
 }
-//-----½øÕ»Ëã·¨------
-bool Push1(StackType &st,int i,ElemType x)	//i=1:Õ»1£¬i=2:Õ»2
-{	if (st.top1==st.top2-1)			//Õ»Âú
+//-----è¿›æ ˆç®—æ³•------
+bool Push1(StackType &st,int i,ElemType x)	//i=1:æ ˆ1ï¼Œi=2:æ ˆ2
+{	if (st.top1==st.top2-1)			//æ ˆæ»¡
 		return false;
-	if (i==1)						//x½øÕ»S1
+	if (i==1)						//xè¿›æ ˆS1
 	{	st.top1++;
 		st.S[st.top1]=x;
 	}
-	else if (i==2)					//x½øÕ»S2
+	else if (i==2)					//xè¿›æ ˆS2
 	{	st.top2--;
 		st.S[st.top2]=x;
 	}
-	else							//²ÎÊıi´íÎó·µ»Øfalse
+	else							//å‚æ•°ié”™è¯¯è¿”å›false
 		return false;
-	return true;					//²Ù×÷³É¹¦·µ»Øtrue
+	return true;					//æ“ä½œæˆåŠŸè¿”å›true
 }
-//-----³öÕ»Ëã·¨------
-bool Pop1(StackType &st,int i,ElemType &x) //i=1:Õ»1£¬i=2:Õ»2
-{	if (i==1)						//S1³öÕ»
-	{	if (st.top1==-1)			//S1Õ»¿Õ
+//-----å‡ºæ ˆç®—æ³•------
+bool Pop1(StackType &st,int i,ElemType &x) //i=1:æ ˆ1ï¼Œi=2:æ ˆ2
+{	if (i==1)						//S1å‡ºæ ˆ
+	{	if (st.top1==-1)			//S1æ ˆç©º
 			return false;
-		else						//³öÕ»S1µÄÔªËØ
+		else						//å‡ºæ ˆS1çš„å…ƒç´ 
 		{	x=st.S[st.top1];
 			st.top1--;
 		}
 	}
-	else if (i==2)					//S2³öÕ»
-	{	if (st.top2==MaxSize)		//S2Õ»¿Õ
+	else if (i==2)					//S2å‡ºæ ˆ
+	{	if (st.top2==MaxSize)		//S2æ ˆç©º
 			return false;
-		else						//³öÕ»S2µÄÔªËØ
+		else						//å‡ºæ ˆS2çš„å…ƒç´ 
 		{	x=st.S[st.top2];
 			st.top2++;
 		}
 	}
-	else							//²ÎÊıi´íÎó·µ»Øfalse
+	else							//å‚æ•°ié”™è¯¯è¿”å›false
 		return false;
-	return true;					//²Ù×÷³É¹¦·µ»Øtrue
+	return true;					//æ“ä½œæˆåŠŸè¿”å›true
 }

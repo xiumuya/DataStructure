@@ -5,17 +5,17 @@ void merge(LinkNode *A,LinkNode *B,LinkNode *&C)
 	LinkNode *p=A->next,*q=B->next,*r;
 	free(B);
 	C=A;
-	C->next=NULL;						//ĞÂ½¨Á¢Ò»¸ö¿ÕµÄµ¥Á´±íC
+	C->next=NULL;						//æ–°å»ºç«‹ä¸€ä¸ªç©ºçš„å•é“¾è¡¨C
 	while (p!=NULL && q!=NULL)
 	{
-		if (p->data<q->data)			//½«p½Úµã²ÉÓÃÍ·²å·¨²åÈëµ½CÖĞ
+		if (p->data<q->data)			//å°†pèŠ‚ç‚¹é‡‡ç”¨å¤´æ’æ³•æ’å…¥åˆ°Cä¸­
 		{
 			r=p->next;
 			p->next=C->next;
 			C->next=p;
 			p=r;
 		}
-		else							//½«q½Úµã²ÉÓÃÍ·²å·¨²åÈëµ½CÖĞ
+		else							//å°†qèŠ‚ç‚¹é‡‡ç”¨å¤´æ’æ³•æ’å…¥åˆ°Cä¸­
 		{
 			r=q->next;
 			q->next=C->next;
@@ -24,7 +24,7 @@ void merge(LinkNode *A,LinkNode *B,LinkNode *&C)
 		}
 	}
 	if (q!=NULL) p=q;
-	while (p!=NULL)						//½«ÓàÏÂµÄ½Úµã²ÉÓÃÍ·²å·¨²åÈëµ½CÖĞ
+	while (p!=NULL)						//å°†ä½™ä¸‹çš„èŠ‚ç‚¹é‡‡ç”¨å¤´æ’æ³•æ’å…¥åˆ°Cä¸­
 	{
 		r=p->next;
 		p->next=C->next;

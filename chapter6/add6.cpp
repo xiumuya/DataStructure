@@ -2,7 +2,7 @@
 #define MAXN 10
 
 
-int findk(int i,int j)		//ÓÉi¡¢jÇóÑ¹Ëõ´æ´¢ÖĞµÄkÏÂ±ê
+int findk(int i,int j)		//ç”±iã€jæ±‚å‹ç¼©å­˜å‚¨ä¸­çš„kä¸‹æ ‡
 {	if (i>=j)
 		return (i*(i+1)/2+j);
 	else
@@ -23,14 +23,14 @@ void Mult(int a[],int b[],int c[MAXN][MAXN],int n)
 		}
 }
 
-void compression(int A[][MAXN],int n,int B[])		//¶Ô³Æ¾ØÕóAÑ¹Ëõ´æ´¢µ½BÖĞ
+void compression(int A[][MAXN],int n,int B[])		//å¯¹ç§°çŸ©é˜µAå‹ç¼©å­˜å‚¨åˆ°Bä¸­
 {	int i,j,k=0;
 	for(i=0;i<n;i++)
 		for(j=0;j<=i;j++)
 			B[k++]=A[i][j];
 }
 
-void Mult1(int A[][MAXN],int B[][MAXN],int C[][MAXN],int n)	//ÑéÖ¤
+void Mult1(int A[][MAXN],int B[][MAXN],int C[][MAXN],int n)	//éªŒè¯
 {
 	int i,j,k,s;
 	for(int i=0;i<n;i++)
@@ -60,7 +60,7 @@ int main()
 	compression(B,n,b);
 	int C[MAXN][MAXN];
 	Mult(a,b,C,n);
-	printf("CµÄ½á¹û:\n");
+	printf("Cçš„ç»“æœ:\n");
 	for(int i=0;i<n;i++)
 	{
 		for(int j=0;j<n;j++)
@@ -69,7 +69,7 @@ int main()
 	}
 	
 	Mult1(A,B,C,n);
-	printf("CµÄÑéÖ¤½á¹û:\n");
+	printf("Cçš„éªŒè¯ç»“æœ:\n");
 	for(int i=0;i<n;i++)
 	{
 		for(int j=0;j<n;j++)

@@ -4,7 +4,7 @@ void swap(char& x,char &y)
 	char tmp=x;
 	x=y; y=tmp;
 }
-void print(char str[],int n)	//Êä³öÒ»¸öÅÅÁĞ
+void print(char str[],int n)	//è¾“å‡ºä¸€ä¸ªæ’åˆ—
 {	for (int i=0;i<n;i++)
 		printf("%c ",str[i]);
 	printf("\n");
@@ -15,16 +15,16 @@ void perm(char str[],int k,int n)
 		print(str,n);
 	else
 	{	for (i=k;i<n;i++)
-		{	swap(str[k],str[i]);	//½»»»str[k]Óëstr[i]
+		{	swap(str[k],str[i]);	//äº¤æ¢str[k]ä¸str[i]
 			perm(str,k+1,n);
-			swap(str[k],str[i]);	//½»»»str[k]Óëstr[i]
+			swap(str[k],str[i]);	//äº¤æ¢str[k]ä¸str[i]
 		}
 	}
 }
 int main()
 {	int n=3;
 	char a[4]="123";
-	printf("123µÄÈ«ÅÅÁĞÈçÏÂ:\n");
+	printf("123çš„å…¨æ’åˆ—å¦‚ä¸‹:\n");
 	perm(a,0,n);
 	return 1;
 }

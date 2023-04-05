@@ -1,6 +1,6 @@
 #include "btree.cpp"
 int LevelkCount(BTNode *b,int k,int h)
-{	//hµÄ³õÖµÎª1
+{	//hçš„åˆå€¼ä¸º1
 	int num1,num2,num=0;
 	if (b!=NULL)
 	{	if (h==k && b->lchild==NULL && b->rchild==NULL)
@@ -12,16 +12,16 @@ int LevelkCount(BTNode *b,int k,int h)
 	}
 	return 0;
 }
-int Levelkleaf(BTNode *b,int k)	//·µ»Ø¶ş²æÊ÷bÖĞµÚk²ãÉÏÒ¶×Ó½áµã¸öÊı
+int Levelkleaf(BTNode *b,int k)	//è¿”å›äºŒå‰æ ‘bä¸­ç¬¬kå±‚ä¸Šå¶å­ç»“ç‚¹ä¸ªæ•°
 {
 	return LevelkCount(b,k,1);
 }
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷b:");DispBTree(b);printf("\n");
+	printf("äºŒå‰æ ‘b:");DispBTree(b);printf("\n");
 	int k=3; 
-	printf("µÚ%d²ãµÄÒ¶×Ó½áµã¸öÊı=%d\n",k,Levelkleaf(b,k));
+	printf("ç¬¬%då±‚çš„å¶å­ç»“ç‚¹ä¸ªæ•°=%d\n",k,Levelkleaf(b,k));
 	DestroyBTree(b);
 	return 1;
 }

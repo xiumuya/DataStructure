@@ -8,18 +8,18 @@ int MinPath(MatGraph g)
 	for (i=0;i<g.n;i++)
 		for (j=0;j<g.n;j++)
 			A[i][j]=g.edges[i][j];
-	for (k=0;k<g.n;k++)		//Ó¦ÓÃFloydËã·¨¼ÆËãÃ¿¶Ô´å×¯Ö®¼äµÄ×î¶ÌÂ·¾¶³¤¶È
+	for (k=0;k<g.n;k++)		//åº”ç”¨Floydç®—æ³•è®¡ç®—æ¯å¯¹æ‘åº„ä¹‹é—´çš„æœ€çŸ­è·¯å¾„é•¿åº¦
 		for (i=0;i<g.n;i++)
 			for (j=0;j<g.n;j++)
 				if (A[i][k]+A[k][j]<A[i][j])
 					A[i][j]=A[i][k]+A[k][j];
-	for (i=0;i<g.n;i++)		//ÇóÃ¿¸ö´å×¯µ½´å×¯iµÄÍù·µÂ·¾¶³¤¶È
+	for (i=0;i<g.n;i++)		//æ±‚æ¯ä¸ªæ‘åº„åˆ°æ‘åº„içš„å¾€è¿”è·¯å¾„é•¿åº¦
 	{
 		B[i]=0;
 		for (j=0;j<g.n;j++)
 			B[i]+=A[i][j]+A[j][i];
 	}
-	for (i=0;i<g.n;i++)		//Çó×î¶ÌÍù·µÂ·¾¶³¤¶ÈµÄ¶¥µãk
+	for (i=0;i<g.n;i++)		//æ±‚æœ€çŸ­å¾€è¿”è·¯å¾„é•¿åº¦çš„é¡¶ç‚¹k
 		if (B[i]<min)
 		{	k=i;
 			min=B[i];
@@ -36,18 +36,18 @@ int MaxMinPath(MatGraph g)
 		for (j=0;j<g.n;j++)
 			A[i][j]=g.edges[i][j];
 
-	for (k=0;k<g.n;k++)		//Ó¦ÓÃFloydËã·¨¼ÆËãÃ¿¶Ô´å×¯Ö®¼äµÄ×î¶ÌÂ·¾¶³¤¶È
+	for (k=0;k<g.n;k++)		//åº”ç”¨Floydç®—æ³•è®¡ç®—æ¯å¯¹æ‘åº„ä¹‹é—´çš„æœ€çŸ­è·¯å¾„é•¿åº¦
 		for (i=0;i<g.n;i++)
 			for (j=0;j<g.n;j++)
 				if (A[i][k]+A[k][j]<A[i][j])
 					A[i][j]=A[i][k]+A[k][j];
 	k=-1;
-	for (i=0;i<g.n;i++)		//¶ÔÃ¿¸ö´å×¯Ñ­»·Ò»´Î
+	for (i=0;i<g.n;i++)		//å¯¹æ¯ä¸ªæ‘åº„å¾ªçŽ¯ä¸€æ¬¡
 	{	s=0;
-		for (j=0;j<g.n;j++)	//Çóµ½´ï´å×¯iµÄÒ»Ìõ×î³¤Â·¾¶³¤¶È
+		for (j=0;j<g.n;j++)	//æ±‚åˆ°è¾¾æ‘åº„içš„ä¸€æ¡æœ€é•¿è·¯å¾„é•¿åº¦
 			if (A[j][i]>s)
 				s=A[j][i];
-		if (s<min)			//ÔÚ¸÷×î³¤Â·¾¶ÖÐÑ¡×î¶ÌµÄÒ»Ìõ,½«¸Ã´å×¯·ÅÔÚkÖÐ
+		if (s<min)			//åœ¨å„æœ€é•¿è·¯å¾„ä¸­é€‰æœ€çŸ­çš„ä¸€æ¡,å°†è¯¥æ‘åº„æ”¾åœ¨kä¸­
 		{	k=i;
 			min=s;
 		}
@@ -62,10 +62,10 @@ int main()
 		{4,INF,12,0,INF},{INF,INF,6,3,0}};
 	int n=5,e=10;
 	CreateMat(g,A,n,e);
-	printf("Í¼GµÄÁÚ½Ó¾ØÕó:\n");DispMat(g);
+	printf("å›¾Gçš„é‚»æŽ¥çŸ©é˜µ:\n");DispMat(g);
 
-	printf("½á¹û1:%d\n",MaxMinPath(g));
-	printf("½á¹û2:%d\n",MinPath(g));
+	printf("ç»“æžœ1:%d\n",MaxMinPath(g));
+	printf("ç»“æžœ2:%d\n",MinPath(g));
 	
 	return 1;
 }

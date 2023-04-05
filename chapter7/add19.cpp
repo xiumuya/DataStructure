@@ -1,50 +1,50 @@
 #include "btree.cpp"
 
-BTNode* ancestor(BTNode *b,char x,char y)		//·Çµİ¹éºóĞò±éÀúÇóxºÍyµÄ×î½ü¹«¹²×æÏÈ 
+BTNode* ancestor(BTNode *b,char x,char y)		//éé€’å½’ååºéå†æ±‚xå’Œyçš„æœ€è¿‘å…¬å…±ç¥–å…ˆ 
 {	BTNode* St[MaxSize],*p,*r;
-	int top=-1,i;								//Õ»¶¥Ö¸ÕëtopÖÃ³õÖµ
+	int top=-1,i;								//æ ˆé¡¶æŒ‡é’ˆtopç½®åˆå€¼
 	bool flag,findx=false,findy=false;
 	BTNode* anorx[MaxSize];
 	BTNode* anory[MaxSize];
 	int cx=0,cy=0;
 	p=b;
 	do
-	{	while (p!=NULL)						//½«pµÄËùÓĞ×ó½áµã½øÕ»
+	{	while (p!=NULL)						//å°†pçš„æ‰€æœ‰å·¦ç»“ç‚¹è¿›æ ˆ
 		{	top++;St[top]=p;
 			p=p->lchild;
 		}
-		r=NULL;								//rÖ¸Ïòµ±Ç°½áµãµÄÇ°Ò»¸öÒÑ·ÃÎÊµÄ½áµã
-		flag=true;							//flagÎªÕæ±íÊ¾ÕıÔÚ´¦ÀíÕ»¶¥½áµã
+		r=NULL;								//ræŒ‡å‘å½“å‰ç»“ç‚¹çš„å‰ä¸€ä¸ªå·²è®¿é—®çš„ç»“ç‚¹
+		flag=true;							//flagä¸ºçœŸè¡¨ç¤ºæ­£åœ¨å¤„ç†æ ˆé¡¶ç»“ç‚¹
 		while (top!=-1 && flag)
 		{
-			p=St[top];					//È¡³öµ±Ç°µÄÕ»¶¥½áµãp
-			if (p->rchild==r)			//ÓÒ×ÓÊ÷²»´æÔÚ»òÒÑ±»·ÃÎÊ,·ÃÎÊÖ®
+			p=St[top];					//å–å‡ºå½“å‰çš„æ ˆé¡¶ç»“ç‚¹p
+			if (p->rchild==r)			//å³å­æ ‘ä¸å­˜åœ¨æˆ–å·²è¢«è®¿é—®,è®¿é—®ä¹‹
 			{
-				if (p->data==x)			//Òª·ÃÎÊµÄ½áµãÎª½áµãx
+				if (p->data==x)			//è¦è®¿é—®çš„ç»“ç‚¹ä¸ºç»“ç‚¹x
 				{
 					findx=true;
-					for (i=0;i<=top;i++) 	//½«¸ùµ½½áµãxµÄÂ·¾¶´æÈëanorx[0..cx-1]ÖĞ
+					for (i=0;i<=top;i++) 	//å°†æ ¹åˆ°ç»“ç‚¹xçš„è·¯å¾„å­˜å…¥anorx[0..cx-1]ä¸­
 						anorx[cx++]=St[i];
 				}
-			 	else if (p->data==y)	//Òª·ÃÎÊµÄ½áµãÎª½áµãy
+			 	else if (p->data==y)	//è¦è®¿é—®çš„ç»“ç‚¹ä¸ºç»“ç‚¹y
 				{
 					findy=true;
-					for (i=0;i<=top;i++) 	//½«¸ùµ½½áµãyµÄÂ·¾¶´æÈëanory[0..cy-1]ÖĞ
+					for (i=0;i<=top;i++) 	//å°†æ ¹åˆ°ç»“ç‚¹yçš„è·¯å¾„å­˜å…¥anory[0..cy-1]ä¸­
 						anory[cy++]=St[i];
 				}
 				if(findx && findy)
 				{
 					i=0;
 					while(i<cx && i<cy && anorx[i]->data==anory[i]->data) 
-						i++;						//ÕÒanorxºÍanoryÖĞ×îºóÒ»¸öÏàÍ¬µÄ½áµã
+						i++;						//æ‰¾anorxå’Œanoryä¸­æœ€åä¸€ä¸ªç›¸åŒçš„ç»“ç‚¹
 					return anorx[i-1];
 				}
 				top--;
-				r=p;				//rÖ¸Ïò¸Õ·ÃÎÊ¹ıµÄ½áµã
+				r=p;				//ræŒ‡å‘åˆšè®¿é—®è¿‡çš„ç»“ç‚¹
 			}
 			else
-			{	p=p->rchild;			//pÖ¸ÏòÓÒº¢×Ó½áµã 
-				flag=false;				//±íÊ¾µ±Ç°²»ÊÇ´¦ÀíÕ»¶¥½áµã
+			{	p=p->rchild;			//pæŒ‡å‘å³å­©å­ç»“ç‚¹ 
+				flag=false;				//è¡¨ç¤ºå½“å‰ä¸æ˜¯å¤„ç†æ ˆé¡¶ç»“ç‚¹
 			}
 		}
 	} while (top!=-1);
@@ -68,12 +68,12 @@ BTNode *ancestor1(BTNode *b,char x,char y)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	char x='D',y='I';
 	BTNode *p=ancestor1(b,x,y);
 	
-	printf("%cºÍ%cµÄLCA=%c\n",x,y,p->data);
+	printf("%cå’Œ%cçš„LCA=%c\n",x,y,p->data);
 
 	DestroyBTree(b);
 	return 1;

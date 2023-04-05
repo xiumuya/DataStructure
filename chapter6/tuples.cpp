@@ -1,47 +1,47 @@
-//Ï¡Êè¾ØÕóµÄÈıÔª×é±íÊ¾-Ëã·¨
+//ç¨€ç–çŸ©é˜µçš„ä¸‰å…ƒç»„è¡¨ç¤º-ç®—æ³•
 #include <stdio.h>
 #define M 6
 #define N 7
-#define MaxSize  100         //¾ØÕóÖĞ·ÇÁãÔªËØ×î¶à¸öÊı
+#define MaxSize  100         //çŸ©é˜µä¸­éé›¶å…ƒç´ æœ€å¤šä¸ªæ•°
 typedef int ElemType;
 typedef struct
 {
-	int r;					//ĞĞºÅ
-	int c;					//ÁĞºÅ
-	ElemType d;				//ÔªËØÖµ
-} TupNode;					//ÈıÔª×é¶¨Òå
+	int r;					//è¡Œå·
+	int c;					//åˆ—å·
+	ElemType d;				//å…ƒç´ å€¼
+} TupNode;					//ä¸‰å…ƒç»„å®šä¹‰
 typedef struct 
 {	
-	int rows;				//ĞĞÊı
-	int cols;				//ÁĞÊı
-	int nums;				//·ÇÁãÔªËØ¸öÊı
+	int rows;				//è¡Œæ•°
+	int cols;				//åˆ—æ•°
+	int nums;				//éé›¶å…ƒç´ ä¸ªæ•°
 	TupNode data[MaxSize];
-} TSMatrix;					//ÈıÔª×éË³Ğò±í
+} TSMatrix;					//ä¸‰å…ƒç»„é¡ºåºè¡¨
 
-void CreatMat(TSMatrix &t,ElemType A[M][N])  //´ÓÒ»¸ö¶şÎ¬Ï¡Êè¾ØÕó´´½¨ÆäÈıÔª×é±íÊ¾
+void CreatMat(TSMatrix &t,ElemType A[M][N])  //ä»ä¸€ä¸ªäºŒç»´ç¨€ç–çŸ©é˜µåˆ›å»ºå…¶ä¸‰å…ƒç»„è¡¨ç¤º
 {
 	int i,j;
 	t.rows=M;t.cols=N;t.nums=0;
 	for (i=0;i<M;i++)
 	{
 		for (j=0;j<N;j++) 
-			if (A[i][j]!=0) 	//Ö»´æ´¢·ÇÁãÔªËØ
+			if (A[i][j]!=0) 	//åªå­˜å‚¨éé›¶å…ƒç´ 
 			{
 				t.data[t.nums].r=i;t.data[t.nums].c=j;
 				t.data[t.nums].d=A[i][j];t.nums++;
 			}
 	}
 }
-bool Value(TSMatrix &t,ElemType x,int i,int j)  //ÈıÔª×éÔªËØ¸³Öµ
+bool Value(TSMatrix &t,ElemType x,int i,int j)  //ä¸‰å…ƒç»„å…ƒç´ èµ‹å€¼
 {
 	int k=0,k1;
 	if (i>=t.rows || j>=t.cols)
-		return false;				//Ê§°ÜÊ±·µ»Øfalse
-	while (k<t.nums && i>t.data[k].r) k++;					//²éÕÒĞĞ
-	while (k<t.nums && i==t.data[k].r && j>t.data[k].c) k++;//²éÕÒÁĞ
-	if (t.data[k].r==i && t.data[k].c==j)	//´æÔÚÕâÑùµÄÔªËØ
+		return false;				//å¤±è´¥æ—¶è¿”å›false
+	while (k<t.nums && i>t.data[k].r) k++;					//æŸ¥æ‰¾è¡Œ
+	while (k<t.nums && i==t.data[k].r && j>t.data[k].c) k++;//æŸ¥æ‰¾åˆ—
+	if (t.data[k].r==i && t.data[k].c==j)	//å­˜åœ¨è¿™æ ·çš„å…ƒç´ 
 		t.data[k].d=x;
-	else									//²»´æÔÚÕâÑùµÄÔªËØÊ±²åÈëÒ»¸öÔªËØ
+	else									//ä¸å­˜åœ¨è¿™æ ·çš„å…ƒç´ æ—¶æ’å…¥ä¸€ä¸ªå…ƒç´ 
 	{	
 		for (k1=t.nums-1;k1>=k;k1--)
 		{
@@ -52,40 +52,40 @@ bool Value(TSMatrix &t,ElemType x,int i,int j)  //ÈıÔª×éÔªËØ¸³Öµ
 		t.data[k].r=i;t.data[k].c=j;t.data[k].d=x;
 		t.nums++;
 	}
-	return true;						//³É¹¦Ê±·µ»Øtrue
+	return true;						//æˆåŠŸæ—¶è¿”å›true
 }
 
-bool Assign(TSMatrix t,ElemType &x,int i,int j)  //½«Ö¸¶¨Î»ÖÃµÄÔªËØÖµ¸³¸ø±äÁ¿
+bool Assign(TSMatrix t,ElemType &x,int i,int j)  //å°†æŒ‡å®šä½ç½®çš„å…ƒç´ å€¼èµ‹ç»™å˜é‡
 {
 	int k=0;
 	if (i>=t.rows || j>=t.cols)
-		return false;			//Ê§°ÜÊ±·µ»Øfalse
-	while (k<t.nums && i>t.data[k].r) k++;					//²éÕÒĞĞ
-	while (k<t.nums && i==t.data[k].r && j>t.data[k].c) k++;//²éÕÒÁĞ
+		return false;			//å¤±è´¥æ—¶è¿”å›false
+	while (k<t.nums && i>t.data[k].r) k++;					//æŸ¥æ‰¾è¡Œ
+	while (k<t.nums && i==t.data[k].r && j>t.data[k].c) k++;//æŸ¥æ‰¾åˆ—
 	if (t.data[k].r==i && t.data[k].c==j)
 		x=t.data[k].d;
 	else
-		x=0;				//ÔÚÈıÔª×éÖĞÃ»ÓĞÕÒµ½±íÊ¾ÊÇÁãÔªËØ
-	return true;			//³É¹¦Ê±·µ»Øtrue
+		x=0;				//åœ¨ä¸‰å…ƒç»„ä¸­æ²¡æœ‰æ‰¾åˆ°è¡¨ç¤ºæ˜¯é›¶å…ƒç´ 
+	return true;			//æˆåŠŸæ—¶è¿”å›true
 }
-void DispMat(TSMatrix t)		//Êä³öÈıÔª×é
+void DispMat(TSMatrix t)		//è¾“å‡ºä¸‰å…ƒç»„
 {
 	int i;
-	if (t.nums<=0)			//Ã»ÓĞ·ÇÁãÔªËØÊ±·µ»Ø
+	if (t.nums<=0)			//æ²¡æœ‰éé›¶å…ƒç´ æ—¶è¿”å›
 		return;
 	printf("\t%d\t%d\t%d\n",t.rows,t.cols,t.nums);
 	printf("\t------------------\n");
 	for (i=0;i<t.nums;i++)
 		printf("\t%d\t%d\t%d\n",t.data[i].r,t.data[i].c,t.data[i].d);
 }
-void TranTat(TSMatrix t,TSMatrix &tb)		//¾ØÕó×ªÖÃ
+void TranTat(TSMatrix t,TSMatrix &tb)		//çŸ©é˜µè½¬ç½®
 {
-	int p,q=0,v;					//qÎªtb.dataµÄÏÂ±ê
+	int p,q=0,v;					//qä¸ºtb.dataçš„ä¸‹æ ‡
 	tb.rows=t.cols;tb.cols=t.rows;tb.nums=t.nums;
-	if (t.nums!=0)					//µ±´æÔÚ·ÇÁãÔªËØÊ±Ö´ĞĞ×ªÖÃ
+	if (t.nums!=0)					//å½“å­˜åœ¨éé›¶å…ƒç´ æ—¶æ‰§è¡Œè½¬ç½®
 	{
-		for (v=0;v<t.cols;v++)		//tb.data[q]ÖĞµÄ¼ÇÂ¼ÒÔcÓòµÄ´ÎĞòÅÅÁĞ
-			for (p=0;p<t.nums;p++)	//pÎªt.dataµÄÏÂ±ê
+		for (v=0;v<t.cols;v++)		//tb.data[q]ä¸­çš„è®°å½•ä»¥cåŸŸçš„æ¬¡åºæ’åˆ—
+			for (p=0;p<t.nums;p++)	//pä¸ºt.dataçš„ä¸‹æ ‡
 				if (t.data[p].c==v)
 				{
 					tb.data[q].r=t.data[p].c;

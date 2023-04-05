@@ -1,29 +1,29 @@
 #include "btree.cpp"
 bool CompBTree(BTNode *b)
-{	BTNode *Qu[MaxSize],*p;				//¶¨ÒåÒ»¸ö¶ÓÁĞ£¬ÓÃÓÚ²ã´Î±éÀú
-	int front=0,rear=0;				//»·ĞÎ¶ÓÁĞµÄ¶ÓÍ·¶ÓÎ²Ö¸Õë
-	bool cm=true;						//cmÎªÕæ±íÊ¾¶ş²æÊ÷ÎªÍêÈ«¶ş²æÊ÷
-	bool bj=true;						//bjÎªÕæ±íÊ¾µ½Ä¿Ç°ÎªÖ¹ËùÓĞ½áµã¾ùÓĞ×óÓÒº¢×Ó
-	if (b==NULL) return true;			//¿ÕÊ÷µ±³ÉÌØÊâµÄÍêÈ«¶ş²æÊ÷
+{	BTNode *Qu[MaxSize],*p;				//å®šä¹‰ä¸€ä¸ªé˜Ÿåˆ—ï¼Œç”¨äºå±‚æ¬¡éå†
+	int front=0,rear=0;				//ç¯å½¢é˜Ÿåˆ—çš„é˜Ÿå¤´é˜Ÿå°¾æŒ‡é’ˆ
+	bool cm=true;						//cmä¸ºçœŸè¡¨ç¤ºäºŒå‰æ ‘ä¸ºå®Œå…¨äºŒå‰æ ‘
+	bool bj=true;						//bjä¸ºçœŸè¡¨ç¤ºåˆ°ç›®å‰ä¸ºæ­¢æ‰€æœ‰ç»“ç‚¹å‡æœ‰å·¦å³å­©å­
+	if (b==NULL) return true;			//ç©ºæ ‘å½“æˆç‰¹æ®Šçš„å®Œå…¨äºŒå‰æ ‘
 	rear++;
-	Qu[rear]=b;						//¸ù½áµã½ø¶Ó
-	while (front!=rear)				//¶ÓÁĞ²»¿Õ
+	Qu[rear]=b;						//æ ¹ç»“ç‚¹è¿›é˜Ÿ
+	while (front!=rear)				//é˜Ÿåˆ—ä¸ç©º
 	{	front=(front+1)%MaxSize;
-		p=Qu[front];					//³ö¶Ó½áµãp
-		if (p->lchild==NULL)			//p½áµãÃ»ÓĞ×óº¢×Ó
-		{	bj=false;					//³öÏÖ½áµãpÈ±×óº¢×ÓµÄÇé¿ö
-			if (p->rchild!=NULL)		//Ã»ÓĞ×óº¢×Óµ«ÓĞÓÒº¢×Ó,Î¥·´(1),
+		p=Qu[front];					//å‡ºé˜Ÿç»“ç‚¹p
+		if (p->lchild==NULL)			//pç»“ç‚¹æ²¡æœ‰å·¦å­©å­
+		{	bj=false;					//å‡ºç°ç»“ç‚¹pç¼ºå·¦å­©å­çš„æƒ…å†µ
+			if (p->rchild!=NULL)		//æ²¡æœ‰å·¦å­©å­ä½†æœ‰å³å­©å­,è¿å(1),
 				cm=false;
 		}
-		else							//p½áµãÓĞ×óº¢×Ó
-		{	if (!bj) cm=false;			//bjÎª¼Ù¶ø½áµãp»¹ÓĞ×óº¢×Ó£¬Î¥·´(2)
+		else							//pç»“ç‚¹æœ‰å·¦å­©å­
+		{	if (!bj) cm=false;			//bjä¸ºå‡è€Œç»“ç‚¹pè¿˜æœ‰å·¦å­©å­ï¼Œè¿å(2)
 			rear=(rear+1)%MaxSize;
-			Qu[rear]=p->lchild;		//×óº¢×Ó½ø¶Ó
+			Qu[rear]=p->lchild;		//å·¦å­©å­è¿›é˜Ÿ
 			if (p->rchild==NULL)
-				bj=false;				//³öÏÖ½áµãpÈ±ÓÒº¢×ÓµÄÇé¿ö
-			else						//pÓĞ×óÓÒº¢×Ó,Ôò¼ÌĞøÅĞ¶Ï
+				bj=false;				//å‡ºç°ç»“ç‚¹pç¼ºå³å­©å­çš„æƒ…å†µ
+			else						//pæœ‰å·¦å³å­©å­,åˆ™ç»§ç»­åˆ¤æ–­
 			{	rear=(rear+1)%MaxSize;	
-				Qu[rear]=p->rchild;	//½«p½áµãµÄÓÒº¢×Ó½ø¶Ó
+				Qu[rear]=p->rchild;	//å°†pç»“ç‚¹çš„å³å­©å­è¿›é˜Ÿ
 			}
 		}
 	}
@@ -32,11 +32,11 @@ bool CompBTree(BTNode *b)
 int main()
 {	BTNode *b,*b1;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷b:");DispBTree(b);printf("\n");
-	printf("bÊÇ·ñÍ¬¹¹:%d\n",CompBTree(b)); 
+	printf("äºŒå‰æ ‘b:");DispBTree(b);printf("\n");
+	printf("bæ˜¯å¦åŒæ„:%d\n",CompBTree(b)); 
 	CreateBTree(b1,"A(B(C,D),E(F,G)))");
-	printf("¶ş²æÊ÷b1:");DispBTree(b1);printf("\n");
-	printf("b1ÊÇ·ñÍ¬¹¹:%d\n",CompBTree(b1)); 
+	printf("äºŒå‰æ ‘b1:");DispBTree(b1);printf("\n");
+	printf("b1æ˜¯å¦åŒæ„:%d\n",CompBTree(b1)); 
 
 
 	DestroyBTree(b);

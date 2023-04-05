@@ -1,4 +1,4 @@
-//Ë³ĞòÕ»ÔËËãËã·¨
+//é¡ºåºæ ˆè¿ç®—ç®—æ³•
 #include <stdio.h>
 #include <malloc.h>
 #define MaxSize 100
@@ -6,8 +6,8 @@ typedef char ElemType;
 typedef struct 
 {	
 	ElemType data[MaxSize];
-	int top;				//Õ»Ö¸Õë
-} SqStack;					//Ë³ĞòÕ»ÀàĞÍ¶¨Òå
+	int top;				//æ ˆæŒ‡é’ˆ
+} SqStack;					//é¡ºåºæ ˆç±»å‹å®šä¹‰
 void InitStack(SqStack *&s)
 {
 	s=(SqStack *)malloc(sizeof(SqStack));
@@ -23,7 +23,7 @@ bool StackEmpty(SqStack *s)
 }
 bool Push(SqStack *&s,ElemType e)
 {
-	if (s->top==MaxSize-1)    //Õ»ÂúµÄÇé¿ö£¬¼´Õ»ÉÏÒç³ö
+	if (s->top==MaxSize-1)    //æ ˆæ»¡çš„æƒ…å†µï¼Œå³æ ˆä¸Šæº¢å‡º
 		return false;
 	s->top++;
 	s->data[s->top]=e;
@@ -31,7 +31,7 @@ bool Push(SqStack *&s,ElemType e)
 }
 bool Pop(SqStack *&s,ElemType &e)
 {
-	if (s->top==-1)		//Õ»Îª¿ÕµÄÇé¿ö£¬¼´Õ»ÏÂÒç³ö
+	if (s->top==-1)		//æ ˆä¸ºç©ºçš„æƒ…å†µï¼Œå³æ ˆä¸‹æº¢å‡º
 		return false;
 	e=s->data[s->top];
 	s->top--;
@@ -39,7 +39,7 @@ bool Pop(SqStack *&s,ElemType &e)
 } 
 bool GetTop(SqStack *s,ElemType &e)
 {
-	if (s->top==-1) 		//Õ»Îª¿ÕµÄÇé¿ö£¬¼´Õ»ÏÂÒç³ö
+	if (s->top==-1) 		//æ ˆä¸ºç©ºçš„æƒ…å†µï¼Œå³æ ˆä¸‹æº¢å‡º
 		return false;
 	e=s->data[s->top];
 	return true;

@@ -6,13 +6,13 @@ void Reverse(SqQueue *&qu)
 	ElemType e;
 	SqStack *st;
 	InitStack(st);
-	while (!QueueEmpty(qu))		//¶Ó²»¿ÕÊ±,³ö¶Ó²¢½øÕ»
+	while (!QueueEmpty(qu))		//é˜Ÿä¸ç©ºæ—¶,å‡ºé˜Ÿå¹¶è¿›æ ˆ
 	{
 		deQueue(qu,e);
 		Push(st,e);
 	}
-	InitQueue(qu);				//¶ÓÁĞ³õÊ¼»¯
-	while (!StackEmpty(st))		//Õ»²»¿ÕÊ±,³öÕ»²¢½«ÔªËØÈë¶Ó
+	InitQueue(qu);				//é˜Ÿåˆ—åˆå§‹åŒ–
+	while (!StackEmpty(st))		//æ ˆä¸ç©ºæ—¶,å‡ºæ ˆå¹¶å°†å…ƒç´ å…¥é˜Ÿ
 	{
 		Pop(st,e);
 		enQueue(qu,e);

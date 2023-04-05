@@ -1,37 +1,37 @@
 
 #include <stdio.h>
 #include <malloc.h>
-#define MAXQNode 10							//¶ÓÁĞµÄ¸öÊı
+#define MAXQNode 10							//é˜Ÿåˆ—çš„ä¸ªæ•°
 typedef struct node
 {	int data;
 	struct node *next;
 } QNode;
-void Insert(QNode *QH[],QNode *QT[],int x)  //½«x²åÈëµ½ÏàÓ¦¶ÓÁĞÖĞ
+void Insert(QNode *QH[],QNode *QT[],int x)  //å°†xæ’å…¥åˆ°ç›¸åº”é˜Ÿåˆ—ä¸­
 {	QNode *s;
-	s=(QNode *)malloc(sizeof(QNode));		//´´½¨Ò»¸ö½Úµãs
+	s=(QNode *)malloc(sizeof(QNode));		//åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹s
 	s->data=x; s->next=NULL;
-	if (QH[x]==NULL)						//xºÅ¶ÓÁĞÎª¿Õ¶ÓÊ±
+	if (QH[x]==NULL)						//xå·é˜Ÿåˆ—ä¸ºç©ºé˜Ÿæ—¶
 	{	QH[x]=s;
 		QT[x]=s;
 	}
-	else									//xºÅ¶ÓÁĞ²»¿Õ¶ÓÊ±
-	{	QT[x]->next=s;						//½«s½ÚµãÁ´µ½QT[x]ËùÖ¸½ÚµãÖ®ºó
-		QT[x]=s;							//ÈÃQT[x]ÈÔÖ¸ÏòÎ²½Úµã
+	else									//xå·é˜Ÿåˆ—ä¸ç©ºé˜Ÿæ—¶
+	{	QT[x]->next=s;						//å°†sèŠ‚ç‚¹é“¾åˆ°QT[x]æ‰€æŒ‡èŠ‚ç‚¹ä¹‹å
+		QT[x]=s;							//è®©QT[x]ä»æŒ‡å‘å°¾èŠ‚ç‚¹
 	}
 }
-void Create(QNode *QH[],QNode *QT[])		//¸ù¾İÓÃ»§ÊäÈë´´½¨¶ÓÁĞ
+void Create(QNode *QH[],QNode *QT[])		//æ ¹æ®ç”¨æˆ·è¾“å…¥åˆ›å»ºé˜Ÿåˆ—
 {	int n,x,i;
 	printf("n:");
 	scanf("%d",&n);
 	for (i=0;i<n;i++)
 	{	do
-		{	printf("ÊäÈëµÚ%d¸öÊı:",i+1);
+		{	printf("è¾“å…¥ç¬¬%dä¸ªæ•°:",i+1);
 			scanf("%d",&x);
 		} while (x<0 || x>10);
 		Insert(QH,QT,x);
 	}
 }
-void DestroyList(QNode *&head)			//ÊÍ·Åµ¥Á´±í
+void DestroyList(QNode *&head)			//é‡Šæ”¾å•é“¾è¡¨
 {
 	QNode *pre=head,*p=pre->next;
 	while (p!=NULL)
@@ -41,28 +41,28 @@ void DestroyList(QNode *&head)			//ÊÍ·Åµ¥Á´±í
 	}
 	free(pre);
 }
-void DispList(QNode *head)				//Êä³öµ¥Á´±íµÄËùÓĞ½ÚµãÖµ
+void DispList(QNode *head)				//è¾“å‡ºå•é“¾è¡¨çš„æ‰€æœ‰èŠ‚ç‚¹å€¼
 {
-	printf("\nÊä³öËùÓĞÔªËØ:");
+	printf("\nè¾“å‡ºæ‰€æœ‰å…ƒç´ :");
 	while (head!=NULL)
 	{	printf("%d ",head->data);
 		head=head->next;
 	}
 	printf("\n");
 }
-QNode *Link(QNode *QH[],QNode *QT[])	//½«·Ç¿Õ¶ÓÁĞÁ´½ÓÆğÀ´²¢Êä³ö
+QNode *Link(QNode *QH[],QNode *QT[])	//å°†éç©ºé˜Ÿåˆ—é“¾æ¥èµ·æ¥å¹¶è¾“å‡º
 {
-	QNode *head=NULL,*tail;				//×ÜÁ´±íµÄÊ×½ÚµãÖ¸ÕëºÍÎ²½ÚµãÖ¸Õë
+	QNode *head=NULL,*tail;				//æ€»é“¾è¡¨çš„é¦–èŠ‚ç‚¹æŒ‡é’ˆå’Œå°¾èŠ‚ç‚¹æŒ‡é’ˆ
 	int i;
-	for (i=0;i<MAXQNode;i++)			//É¨ÃèËùÓĞ¶ÓÁĞ
-		if (QH[i]!=NULL)				//iºÅ¶ÓÁĞ²»¿Õ		
+	for (i=0;i<MAXQNode;i++)			//æ‰«ææ‰€æœ‰é˜Ÿåˆ—
+		if (QH[i]!=NULL)				//iå·é˜Ÿåˆ—ä¸ç©º		
 		{
-			if (head==NULL)				//ÈôiºÅ¶ÓÁĞÎªµÚÒ»¸ö·Ç¿Õ¶ÓÁĞ
+			if (head==NULL)				//è‹¥iå·é˜Ÿåˆ—ä¸ºç¬¬ä¸€ä¸ªéç©ºé˜Ÿåˆ—
 			{
 				head=QH[i];
 				tail=QT[i];
 			}
-			else						//ÈôiºÅ¶ÓÁĞ²»ÊÇµÚÒ»¸ö·Ç¿Õ¶ÓÁĞ
+			else						//è‹¥iå·é˜Ÿåˆ—ä¸æ˜¯ç¬¬ä¸€ä¸ªéç©ºé˜Ÿåˆ—
 			{
 				tail->next=QH[i];
 				tail=QT[i];
@@ -75,12 +75,12 @@ int main()
 {
 	int i;
 	QNode *head;
-	QNode *QH[MAXQNode],*QT[MAXQNode];	//¸÷¶ÓÁĞµÄ¶ÓÍ·QHºÍ¶ÓÎ²Ö¸ÕëQT
+	QNode *QH[MAXQNode],*QT[MAXQNode];	//å„é˜Ÿåˆ—çš„é˜Ÿå¤´QHå’Œé˜Ÿå°¾æŒ‡é’ˆQT
 	for (i=0;i<MAXQNode;i++)
-		QH[i]=QT[i]=NULL;				//ÖÃ³õÖµ¿Õ
-	Create(QH,QT);						//½¨Á¢¶ÓÁĞ
-	head=Link(QH,QT);					//Á´½Ó¸÷¶ÓÁĞ²úÉúµ¥Á´±í
-	DispList(head);						//Êä³öµ¥Á´±í
-	DestroyList(head);					//Ïú»Ùµ¥Á´±í
+		QH[i]=QT[i]=NULL;				//ç½®åˆå€¼ç©º
+	Create(QH,QT);						//å»ºç«‹é˜Ÿåˆ—
+	head=Link(QH,QT);					//é“¾æ¥å„é˜Ÿåˆ—äº§ç”Ÿå•é“¾è¡¨
+	DispList(head);						//è¾“å‡ºå•é“¾è¡¨
+	DestroyList(head);					//é”€æ¯å•é“¾è¡¨
 	return 1;
 }

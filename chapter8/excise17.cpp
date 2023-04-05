@@ -1,25 +1,25 @@
 #include "graph.cpp"
 
-int visited[MAXV];					//È«¾ÖÊı×é
+int visited[MAXV];					//å…¨å±€æ•°ç»„
 void DFS2(AdjGraph *G,int v,int &vn,int &en)
-{	//Éî¶ÈÓÅÏÈ±éÀúÍ¼G,²¢Çó³ö±éÀú¹ıµÄ¶¥µãÊıvnºÍ±ßÊıen
+{	//æ·±åº¦ä¼˜å…ˆéå†å›¾G,å¹¶æ±‚å‡ºéå†è¿‡çš„é¡¶ç‚¹æ•°vnå’Œè¾¹æ•°en
 	ArcNode *p;
-	visited[v]=1;vn++;			//±éÀú¹ıµÄ¶¥µãÊıÔö1
+	visited[v]=1;vn++;			//éå†è¿‡çš„é¡¶ç‚¹æ•°å¢1
 	p=G->adjlist[v].firstarc;
 	while (p!=NULL) 
-	{	en++;					//±éÀú¹ıµÄ±ßÊıÔö1
+	{	en++;					//éå†è¿‡çš„è¾¹æ•°å¢1
 		if (visited[p->adjvex]==0)
 			DFS2(G,p->adjvex,vn,en);
 		p=p->nextarc;
 	}
 }
-int IsTree(AdjGraph *G)			//ÅĞ¶ÏÎŞÏòÍ¼GÊÇ·ñÊÇÒ»¿ÃÊ÷
+int IsTree(AdjGraph *G)			//åˆ¤æ–­æ— å‘å›¾Gæ˜¯å¦æ˜¯ä¸€æ£µæ ‘
 {	int vn=0,en=0,i;
 	for (i=0;i<G->n;i++)
 		visited[i]=0;
 	DFS2(G,1,vn,en);
 	if (vn==G->n && en==2*(G->n-1))
-		return 1;				//±éÀú¶¥µãÎªG->n¸ö,±éÀú±ßÊıÎª2(G->n-1),ÔòÎªÊ÷
+		return 1;				//éå†é¡¶ç‚¹ä¸ºG->nä¸ª,éå†è¾¹æ•°ä¸º2(G->n-1),åˆ™ä¸ºæ ‘
 	else
 		return 0;
 }
@@ -31,12 +31,12 @@ int main()
 	int A[MAXV][MAXV]={{0,1,0,1,1},{1,0,1,1,0},
 			{0,1,0,1,1},{1,1,1,0,1},{1,0,1,1,0}};
 	int n=5, e=8;
-	CreateAdj(G,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.1(a)µÄÁÚ½Ó±í
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±íG
+	CreateAdj(G,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.1(a)çš„é‚»æ¥è¡¨
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨G
 
-	printf("½á¹û:%d\n",IsTree(G));
+	printf("ç»“æœ:%d\n",IsTree(G));
 	
-	DestroyAdj(G);				//Ïú»ÙÁÚ½Ó±í
+	DestroyAdj(G);				//é”€æ¯é‚»æ¥è¡¨
 	return 1;
 }

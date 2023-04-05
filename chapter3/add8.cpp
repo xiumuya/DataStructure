@@ -4,16 +4,16 @@
 typedef char ElemType;
 typedef struct
 {	ElemType data[MaxSize];
-	int rear;						//¶ÓÎ²Ö¸Õë
-	int count;					//¶ÓÁÐÖÐÔªËØ¸öÊý
-} QuType;							//¶ÓÁÐÀàÐÍ
-void InitQu(QuType *&q)				//¶ÓÁÐ³õÊ¼»¯ÔËËã
+	int rear;						//é˜Ÿå°¾æŒ‡é’ˆ
+	int count;					//é˜Ÿåˆ—ä¸­å…ƒç´ ä¸ªæ•°
+} QuType;							//é˜Ÿåˆ—ç±»åž‹
+void InitQu(QuType *&q)				//é˜Ÿåˆ—åˆå§‹åŒ–è¿ç®—
 {	q=(QuType *)malloc(sizeof(QuType));
 	q->rear=0;
 	q->count=0;
 }
-bool EnQu(QuType *&q,ElemType x)		//½ø¶ÓÔËËã
-{	if (q->count==MaxSize)			//¶ÓÂúÉÏÒç³ö
+bool EnQu(QuType *&q,ElemType x)		//è¿›é˜Ÿè¿ç®—
+{	if (q->count==MaxSize)			//é˜Ÿæ»¡ä¸Šæº¢å‡º
 		return false;
 	else
 	{	q->rear=(q->rear+1)%MaxSize;
@@ -22,19 +22,19 @@ bool EnQu(QuType *&q,ElemType x)		//½ø¶ÓÔËËã
 		return true;
 	}
 }
-bool DeQu(QuType *&q,ElemType &x)		//³ö¶ÓÔËËã
-{	int front;					//¾Ö²¿±äÁ¿
-	if (q->count==0)				//¶Ó¿ÕÏÂÒç³ö
+bool DeQu(QuType *&q,ElemType &x)		//å‡ºé˜Ÿè¿ç®—
+{	int front;					//å±€éƒ¨å˜é‡
+	if (q->count==0)				//é˜Ÿç©ºä¸‹æº¢å‡º
 		return false;
 	else
 	{	front=(q->rear-q->count+MaxSize)%MaxSize; 
-		front=(front+1)%MaxSize;	//¶ÓÍ·Î»ÖÃ½ø1
+		front=(front+1)%MaxSize;	//é˜Ÿå¤´ä½ç½®è¿›1
 		x=q->data[front];
 		q->count--;
 		return true;
 	}
 }
-bool QuEmpty(QuType *q)		//ÅÐ¿ÕÔËËã
+bool QuEmpty(QuType *q)		//åˆ¤ç©ºè¿ç®—
 {
 	return(q->count==0);
 }
@@ -47,7 +47,7 @@ int main()
 	EnQu(qu,'c');
 	EnQu(qu,'d');
 	ElemType e;
-	printf("¶ÓÖÐÔªËØ: ");
+	printf("é˜Ÿä¸­å…ƒç´ : ");
 	while(!QuEmpty(qu))
 	{
 		DeQu(qu,e);

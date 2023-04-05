@@ -1,68 +1,68 @@
-//¶þ²æÅÅÐòÊ÷Ëã·¨
+//äºŒå‰æŽ’åºæ ‘ç®—æ³•
 #include <stdio.h>
 #include <malloc.h>
 typedef int KeyType;
 typedef char InfoType[10];
-typedef struct node           		//¼ÇÂ¼ÀàÐÍ
+typedef struct node           		//è®°å½•ç±»åž‹
 {
-	KeyType key;              		//¹Ø¼ü×ÖÏî
-	InfoType data;             		//ÆäËûÊý¾ÝÓò
-	struct node *lchild,*rchild;	//×óÓÒº¢×ÓÖ¸Õë
+	KeyType key;              		//å…³é”®å­—é¡¹
+	InfoType data;             		//å…¶ä»–æ•°æ®åŸŸ
+	struct node *lchild,*rchild;	//å·¦å³å­©å­æŒ‡é’ˆ
 } BSTNode;
 bool InsertBST(BSTNode *&bt,KeyType k)	
-//ÔÚ¶þ²æÅÅÐòÊ÷btÖÐ²åÈëÒ»¸ö¹Ø¼ü×ÖÎªkµÄ½Úµã¡£²åÈë³É¹¦·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
-{	if (bt==NULL)						//Ô­Ê÷Îª¿Õ£¬ÐÂ²åÈëµÄ½ÚµãÎª¸ù½Úµã
+//åœ¨äºŒå‰æŽ’åºæ ‘btä¸­æ’å…¥ä¸€ä¸ªå…³é”®å­—ä¸ºkçš„èŠ‚ç‚¹ã€‚æ’å…¥æˆåŠŸè¿”å›žçœŸï¼Œå¦åˆ™è¿”å›žå‡
+{	if (bt==NULL)						//åŽŸæ ‘ä¸ºç©ºï¼Œæ–°æ’å…¥çš„èŠ‚ç‚¹ä¸ºæ ¹èŠ‚ç‚¹
 	{	bt=(BSTNode *)malloc(sizeof(BSTNode));
 		bt->key=k; bt->lchild=bt->rchild=NULL;
 		return true;
 	}
-	else if (k==bt->key) 				//Ê÷ÖÐ´æÔÚÏàÍ¬¹Ø¼ü×ÖµÄ½Úµã£¬·µ»Ø¼Ù
+	else if (k==bt->key) 				//æ ‘ä¸­å­˜åœ¨ç›¸åŒå…³é”®å­—çš„èŠ‚ç‚¹ï¼Œè¿”å›žå‡
 		return false;
 	else if (k<bt->key) 
-		return InsertBST(bt->lchild,k);	//²åÈëµ½×ó×ÓÊ÷ÖÐ
+		return InsertBST(bt->lchild,k);	//æ’å…¥åˆ°å·¦å­æ ‘ä¸­
 	else
-		return InsertBST(bt->rchild,k);	//²åÈëµ½ÓÒ×ÓÊ÷ÖÐ
+		return InsertBST(bt->rchild,k);	//æ’å…¥åˆ°å³å­æ ‘ä¸­
 }
 
-BSTNode *CreateBST(KeyType A[],int n)		//´´½¨¶þ²æÅÅÐòÊ÷
-//·µ»ØBSTÊ÷¸ù½ÚµãÖ¸Õë
-{	BSTNode *bt=NULL;				//³õÊ¼Ê±btÎª¿ÕÊ÷
+BSTNode *CreateBST(KeyType A[],int n)		//åˆ›å»ºäºŒå‰æŽ’åºæ ‘
+//è¿”å›žBSTæ ‘æ ¹èŠ‚ç‚¹æŒ‡é’ˆ
+{	BSTNode *bt=NULL;				//åˆå§‹æ—¶btä¸ºç©ºæ ‘
 	int i=0;
 	while (i<n)
-	{	InsertBST(bt,A[i]);			//½«¹Ø¼ü×ÖA[i]²åÈë¶þ²æÅÅÐòÊ÷btÖÐ
+	{	InsertBST(bt,A[i]);			//å°†å…³é”®å­—A[i]æ’å…¥äºŒå‰æŽ’åºæ ‘btä¸­
 		i++;
 	}
-	return bt;						//·µ»Ø½¨Á¢µÄ¶þ²æÅÅÐòÊ÷µÄ¸ùÖ¸Õë
+	return bt;						//è¿”å›žå»ºç«‹çš„äºŒå‰æŽ’åºæ ‘çš„æ ¹æŒ‡é’ˆ
 }
 
-void DispBST(BSTNode *bt)		//Êä³öÒ»¿ÃÅÅÐò¶þ²æÊ÷
+void DispBST(BSTNode *bt)		//è¾“å‡ºä¸€æ£µæŽ’åºäºŒå‰æ ‘
 {
 	if (bt!=NULL)
 	{	printf("%d",bt->key);
 		if (bt->lchild!=NULL || bt->rchild!=NULL)
-		{	printf("(");						//ÓÐº¢×Ó½ÚµãÊ±²ÅÊä³ö(
-			DispBST(bt->lchild);				//µÝ¹é´¦Àí×ó×ÓÊ÷
-			if (bt->rchild!=NULL) printf(",");	//ÓÐÓÒº¢×Ó½ÚµãÊ±²ÅÊä³ö,
-			DispBST(bt->rchild);				//µÝ¹é´¦ÀíÓÒ×ÓÊ÷
-			printf(")");						//ÓÐº¢×Ó½ÚµãÊ±²ÅÊä³ö)
+		{	printf("(");						//æœ‰å­©å­èŠ‚ç‚¹æ—¶æ‰è¾“å‡º(
+			DispBST(bt->lchild);				//é€’å½’å¤„ç†å·¦å­æ ‘
+			if (bt->rchild!=NULL) printf(",");	//æœ‰å³å­©å­èŠ‚ç‚¹æ—¶æ‰è¾“å‡º,
+			DispBST(bt->rchild);				//é€’å½’å¤„ç†å³å­æ ‘
+			printf(")");						//æœ‰å­©å­èŠ‚ç‚¹æ—¶æ‰è¾“å‡º)
 		}
 	}
 }
 BSTNode *SearchBST(BSTNode *bt,KeyType k)
 { 
-    if (bt==NULL || bt->key==k)      	//µÝ¹éÖÕ½áÌõ¼þ
+    if (bt==NULL || bt->key==k)      	//é€’å½’ç»ˆç»“æ¡ä»¶
 		return bt;
 	if (k<bt->key)
-       	return SearchBST(bt->lchild,k);  //ÔÚ×ó×ÓÊ÷ÖÐµÝ¹é²éÕÒ
+       	return SearchBST(bt->lchild,k);  //åœ¨å·¦å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
     else
-     	return SearchBST(bt->rchild,k);  //ÔÚÓÒ×ÓÊ÷ÖÐµÝ¹é²éÕÒ
+     	return SearchBST(bt->rchild,k);  //åœ¨å³å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
 }
 BSTNode *SearchBST1(BSTNode *bt,KeyType k,BSTNode *f1,BSTNode *&f)	
-/*ÔÚbtÖÐ²éÕÒ¹Ø¼ü×ÖÎªkµÄ½Úµã,Èô²éÕÒ³É¹¦,¸Ãº¯Êý·µ»Ø¸Ã½ÚµãµÄÖ¸Õë,
-f·µ»ØÆäË«Ç×½Úµã;·ñÔò,¸Ãº¯Êý·µ»ØNULL¡£
-Æäµ÷ÓÃ·½·¨ÈçÏÂ:
+/*åœ¨btä¸­æŸ¥æ‰¾å…³é”®å­—ä¸ºkçš„èŠ‚ç‚¹,è‹¥æŸ¥æ‰¾æˆåŠŸ,è¯¥å‡½æ•°è¿”å›žè¯¥èŠ‚ç‚¹çš„æŒ‡é’ˆ,
+fè¿”å›žå…¶åŒäº²èŠ‚ç‚¹;å¦åˆ™,è¯¥å‡½æ•°è¿”å›žNULLã€‚
+å…¶è°ƒç”¨æ–¹æ³•å¦‚ä¸‹:
 	         SearchBST(bt,x,NULL,f);
-ÕâÀïµÄµÚ3¸ö²ÎÊýf1½ö×÷ÖÐ¼ä²ÎÊý,ÓÃÓÚÇóf,³õÊ¼ÉèÎªNULL*/
+è¿™é‡Œçš„ç¬¬3ä¸ªå‚æ•°f1ä»…ä½œä¸­é—´å‚æ•°,ç”¨äºŽæ±‚f,åˆå§‹è®¾ä¸ºNULL*/
 { 
 	if (bt==NULL)
 	{	
@@ -75,59 +75,59 @@ f·µ»ØÆäË«Ç×½Úµã;·ñÔò,¸Ãº¯Êý·µ»ØNULL¡£
 		return(bt);
 	}
 	else if (k<bt->key)
-       	return SearchBST1(bt->lchild,k,bt,f);  //ÔÚ×ó×ÓÊ÷ÖÐµÝ¹é²éÕÒ
+       	return SearchBST1(bt->lchild,k,bt,f);  //åœ¨å·¦å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
     else
-     	return SearchBST1(bt->rchild,k,bt,f);  //ÔÚÓÒ×ÓÊ÷ÖÐµÝ¹é²éÕÒ
+     	return SearchBST1(bt->rchild,k,bt,f);  //åœ¨å³å­æ ‘ä¸­é€’å½’æŸ¥æ‰¾
 }
 
-void Delete1(BSTNode *p,BSTNode *&r)  //µ±±»É¾p½ÚµãÓÐ×óÓÒ×ÓÊ÷Ê±µÄÉ¾³ý¹ý³Ì
+void Delete1(BSTNode *p,BSTNode *&r)  //å½“è¢«åˆ pèŠ‚ç‚¹æœ‰å·¦å³å­æ ‘æ—¶çš„åˆ é™¤è¿‡ç¨‹
 {
 	BSTNode *q;
 	if (r->rchild!=NULL)
-		Delete1(p,r->rchild);	//µÝ¹éÕÒ×îÓÒÏÂ½Úµãr
-	else						//ÕÒµ½ÁË×îÓÒÏÂ½Úµãr
-	{	p->key=r->key;			//½«r½ÚµãµÄÖµ¸³¸ø½Úµãp
+		Delete1(p,r->rchild);	//é€’å½’æ‰¾æœ€å³ä¸‹èŠ‚ç‚¹r
+	else						//æ‰¾åˆ°äº†æœ€å³ä¸‹èŠ‚ç‚¹r
+	{	p->key=r->key;			//å°†rèŠ‚ç‚¹çš„å€¼èµ‹ç»™èŠ‚ç‚¹p
 		q=r;					
-		r=r->lchild;			//Ö±½Ó½«Æä×ó×ÓÊ÷µÄ¸ù½Úµã·ÅÔÚ±»É¾½ÚµãµÄÎ»ÖÃÉÏ
-		free(q);				//ÊÍ·ÅÔ­½ÚµãrµÄ¿Õ¼ä
+		r=r->lchild;			//ç›´æŽ¥å°†å…¶å·¦å­æ ‘çš„æ ¹èŠ‚ç‚¹æ”¾åœ¨è¢«åˆ èŠ‚ç‚¹çš„ä½ç½®ä¸Š
+		free(q);				//é‡Šæ”¾åŽŸèŠ‚ç‚¹rçš„ç©ºé—´
 	}
 }
-void Delete(BSTNode *&p)		//´Ó¶þ²æÅÅÐòÊ÷ÖÐÉ¾³ýp½Úµã
+void Delete(BSTNode *&p)		//ä»ŽäºŒå‰æŽ’åºæ ‘ä¸­åˆ é™¤pèŠ‚ç‚¹
 {
 	BSTNode *q;
-	if (p->rchild==NULL)		//p½ÚµãÃ»ÓÐÓÒ×ÓÊ÷µÄÇé¿ö
+	if (p->rchild==NULL)		//pèŠ‚ç‚¹æ²¡æœ‰å³å­æ ‘çš„æƒ…å†µ
 	{
 		q=p;
-		p=p->lchild;			//Ö±½Ó½«ÆäÓÒ×ÓÊ÷µÄ¸ù½Úµã·ÅÔÚ±»É¾½ÚµãµÄÎ»ÖÃÉÏ
+		p=p->lchild;			//ç›´æŽ¥å°†å…¶å³å­æ ‘çš„æ ¹èŠ‚ç‚¹æ”¾åœ¨è¢«åˆ èŠ‚ç‚¹çš„ä½ç½®ä¸Š
 		free(q);  
 	}
-	else if (p->lchild==NULL)	//p½ÚµãÃ»ÓÐ×ó×ÓÊ÷µÄÇé¿ö
+	else if (p->lchild==NULL)	//pèŠ‚ç‚¹æ²¡æœ‰å·¦å­æ ‘çš„æƒ…å†µ
 	{
 		q=p;
-		p=p->rchild;			//½«p½ÚµãµÄÓÒ×ÓÊ÷×÷ÎªË«Ç×½ÚµãµÄÏàÓ¦×ÓÊ÷
+		p=p->rchild;			//å°†pèŠ‚ç‚¹çš„å³å­æ ‘ä½œä¸ºåŒäº²èŠ‚ç‚¹çš„ç›¸åº”å­æ ‘
 		free(q);  
 	}
-	else Delete1(p,p->lchild);	//p½Úµã¼ÈÃ»ÓÐ×ó×ÓÊ÷ÓÖÃ»ÓÐÓÒ×ÓÊ÷µÄÇé¿ö
+	else Delete1(p,p->lchild);	//pèŠ‚ç‚¹æ—¢æ²¡æœ‰å·¦å­æ ‘åˆæ²¡æœ‰å³å­æ ‘çš„æƒ…å†µ
 }
-int DeleteBST(BSTNode *&bt,KeyType k)	//ÔÚbtÖÐÉ¾³ý¹Ø¼ü×ÖÎªkµÄ½Úµã
+int DeleteBST(BSTNode *&bt,KeyType k)	//åœ¨btä¸­åˆ é™¤å…³é”®å­—ä¸ºkçš„èŠ‚ç‚¹
 {
 	if (bt==NULL) 
-		return 0;				//¿ÕÊ÷É¾³ýÊ§°Ü
+		return 0;				//ç©ºæ ‘åˆ é™¤å¤±è´¥
 	else 
 	{	
 		if (k<bt->key) 
-			return DeleteBST(bt->lchild,k);	//µÝ¹éÔÚ×ó×ÓÊ÷ÖÐÉ¾³ýÎªkµÄ½Úµã
+			return DeleteBST(bt->lchild,k);	//é€’å½’åœ¨å·¦å­æ ‘ä¸­åˆ é™¤ä¸ºkçš„èŠ‚ç‚¹
 		else if (k>bt->key) 
-			return DeleteBST(bt->rchild,k);	//µÝ¹éÔÚÓÒ×ÓÊ÷ÖÐÉ¾³ýÎªkµÄ½Úµã
+			return DeleteBST(bt->rchild,k);	//é€’å½’åœ¨å³å­æ ‘ä¸­åˆ é™¤ä¸ºkçš„èŠ‚ç‚¹
 		else 
 		{
-			Delete(bt);		//µ÷ÓÃDelete(bt)º¯ÊýÉ¾³ý*bt½Úµã
+			Delete(bt);		//è°ƒç”¨Delete(bt)å‡½æ•°åˆ é™¤*btèŠ‚ç‚¹
 			return 1;
 		}
 	}
 }
 
-void DestroyBST(BSTNode *&bt)		//Ïú»Ù¶þ²æÅÅÐòÊ÷bt
+void DestroyBST(BSTNode *&bt)		//é”€æ¯äºŒå‰æŽ’åºæ ‘bt
 {
 	if (bt!=NULL)
 	{

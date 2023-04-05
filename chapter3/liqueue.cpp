@@ -1,4 +1,4 @@
-//Á´¶ÓÔËËãËã·¨
+//é“¾é˜Ÿè¿ç®—ç®—æ³•
 #include <stdio.h>
 #include <malloc.h>
 typedef char ElemType;
@@ -6,12 +6,12 @@ typedef struct qnode
 {	
 	ElemType data;
 	struct qnode *next;
-} DataNode;		//Á´¶ÓÊı¾İ½áµãÀàĞÍ¶¨Òå
+} DataNode;		//é“¾é˜Ÿæ•°æ®ç»“ç‚¹ç±»å‹å®šä¹‰
 typedef struct
 {	
 	DataNode *front;
 	DataNode *rear;
-} LinkQuNode;			//Á´¶ÓÀàĞÍ¶¨Òå
+} LinkQuNode;			//é“¾é˜Ÿç±»å‹å®šä¹‰
 void InitQueue(LinkQuNode *&q)
 {	
 	q=(LinkQuNode *)malloc(sizeof(LinkQuNode));
@@ -19,8 +19,8 @@ void InitQueue(LinkQuNode *&q)
 }
 void DestroyQueue(LinkQuNode *&q)
 {
-	DataNode *p=q->front,*r;	//pÖ¸Ïò¶ÓÍ·Êı¾İ½Úµã
-	if (p!=NULL)			//ÊÍ·ÅÊı¾İ½ÚµãÕ¼ÓÃ¿Õ¼ä
+	DataNode *p=q->front,*r;	//pæŒ‡å‘é˜Ÿå¤´æ•°æ®èŠ‚ç‚¹
+	if (p!=NULL)			//é‡Šæ”¾æ•°æ®èŠ‚ç‚¹å ç”¨ç©ºé—´
 	{	r=p->next;
 		while (r!=NULL)
 		{	free(p);
@@ -28,7 +28,7 @@ void DestroyQueue(LinkQuNode *&q)
 		}
 	}
 	free(p);
-	free(q);				//ÊÍ·ÅÁ´¶Ó½ÚµãÕ¼ÓÃ¿Õ¼ä
+	free(q);				//é‡Šæ”¾é“¾é˜ŸèŠ‚ç‚¹å ç”¨ç©ºé—´
 }
 bool QueueEmpty(LinkQuNode *q)
 {
@@ -39,21 +39,21 @@ void enQueue(LinkQuNode *&q,ElemType e)
 	p=(DataNode *)malloc(sizeof(DataNode));
 	p->data=e;
 	p->next=NULL;
-	if (q->rear==NULL)		//ÈôÁ´¶ÓÎª¿Õ,ÔòĞÂ½ÚµãÊÇ¶ÓÊ×½ÚµãÓÖÊÇ¶ÓÎ²½Úµã
+	if (q->rear==NULL)		//è‹¥é“¾é˜Ÿä¸ºç©º,åˆ™æ–°èŠ‚ç‚¹æ˜¯é˜Ÿé¦–èŠ‚ç‚¹åˆæ˜¯é˜Ÿå°¾èŠ‚ç‚¹
 		q->front=q->rear=p;
 	else
-	{	q->rear->next=p;	//½«*p½ÚµãÁ´µ½¶ÓÎ²,²¢½«rearÖ¸ÏòËü
+	{	q->rear->next=p;	//å°†*pèŠ‚ç‚¹é“¾åˆ°é˜Ÿå°¾,å¹¶å°†rearæŒ‡å‘å®ƒ
 		q->rear=p;
 	}
 }
 bool deQueue(LinkQuNode *&q,ElemType &e)
 {	DataNode *t;
-	if (q->rear==NULL)		//¶ÓÁĞÎª¿Õ
+	if (q->rear==NULL)		//é˜Ÿåˆ—ä¸ºç©º
 		return false;
-	t=q->front;				//tÖ¸ÏòµÚÒ»¸öÊı¾İ½Úµã
-	if (q->front==q->rear)  //¶ÓÁĞÖĞÖ»ÓĞÒ»¸ö½ÚµãÊ±
+	t=q->front;				//tæŒ‡å‘ç¬¬ä¸€ä¸ªæ•°æ®èŠ‚ç‚¹
+	if (q->front==q->rear)  //é˜Ÿåˆ—ä¸­åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹æ—¶
 		q->front=q->rear=NULL;
-	else					//¶ÓÁĞÖĞÓĞ¶à¸ö½ÚµãÊ±
+	else					//é˜Ÿåˆ—ä¸­æœ‰å¤šä¸ªèŠ‚ç‚¹æ—¶
 		q->front=q->front->next;
 	e=t->data;
 	free(t);

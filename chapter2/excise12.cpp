@@ -3,13 +3,13 @@
 void Merge(LinkNode *ha, LinkNode *hb, LinkNode *&hc)
 {	LinkNode *p=ha->next;
 	hc=ha;
-	while (p->next!=ha)	//ур╣╫ha╣дн╡╫з╣Цp
+	while (p->next!=ha)	//Ф┴╬Е┬╟haГ └Е╟╬Х┼┌Г┌╧p
 		p=p->next;
-	p->next=hb->next;	//╫╚╫з╣Цp╣дnextж╦оРhb╣дйв╫з╣Ц
+	p->next=hb->next;	//Е╟├Х┼┌Г┌╧pГ └nextФ▄┤Е░▒hbГ └И╕√Х┼┌Г┌╧
 	while (p->next!=hb) 
-		p=p->next;		//ур╣╫hb╣дн╡╫з╣Цp
-	p->next=hc;			//╧╧Ёия╜╩╥╣╔а╢╠М
-	free(hb);			//йм╥еhb╣╔а╢╠М╣дм╥╫з╣Ц
+		p=p->next;		//Ф┴╬Е┬╟hbГ └Е╟╬Х┼┌Г┌╧p
+	p->next=hc;			//Ф·└Ф┬░Е╬╙Г▌╞Е█∙И⌠╬Х║╗
+	free(hb);			//И┤┼Ф■╬hbЕ█∙И⌠╬Х║╗Г └Е╓╢Х┼┌Г┌╧
 }
 
 int main()

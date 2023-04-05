@@ -1,13 +1,13 @@
 #include"glist.cpp"
 ElemType MaxAtom(GLNode *g)
-{	char max='a',m;						//max¸³³õÖµÎª×îĞ¡Ğ¡Ğ´×ÖÄ¸'a'
+{	char max='a',m;						//maxèµ‹åˆå€¼ä¸ºæœ€å°å°å†™å­—æ¯'a'
 	while (g!=NULL)
-	{	if (g->tag==1)					//×Ó±íµÄÇé¿ö
-		{	m=MaxAtom(g->val.sublist);		//¶Ô×Ó±íµİ¹éµ÷ÓÃ
+	{	if (g->tag==1)					//å­è¡¨çš„æƒ…å†µ
+		{	m=MaxAtom(g->val.sublist);		//å¯¹å­è¡¨é€’å½’è°ƒç”¨
 			if (m>max) max=m;
 		}
 		else
-		{	if (g->val.data>max)			//ÎªÔ­×ÓÊ±£¬½øĞĞÔ­×Ó±È½Ï
+		{	if (g->val.data>max)			//ä¸ºåŸå­æ—¶ï¼Œè¿›è¡ŒåŸå­æ¯”è¾ƒ
 				max=g->val.data;
 		}
 		g=g->link;
@@ -21,7 +21,7 @@ int main()
 	char *str="((a),e,(c,d))";
 	g=CreateGL(str);
 	printf("g: "); DispGL(g); printf("\n");
-	printf("×î´óÔ­×Ó=%c\n",MaxAtom(g));
+	printf("æœ€å¤§åŸå­=%c\n",MaxAtom(g));
 	DestroyGL(g);
 	return 1;
 }

@@ -8,7 +8,7 @@ int fun(int n,int m)
 	{	if (n>m && n>=0 && m>=0)
 			return(fun(n-1,m)+fun(n-1,m-1));
 		else
-		{	printf("n,m值不正确\n");
+		{	printf("n,m鍊间笉姝ｇ‘\n");
 			return(-1);
 		}
 	}
@@ -27,8 +27,8 @@ int fun1(int n,int m)
 int main()
 {
 	int n=5,m=3; 
-	printf("递归算法结果:  %d\n",fun(n,m));
-	printf("非递归算法结果:%d\n",fun1(n,m));
+	printf("閫掑綊绠楁硶缁撴灉:  %d\n",fun(n,m));
+	printf("闈為�掑綊绠楁硶缁撴灉:%d\n",fun1(n,m));
 	return 1;
 }
 	

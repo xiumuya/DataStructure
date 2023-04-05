@@ -1,5 +1,5 @@
 #include "btree.cpp"
-bool Symm(BTNode *b1,BTNode *b2)	//判断二叉树b1和b2是否同构
+bool Symm(BTNode *b1,BTNode *b2)	//鍒ゆ柇浜屽弶鏍慴1鍜宐2鏄惁鍚屾瀯
 {	if (b1==NULL && b2==NULL)
 		return true;
 	else if (b1==NULL || b2==NULL)
@@ -7,7 +7,7 @@ bool Symm(BTNode *b1,BTNode *b2)	//判断二叉树b1和b2是否同构
 	else
 		return (Symm(b1->lchild,b2->lchild) &	Symm(b1->rchild,b2->rchild));
 }
-bool Symmtree(BTNode *b)		//判断二叉树的左、右子树是否同构
+bool Symmtree(BTNode *b)		//鍒ゆ柇浜屽弶鏍戠殑宸︺�佸彸瀛愭爲鏄惁鍚屾瀯
 {	if (b==NULL)
 		return true;
 	else
@@ -16,11 +16,11 @@ bool Symmtree(BTNode *b)		//判断二叉树的左、右子树是否同构
 int main()
 {	BTNode *b,*b1;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("二叉树b:");DispBTree(b);printf("\n");
-	printf("b是否同构:%d\n",Symmtree(b)); 
+	printf("浜屽弶鏍慴:");DispBTree(b);printf("\n");
+	printf("b鏄惁鍚屾瀯:%d\n",Symmtree(b)); 
 	CreateBTree(b1,"A(B(C,D),E(F,G)))");
-	printf("二叉树b1:");DispBTree(b1);printf("\n");
-	printf("b1是否同构:%d\n",Symmtree(b1)); 
+	printf("浜屽弶鏍慴1:");DispBTree(b1);printf("\n");
+	printf("b1鏄惁鍚屾瀯:%d\n",Symmtree(b1)); 
 
 
 	DestroyBTree(b);

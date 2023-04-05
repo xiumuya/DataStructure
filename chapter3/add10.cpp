@@ -1,23 +1,23 @@
-#include "SqQueue2.cpp"					//°üº¬Ë³Ðò¶ÓµÄÀàÐÍ¶¨ÒåºÍÔËËãº¯Êý
-bool deQueue1(SqQueue *&q,ElemType &e)	//´Ó¶ÓÍ·³ö¶ÓËã·¨
-{	if (q->front==q->rear)				//¶Ó¿ÕÏÂÒç³ö
+#include "SqQueue2.cpp"					//åŒ…å«é¡ºåºé˜Ÿçš„ç±»åž‹å®šä¹‰å’Œè¿ç®—å‡½æ•°
+bool deQueue1(SqQueue *&q,ElemType &e)	//ä»Žé˜Ÿå¤´å‡ºé˜Ÿç®—æ³•
+{	if (q->front==q->rear)				//é˜Ÿç©ºä¸‹æº¢å‡º
 		return false;
-	q->front=(q->front+1)%MaxSize;		//ÐÞ¸Ä¶ÓÍ·Ö¸Õë
+	q->front=(q->front+1)%MaxSize;		//ä¿®æ”¹é˜Ÿå¤´æŒ‡é’ˆ
 	e=q->data[q->front];
 	return true;
 }
-bool enQueue1(SqQueue *&q,ElemType e)	//´Ó¶ÓÍ·½ø¶ÓËã·¨
-{  	if ((q->rear+1)%MaxSize==q->front)	//¶ÓÂú
+bool enQueue1(SqQueue *&q,ElemType e)	//ä»Žé˜Ÿå¤´è¿›é˜Ÿç®—æ³•
+{  	if ((q->rear+1)%MaxSize==q->front)	//é˜Ÿæ»¡
 		return false;
-   	q->data[q->front]=e;				//eÔªËØ½ø¶Ó
-   	q->front=(q->front-1+MaxSize)%MaxSize;//ÐÞ¸Ä¶ÓÍ·Ö¸Õë
+   	q->data[q->front]=e;				//eå…ƒç´ è¿›é˜Ÿ
+   	q->front=(q->front-1+MaxSize)%MaxSize;//ä¿®æ”¹é˜Ÿå¤´æŒ‡é’ˆ
    	return true;
 }
-bool enQueue2(SqQueue *&q,ElemType e)	//´Ó¶ÓÎ²½ø¶ÓËã·¨
-{	if ((q->rear+1)%MaxSize==q->front)	//¶ÓÂúÉÏÒç³ö
+bool enQueue2(SqQueue *&q,ElemType e)	//ä»Žé˜Ÿå°¾è¿›é˜Ÿç®—æ³•
+{	if ((q->rear+1)%MaxSize==q->front)	//é˜Ÿæ»¡ä¸Šæº¢å‡º
 		return false;
-	q->rear=(q->rear+1)%MaxSize;		//ÐÞ¸Ä¶ÓÎ²Ö¸Õë
-	q->data[q->rear]=e;				//eÔªËØ½ø¶Ó
+	q->rear=(q->rear+1)%MaxSize;		//ä¿®æ”¹é˜Ÿå°¾æŒ‡é’ˆ
+	q->data[q->rear]=e;				//eå…ƒç´ è¿›é˜Ÿ
 	return true;
 }
 void fun(int a[],int n)
@@ -29,12 +29,12 @@ void fun(int a[],int n)
 	{	if (a[i]>=90)
 			printf("%d ",a[i]);
 		else if (a[i]>=60)
-			enQueue2(qu,a[i]);	//´Ó¶ÓÎ²½ø¶Ó
+			enQueue2(qu,a[i]);	//ä»Žé˜Ÿå°¾è¿›é˜Ÿ
 		else
-			enQueue1(qu,a[i]);	//´Ó¶ÓÍ·½ø¶Ó
+			enQueue1(qu,a[i]);	//ä»Žé˜Ÿå¤´è¿›é˜Ÿ
 	}
 	while (!QueueEmpty(qu))
-	{	deQueue1(qu,e);		//´Ó¶ÓÍ·³ö¶Ó
+	{	deQueue1(qu,e);		//ä»Žé˜Ÿå¤´å‡ºé˜Ÿ
 		printf("%d ",e);
 	}
 	printf("\n");

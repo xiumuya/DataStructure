@@ -1,5 +1,5 @@
 #include "sqstring.cpp"
-int PartPos(SqString s,SqString t,int index)	//SÎªÖ÷´®,tÎª×Ó´®
+int PartPos(SqString s,SqString t,int index)	//Sä¸ºä¸»ä¸²,tä¸ºå­ä¸²
 {	int i,j,k;
 	int n=s.length;
 	int m=t.length;

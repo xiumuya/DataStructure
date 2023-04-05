@@ -1,6 +1,6 @@
 #include "btree.cpp"
 void MinlenLeaf(BTNode *b,int l,int &min,char &x)
-{	//lµÄ³õÖµÎª1,minÈ¡×î´óÕûÊý£¬xÎªËùÇóµÄÒ¶×Ó½Úµã
+{	//lçš„åˆå€¼ä¸º1,minå–æœ€å¤§æ•´æ•°ï¼Œxä¸ºæ‰€æ±‚çš„å¶å­èŠ‚ç‚¹
 	if (b!=NULL)
 	{	if (b->lchild==NULL && b->rchild==NULL)
 		{	if (l<min)
@@ -16,12 +16,12 @@ void MinlenLeaf(BTNode *b,int l,int &min,char &x)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶þ²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	ElemType x;
 	int min=1000;
 	MinlenLeaf(b,1,min,x);
-	printf("¾àÀë¸ù½Úµã×î½üµÄÒ¶×Ó½Úµã:%c\n",x);
+	printf("è·ç¦»æ ¹èŠ‚ç‚¹æœ€è¿‘çš„å¶å­èŠ‚ç‚¹:%c\n",x);
 	DestroyBTree(b);
 	return 1;
 }

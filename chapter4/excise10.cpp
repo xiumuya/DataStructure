@@ -1,13 +1,13 @@
 #include "sqstring.cpp"
 
-#include "SqStack.cpp"	//°üÀ¨Ë³ĞòÕ»µÄ¶¨ÒåºÍ»ù±¾ÔËËãº¯Êı
+#include "SqStack.cpp"	//åŒ…æ‹¬é¡ºåºæ ˆçš„å®šä¹‰å’ŒåŸºæœ¬è¿ç®—å‡½æ•°
 bool symm(SqString s)
 {
 	int i=0; char e,x;
 	bool flag=true;
 	SqStack *st;
 	InitStack(st);
-	while (i<s.length)		//½«'@'Ö®Ç°µÄ×Ö·û½øÕ»
+	while (i<s.length)		//å°†'@'ä¹‹å‰çš„å­—ç¬¦è¿›æ ˆ
 	{
 		e=s.data[i];
 		if (e!='@')
@@ -16,7 +16,7 @@ bool symm(SqString s)
 			break;
 		i++;
 	}
-	i++;					//Ìø¹ı@×Ö·û
+	i++;					//è·³è¿‡@å­—ç¬¦
 	while (i<s.length &&flag)
 	{
 		e=s.data[i];
@@ -34,7 +34,7 @@ int main()
 	SqString s;
 	StrAssign(s,"a+b@b+a");
 	printf("s:");DispStr(s);
-	printf("½á¹û:%d\n",symm(s));
+	printf("ç»“æœ:%d\n",symm(s));
 	return 1;
 }
 

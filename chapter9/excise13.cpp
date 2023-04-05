@@ -1,6 +1,6 @@
-#include "bst.cpp"   //¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"   //äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 
-KeyType predt=-32768; //predtÎªÈ«¾Ö±äÁ¿,±£´æµ±Ç°½ÚµãÖĞĞòÇ°ÇıµÄÖµ,³õÖµÎª-¡Ş
+KeyType predt=-32768; //predtä¸ºå…¨å±€å˜é‡,ä¿å­˜å½“å‰èŠ‚ç‚¹ä¸­åºå‰é©±çš„å€¼,åˆå€¼ä¸º-âˆ
 bool JudgeBST(BSTNode *bt)
 {
 	bool b1,b2;
@@ -8,13 +8,13 @@ bool JudgeBST(BSTNode *bt)
 		return true;
 	else
 	{
-		b1=JudgeBST(bt->lchild);	//ÅĞ¶Ï×ó×ÓÊ÷
-		if (b1==false)				//×ó×ÓÊ÷²»ÊÇBST£¬·µ»Ø¼Ù
+		b1=JudgeBST(bt->lchild);	//åˆ¤æ–­å·¦å­æ ‘
+		if (b1==false)				//å·¦å­æ ‘ä¸æ˜¯BSTï¼Œè¿”å›å‡
 			return false;
-		if (bt->key<predt)			//µ±Ç°½ÚµãÎ¥·´BSTĞÔÖÊ£¬·µ»Ø¼Ù
+		if (bt->key<predt)			//å½“å‰èŠ‚ç‚¹è¿åBSTæ€§è´¨ï¼Œè¿”å›å‡
 			return false;
 		predt=bt->key;
-		b2=JudgeBST(bt->rchild);	//ÅĞ¶ÏÓÒ×ÓÊ÷
+		b2=JudgeBST(bt->rchild);	//åˆ¤æ–­å³å­æ ‘
 		return b2;
 	}
 }
@@ -23,10 +23,10 @@ int main()
 {
 	BSTNode *bt;
 	KeyType a[]={5,2,1,6,7,4,8,3,9},n=9;
-	bt=CreateBST(a,n);		//´´½¨Ò»¿Ã¶ş²æÅÅĞòÊ÷
+	bt=CreateBST(a,n);		//åˆ›å»ºä¸€æ£µäºŒå‰æ’åºæ ‘
 	printf("BST:");DispBST(bt);printf("\n");
 
-	printf("½á¹û:%d\n",JudgeBST(bt));
+	printf("ç»“æœ:%d\n",JudgeBST(bt));
 
 	DestroyBST(bt);
 	return 1;

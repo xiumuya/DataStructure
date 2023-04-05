@@ -1,20 +1,20 @@
 #include "btree.cpp"
 void AllPath1(BTNode *b,ElemType path[],int pathlen)
-{	//bÎª¸ù½ÚµãÊ±£¬pathlen³õÊ¼ÖµÎª0
+{	//bä¸ºæ ¹èŠ‚ç‚¹æ—¶ï¼Œpathlenåˆå§‹å€¼ä¸º0
 	int i;
 	if (b!=NULL)
-	{	if (b->lchild==NULL && b->rchild==NULL)	//bÎªÒ¶×Ó½Úµã
-		{	printf("  %cµ½¸ù½ÚµãÄæÂ·¾¶: %c ",b->data,b->data);
+	{	if (b->lchild==NULL && b->rchild==NULL)	//bä¸ºå¶å­èŠ‚ç‚¹
+		{	printf("  %cåˆ°æ ¹èŠ‚ç‚¹é€†è·¯å¾„: %c ",b->data,b->data);
 			for (i=pathlen-1;i>=0;i--)
 				printf("%c ",path[i]);
 			printf("\n");
 		}
 		else
-		{	path[pathlen]=b->data;			//½«µ±Ç°½Úµã·ÅÈëÂ·¾¶ÖĞ
-			pathlen++;						//Â·¾¶³¤¶ÈÔö1
-			AllPath1(b->lchild,path,pathlen);//µİ¹éÉ¨Ãè×ó×ÓÊ÷
-			AllPath1(b->rchild,path,pathlen);//µİ¹éÉ¨ÃèÓÒ×ÓÊ÷
-			pathlen--;						//»Ö¸´»·¾³
+		{	path[pathlen]=b->data;			//å°†å½“å‰èŠ‚ç‚¹æ”¾å…¥è·¯å¾„ä¸­
+			pathlen++;						//è·¯å¾„é•¿åº¦å¢1
+			AllPath1(b->lchild,path,pathlen);//é€’å½’æ‰«æå·¦å­æ ‘
+			AllPath1(b->rchild,path,pathlen);//é€’å½’æ‰«æå³å­æ ‘
+			pathlen--;						//æ¢å¤ç¯å¢ƒ
 		}
 	}
 }
@@ -23,7 +23,7 @@ void AllPath1(BTNode *b,ElemType path[],int pathlen)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 	ElemType path[MaxSize];
 	AllPath1(b,path,0);

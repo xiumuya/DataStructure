@@ -1,4 +1,4 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 #include <malloc.h>
 #define Max 3
 typedef struct node
@@ -6,16 +6,16 @@ typedef struct node
 	struct node *next;
 } NodeType;
 void RadixSort1(RecType R[],int n)
-{	NodeType *head[Max],*tail[Max],*p,*t;	//¶¨Òå¸÷Á´¶ÓµÄÊ×Î²Ö¸Õë
+{	NodeType *head[Max],*tail[Max],*p,*t;	//å®šä¹‰å„é“¾é˜Ÿçš„é¦–å°¾æŒ‡é’ˆ
 	int i,k;
-	for (i=0;i<Max;i++)						//³õÊ¼»¯¸÷Á´¶ÓÊ×¡¢Î²Ö¸Õë
+	for (i=0;i<Max;i++)						//åˆå§‹åŒ–å„é“¾é˜Ÿé¦–ã€å°¾æŒ‡é’ˆ
 		head[i]=tail[i]=NULL;
 	for (i=0;i<n;i++)
-	{	p=(NodeType *)malloc(sizeof(NodeType));	//´´½¨ĞÂ½Úµã
+	{	p=(NodeType *)malloc(sizeof(NodeType));	//åˆ›å»ºæ–°èŠ‚ç‚¹
 		p->Rec=R[i];
 		p->next=NULL;
-		k=R[i].key;							//ÕÒµÚk¸öÁ´¶Ó,k=0,1»ò2
-		if (head[k]==NULL)   				//½øĞĞ·ÖÅä,²ÉÓÃÇ°²å·¨½¨±í
+		k=R[i].key;							//æ‰¾ç¬¬kä¸ªé“¾é˜Ÿ,k=0,1æˆ–2
+		if (head[k]==NULL)   				//è¿›è¡Œåˆ†é…,é‡‡ç”¨å‰æ’æ³•å»ºè¡¨
 		{	head[k]=p;
 			tail[k]=p;
 		}
@@ -25,8 +25,8 @@ void RadixSort1(RecType R[],int n)
 		}
 	}
 	p=NULL;
-	for (i=0;i<Max;i++)			//¶ÔÓÚÃ¿Ò»¸öÁ´¶Ó½øĞĞÑ­»·ÊÕ¼¯
-		if (head[i]!=NULL)		//²úÉúÒÔpÎªÊ×½ÚµãÖ¸ÕëµÄµ¥Á´±í
+	for (i=0;i<Max;i++)			//å¯¹äºæ¯ä¸€ä¸ªé“¾é˜Ÿè¿›è¡Œå¾ªç¯æ”¶é›†
+		if (head[i]!=NULL)		//äº§ç”Ÿä»¥pä¸ºé¦–èŠ‚ç‚¹æŒ‡é’ˆçš„å•é“¾è¡¨
 		{	if (p==NULL)
 			{	p=head[i];
 				t=tail[i];
@@ -37,7 +37,7 @@ void RadixSort1(RecType R[],int n)
 			}
 		}
 		i=0;
-		while (p!=NULL)			//½«ÅÅĞòºóµÄ½á¹û·Åµ½R[]Êı×éÖĞ
+		while (p!=NULL)			//å°†æ’åºåçš„ç»“æœæ”¾åˆ°R[]æ•°ç»„ä¸­
 		{	R[i++]=p->Rec;
 			p=p->next;
 		}
@@ -45,12 +45,12 @@ void RadixSort1(RecType R[],int n)
 int main()
 {	int i,n=5;
 	RecType R[MAXL]={{1,'A'},{0,'B'},{0,'C'},{2,'D'},{1,'F'}};
-	printf("ÅÅĞòÇ°:\n  ");
+	printf("æ’åºå‰:\n  ");
 	for (i=0;i<n;i++)
 		printf("[%d,%c] ",R[i].key,R[i].data);
 	printf("\n");
 	RadixSort1(R,n);
-	printf("ÅÅĞòºó:\n  ");
+	printf("æ’åºå:\n  ");
 	for (i=0;i<n;i++)
 		printf("[%d,%c] ",R[i].key,R[i].data);
 	printf("\n");

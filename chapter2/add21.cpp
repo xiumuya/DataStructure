@@ -2,12 +2,12 @@
 
 void Delnodes(LinkNode *&L,ElemType min,ElemType max)
 {
-	LinkNode *p=L->next,*pre=L;		//preÖ¸Ïò½ÚµãpµÄÇ°Ç÷½Úµã
-	while (p!=NULL && p->data<=min)	//²éÕÒ¸Õ¸Õ´óÓÚminµÄ½Úµãp
-	{	pre=p;						//pre¡¢pÍ¬²½ºóÒÆ
+	LinkNode *p=L->next,*pre=L;		//preæŒ‡å‘èŠ‚ç‚¹pçš„å‰è¶‹èŠ‚ç‚¹
+	while (p!=NULL && p->data<=min)	//æŸ¥æ‰¾åˆšåˆšå¤§äºminçš„èŠ‚ç‚¹p
+	{	pre=p;						//preã€påŒæ­¥åç§»
 		p=p->next;
 	}
-	while (p!=NULL && p->data<max)	//É¾³ıËùÓĞĞ¡ÓÚmaxµÄ½Úµã
+	while (p!=NULL && p->data<max)	//åˆ é™¤æ‰€æœ‰å°äºmaxçš„èŠ‚ç‚¹
 	{
 		pre->next=p->next;
 		free(p);

@@ -1,34 +1,34 @@
-#include "bst.cpp"   //¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"   //äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 
-int abs(int x,int y)	//ÇóÁ½¸öÕûÊı²îµÄ¾ø¶ÔÖµ
+int abs(int x,int y)	//æ±‚ä¸¤ä¸ªæ•´æ•°å·®çš„ç»å¯¹å€¼
 {
 	int z=x-y;
 	return z>0?z:-z;
 }
 void JudgeAVT(BSTNode *bt,bool &balance,int &h)
-{	//hÎªbtµÄ¸ß¶È,balance±íÊ¾btµÄÆ½ºâĞÔ
+{	//hä¸ºbtçš„é«˜åº¦,balanceè¡¨ç¤ºbtçš„å¹³è¡¡æ€§
 	int hl,hr;
 	bool bl,br;
-	if (bt==NULL)							//¿ÕÊ÷ÊÇÆ½ºâµÄ
+	if (bt==NULL)							//ç©ºæ ‘æ˜¯å¹³è¡¡çš„
 	{
 		h=0;
 		balance=true;
 	}
-	//else if (bt->lchild==NULL && bt->rchild==NULL)	//Ö»ÓĞÒ»¸ö½ÚµãµÄÊ÷ÊÇÆ½ºâµÄ 
+	//else if (bt->lchild==NULL && bt->rchild==NULL)	//åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹çš„æ ‘æ˜¯å¹³è¡¡çš„ 
 	//{
 	//	h=1;
 	//	balance=true;
 	//}
 	else 
 	{
-		JudgeAVT(bt->lchild,bl,hl);		//Çó³ö×ó×ÓÊ÷µÄÆ½ºâĞÔblºÍ¸ß¶Èhl
-		JudgeAVT(bt->rchild,br,hr);		//Çó³öÓÒ×ÓÊ÷µÄÆ½ºâĞÔbrºÍ¸ß¶Èhr
+		JudgeAVT(bt->lchild,bl,hl);		//æ±‚å‡ºå·¦å­æ ‘çš„å¹³è¡¡æ€§blå’Œé«˜åº¦hl
+		JudgeAVT(bt->rchild,br,hr);		//æ±‚å‡ºå³å­æ ‘çš„å¹³è¡¡æ€§brå’Œé«˜åº¦hr
 		h=(hl>hr?hl:hr)+1;
 		if (abs(hl,hr)<=1)
-			balance=bl & br;			//&ÎªÂß¼­ÓëÔËËã·û
+			balance=bl & br;			//&ä¸ºé€»è¾‘ä¸è¿ç®—ç¬¦
 		else
 			balance=false;
-		printf("µ±Ç°½áµã:%d,lefth=%d,righth=%d, h:%d, bal:%d\n",bt->key,hl,hr,h,balance);
+		printf("å½“å‰ç»“ç‚¹:%d,lefth=%d,righth=%d, h:%d, bal:%d\n",bt->key,hl,hr,h,balance);
 	}
 }
 
@@ -38,17 +38,17 @@ int main()
 	//KeyType keys[]={5,2,3,4,1,8,6,7,9};
 	KeyType keys[]={5,4,8,6,9};
 	int n=5;
-	bt=CreateBST(keys,n);		//´´½¨¶ş²æÅÅĞòÊ÷
+	bt=CreateBST(keys,n);		//åˆ›å»ºäºŒå‰æ’åºæ ‘
 	printf("BST:"); DispBST(bt); printf("\n");
 
 	bool balance;
 	int h;
 	JudgeAVT(bt,balance,h);
 	if (balance)
-		printf("¸ÃBSTÊ÷ÊÇÆ½ºâµÄ\n");
+		printf("è¯¥BSTæ ‘æ˜¯å¹³è¡¡çš„\n");
 	else
-		printf("¸ÃBSTÊ÷ÊÇ²»Æ½ºâµÄ\n");
-	printf("¸ÃBSTÊ÷¸ß¶È:%d\n",h);
+		printf("è¯¥BSTæ ‘æ˜¯ä¸å¹³è¡¡çš„\n");
+	printf("è¯¥BSTæ ‘é«˜åº¦:%d\n",h);
 	
 	DestroyBST(bt);
 	return 1;

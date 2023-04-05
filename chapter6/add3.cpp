@@ -16,11 +16,11 @@ void sum(int a[][MAXN],int b[][MAXN],int m,int n)
 {
 	int i,j;
 	b[0][0]=a[0][0];
-	for (i=1;i<m;i++)		//ÇóbµÄµÚ0ÁÐ
+	for (i=1;i<m;i++)		//æ±‚bçš„ç¬¬0åˆ—
 		b[i][0]=b[i-1][0]+a[i][0];
-	for (j=1;j<n;j++)		//ÇóbµÄµÚ0ÐÐ
+	for (j=1;j<n;j++)		//æ±‚bçš„ç¬¬0è¡Œ
 		b[0][j]=b[0][j-1]+a[0][j];
-	for (i=1;i<m;i++)		//Çób[i][j]
+	for (i=1;i<m;i++)		//æ±‚b[i][j]
 		for (j=1;j<n;j++)
 			b[i][j]=a[i][j]+b[i-1][j]+b[i][j-1]-b[i-1][j-1];
 }
@@ -44,7 +44,7 @@ int main()
 	int b[MAXM][MAXN];
 	sum(a,b,m,n);
 	disparr(b,m,n);
-	printf("½á¹û:%d\n",submat(b,1,1,3,3));
+	printf("ç»“æžœ:%d\n",submat(b,1,1,3,3));
 
 	return 1;
 }

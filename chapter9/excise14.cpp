@@ -1,28 +1,28 @@
-#include "bst.cpp"   //¶ş²æÅÅĞòÊ÷»ù±¾ÔËËãËã·¨
+#include "bst.cpp"   //äºŒå‰æ’åºæ ‘åŸºæœ¬è¿ç®—ç®—æ³•
 int Level(BSTNode *bt,KeyType k)
-{	int lv=1;						//²ã´ÎlvÖÃ³õÖµ1
+{	int lv=1;						//å±‚æ¬¡lvç½®åˆå€¼1
 	BSTNode *p=bt;
-	while (p!=NULL && p->key!=k)	//¶ş²æÅÅĞòÊ÷Î´ÕÒÍê»òÎ´ÕÒµ½ÔòÑ­»·
+	while (p!=NULL && p->key!=k)	//äºŒå‰æ’åºæ ‘æœªæ‰¾å®Œæˆ–æœªæ‰¾åˆ°åˆ™å¾ªç¯
 	{	if (k<p->key)
-			p=p->lchild;			//ÔÚ×ó×ÓÊ÷ÖĞ²éÕÒ
+			p=p->lchild;			//åœ¨å·¦å­æ ‘ä¸­æŸ¥æ‰¾
 		else
-			p=p->rchild;			//ÔÚÓÒ×ÓÊ÷ÖĞ²éÕÒ
-		lv++;					//²ã´ÎÔö1
+			p=p->rchild;			//åœ¨å³å­æ ‘ä¸­æŸ¥æ‰¾
+		lv++;					//å±‚æ¬¡å¢1
 	}
-	if (p!=NULL)					//ÕÒµ½ºó·µ»ØÆä²ã´Î
+	if (p!=NULL)					//æ‰¾åˆ°åè¿”å›å…¶å±‚æ¬¡
 		return lv;
 	else
-		return(0);				//±íÊ¾Î´ÕÒµ½
+		return(0);				//è¡¨ç¤ºæœªæ‰¾åˆ°
 }
 
 int main()
 {
 	BSTNode *bt;
 	KeyType a[]={5,2,1,6,7,4,8,3,9},n=9;
-	bt=CreateBST(a,n);		//´´½¨Ò»¿Ã¶ş²æÅÅĞòÊ÷
+	bt=CreateBST(a,n);		//åˆ›å»ºä¸€æ£µäºŒå‰æ’åºæ ‘
 	printf("BST:");DispBST(bt);printf("\n");
 	int k=4;
-	printf("½á¹û:%d\n",Level(bt,k));
+	printf("ç»“æœ:%d\n",Level(bt,k));
 
 	DestroyBST(bt);
 	return 1;

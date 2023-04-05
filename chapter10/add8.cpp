@@ -1,22 +1,22 @@
-#include "seqlist.cpp"			//Ë³Ðò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void HeapInsert(RecType R[],KeyType k,int &n)	//½«k²åÈëµ½¶ÑR[1..n]ÖÐ
+void HeapInsert(RecType R[],KeyType k,int &n)	//å°†kæ’å…¥åˆ°å †R[1..n]ä¸­
 {
 	int i,j;
 	n++;
-	R[n].key=k;								//Ôö¼ÓÐÂÖµµ½Ô­±íÎ²²¿ÇÒ±í³¤¼Ó1
+	R[n].key=k;								//å¢žåŠ æ–°å€¼åˆ°åŽŸè¡¨å°¾éƒ¨ä¸”è¡¨é•¿åŠ 1
 	i=n/2;j=n;
-	while (i>0)								//µ÷ÕûÎª¶Ñ
+	while (i>0)								//è°ƒæ•´ä¸ºå †
 	{
 		if (R[i].key<R[j].key)
-			swap(R[i],R[j]);				//½»»»
-		j=i;i=i/2;							//¼ÌÐø×Ôµ×ÏòÉÏ²éÕÒ
+			swap(R[i],R[j]);				//äº¤æ¢
+		j=i;i=i/2;							//ç»§ç»­è‡ªåº•å‘ä¸ŠæŸ¥æ‰¾
 	}
 }
-void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//½¨Á¢¶ÑR[1..n]
+void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//å»ºç«‹å †R[1..n]
 {	int i;
-	n=0;					//nÎª¶ÑÖÐ½Úµã¸öÊý£¬³õÊ¼Ê±Îª0
-	for (i=0;i<m;i++)		//mÎª²åÈëµÄÔªËØ¸öÊý
+	n=0;					//nä¸ºå †ä¸­èŠ‚ç‚¹ä¸ªæ•°ï¼Œåˆå§‹æ—¶ä¸º0
+	for (i=0;i<m;i++)		//mä¸ºæ’å…¥çš„å…ƒç´ ä¸ªæ•°
 		HeapInsert(R,A[i],n);
 }
 
@@ -28,7 +28,7 @@ int main()
 
 	BuildHeap(R,a,m,n);
 	
-	printf("Êä³ö¶ÑR:"); DispList1(R,n);
+	printf("è¾“å‡ºå †R:"); DispList1(R,n);
 
 	return 1;
 }

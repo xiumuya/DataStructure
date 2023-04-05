@@ -1,36 +1,36 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void HeapInsert(RecType R[],KeyType k,int &n)	//½«k²åÈëµ½¶ÑR[1..n]ÖĞ
+void HeapInsert(RecType R[],KeyType k,int &n)	//å°†kæ’å…¥åˆ°å †R[1..n]ä¸­
 {
 	int i,j;
 	n++;
-	R[n].key=k;								//Ôö¼ÓĞÂÖµµ½Ô­±íÎ²²¿ÇÒ±í³¤¼Ó1
+	R[n].key=k;								//å¢åŠ æ–°å€¼åˆ°åŸè¡¨å°¾éƒ¨ä¸”è¡¨é•¿åŠ 1
 	i=n/2;j=n;
-	while (i>0)								//µ÷ÕûÎª¶Ñ
+	while (i>0)								//è°ƒæ•´ä¸ºå †
 	{
 		if (R[i].key<R[j].key)
-			swap(R[i],R[j]);				//½»»»
-		j=i;i=i/2;							//¼ÌĞø×Ôµ×ÏòÉÏ²éÕÒ
+			swap(R[i],R[j]);				//äº¤æ¢
+		j=i;i=i/2;							//ç»§ç»­è‡ªåº•å‘ä¸ŠæŸ¥æ‰¾
 	}
 }
-void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//½¨Á¢¶ÑR[1..n]
+void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//å»ºç«‹å †R[1..n]
 {	int i;
-	n=0;					//nÎª¶ÑÖĞ½Úµã¸öÊı£¬³õÊ¼Ê±Îª0
-	for (i=0;i<m;i++)		//mÎª²åÈëµÄÔªËØ¸öÊı
+	n=0;					//nä¸ºå †ä¸­èŠ‚ç‚¹ä¸ªæ•°ï¼Œåˆå§‹æ—¶ä¸º0
+	for (i=0;i<m;i++)		//mä¸ºæ’å…¥çš„å…ƒç´ ä¸ªæ•°
 		HeapInsert(R,A[i],n);
 }
 bool IsHeap(RecType R[],int n)
 {
 	int i;
-	if (n%2==0)		//nÎªÅ¼ÊıÊ±,×îºóÒ»¸ö·ÖÖ§½Úµã(±àºÅÎªn/2)Ö»ÓĞ×óº¢×Ó(±àºÅÎªn)
+	if (n%2==0)		//nä¸ºå¶æ•°æ—¶,æœ€åä¸€ä¸ªåˆ†æ”¯èŠ‚ç‚¹(ç¼–å·ä¸ºn/2)åªæœ‰å·¦å­©å­(ç¼–å·ä¸ºn)
 	{	if (R[n/2].key<R[n].key)
 			return false;
-		for (i=n/2-1;i>=1;i--)	//ÅĞ¶ÏËùÓĞË«·ÖÖ§½Úµã
+		for (i=n/2-1;i>=1;i--)	//åˆ¤æ–­æ‰€æœ‰åŒåˆ†æ”¯èŠ‚ç‚¹
 			if (R[i].key<R[2*i].key || R[i].key<R[2*i+1].key)
 				return false;
 	}
-	else			//nÎªÆæÊıÊ±,ËùÓĞ·ÖÖ§½Úµã¾ùÎªË«·ÖÖ§½Úµã
-	{	for (i=n/2;i>=1;i--)	//ÅĞ¶ÏËùÓĞË«·ÖÖ§½Úµã
+	else			//nä¸ºå¥‡æ•°æ—¶,æ‰€æœ‰åˆ†æ”¯èŠ‚ç‚¹å‡ä¸ºåŒåˆ†æ”¯èŠ‚ç‚¹
+	{	for (i=n/2;i>=1;i--)	//åˆ¤æ–­æ‰€æœ‰åŒåˆ†æ”¯èŠ‚ç‚¹
 			if (R[i].key<R[2*i].key || R[i].key<R[2*i+1].key)
 				return false;
 	}
@@ -45,9 +45,9 @@ int main()
 	int a[]={3,8,7,6,5,4};
 
 	BuildHeap(R,a,m,n);
-	printf("Êä³ö¶ÑR:"); DispList1(R,n);
+	printf("è¾“å‡ºå †R:"); DispList1(R,n);
 	printf("n=%d\n",n);
-	printf("½á¹û:%d\n",IsHeap(R,n));
+	printf("ç»“æœ:%d\n",IsHeap(R,n));
 
 	return 1;
 }

@@ -1,35 +1,35 @@
-#include "graph.cpp"		//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"		//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
-void InDs1(MatGraph g)		//Çó³öÍ¼GÖĞÃ¿¸ö¶¥µãµÄÈë¶È
+void InDs1(MatGraph g)		//æ±‚å‡ºå›¾Gä¸­æ¯ä¸ªé¡¶ç‚¹çš„å…¥åº¦
 {	int i,j,n;
-	printf("¸÷¶¥µãÈë¶È:\n");
+	printf("å„é¡¶ç‚¹å…¥åº¦:\n");
 	for (j=0;j<g.n;j++)
 	{	n=0;
 		for (i=0;i<g.n;i++)
 			if (g.edges[i][j]!=0)
-				n++;		//nÀÛ¼ÆÈë¶ÈÊı
-		printf("  ¶¥µã%d:%d\n",j,n);
+				n++;		//nç´¯è®¡å…¥åº¦æ•°
+		printf("  é¡¶ç‚¹%d:%d\n",j,n);
 	}
 }
-void OutDs1(MatGraph g)		//Çó³öÍ¼GÖĞÃ¿¸ö¶¥µãµÄ³ö¶È
+void OutDs1(MatGraph g)		//æ±‚å‡ºå›¾Gä¸­æ¯ä¸ªé¡¶ç‚¹çš„å‡ºåº¦
 {	int i,j,n;
-	printf("¸÷¶¥µã³ö¶È:\n");
+	printf("å„é¡¶ç‚¹å‡ºåº¦:\n");
 	for (i=0;i<g.n;i++)
 	{	n=0;
 		for (j=0;j<g.n;j++)
 			if (g.edges[i][j]!=0)
-				n++;			//nÀÛ¼Æ³ö¶ÈÊı
-		printf("  ¶¥µã%d:%d\n",i,n);
+				n++;			//nç´¯è®¡å‡ºåº¦æ•°
+		printf("  é¡¶ç‚¹%d:%d\n",i,n);
 	}
 }
 
-void ZeroOutDs1(MatGraph g)		//Çó³öÍ¼GÖĞ³ö¶ÈÎª0µÄ¶¥µã¸öÊı
+void ZeroOutDs1(MatGraph g)		//æ±‚å‡ºå›¾Gä¸­å‡ºåº¦ä¸º0çš„é¡¶ç‚¹ä¸ªæ•°
 {	int i,j,n;
-	printf("³ö¶ÈÎª0µÄ¶¥µã:");
+	printf("å‡ºåº¦ä¸º0çš„é¡¶ç‚¹:");
 	for (i=0;i<g.n;i++)
 	{	n=0;
 		for (j=0;j<g.n;j++)
-			if (g.edges[i][j]!=0)	//´æÔÚÒ»Ìõ±ß
+			if (g.edges[i][j]!=0)	//å­˜åœ¨ä¸€æ¡è¾¹
 				n++;
 		if (n==0)
 			printf("%2d\n",i);
@@ -48,9 +48,9 @@ int main()
 		{0,0,0,0,0},
 		{1,0,0,1,0}};
 	int n=5, e=8;
-	CreateMat(g,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.1(b)µÄÁÚ½Ó¾ØÕó
-	printf("Í¼GµÄÁÚ½Ó¾ØÕó:\n");
-	DispMat(g);					//Êä³öÁÚ½Ó¾ØÕó
+	CreateMat(g,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.1(b)çš„é‚»æ¥çŸ©é˜µ
+	printf("å›¾Gçš„é‚»æ¥çŸ©é˜µ:\n");
+	DispMat(g);					//è¾“å‡ºé‚»æ¥çŸ©é˜µ
 
 	InDs1(g);
 	OutDs1(g);

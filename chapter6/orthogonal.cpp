@@ -1,77 +1,77 @@
-//Ï¡Êè¾ØÕóµÄÊ®×ÖÁ´±í±íÊ¾
+//ç¨€ç–çŸ©é˜µçš„åå­—é“¾è¡¨è¡¨ç¤º
 #include <stdio.h>
 #include <malloc.h>
-#define M 3         			//¾ØÕóĞĞ
-#define N 4           			//¾ØÕóÁĞ
-#define Max ((M)>(N)?(M):(N))   //¾ØÕóĞĞÁĞ½Ï´óÕß
+#define M 3         			//çŸ©é˜µè¡Œ
+#define N 4           			//çŸ©é˜µåˆ—
+#define Max ((M)>(N)?(M):(N))   //çŸ©é˜µè¡Œåˆ—è¾ƒå¤§è€…
 typedef int ElemType;
 typedef struct mtxn 
 { 
-	int row;					//ĞĞºÅ
-	int col;					//ÁĞºÅ
-   	struct mtxn *right,*down;	//ÏòÓÒºÍÏòÏÂµÄÖ¸Õë
+	int row;					//è¡Œå·
+	int col;					//åˆ—å·
+   	struct mtxn *right,*down;	//å‘å³å’Œå‘ä¸‹çš„æŒ‡é’ˆ
 	union 
 	{
 		ElemType value;
 		struct mtxn *link;
 	} tag;
-} MatNode;			//Ê®×ÖÁ´±íÀàĞÍ
-void CreatMat(MatNode *&mh,ElemType a[][N])	//´´½¨aµÄÊ®×ÖÁ´±í
+} MatNode;			//åå­—é“¾è¡¨ç±»å‹
+void CreatMat(MatNode *&mh,ElemType a[][N])	//åˆ›å»ºaçš„åå­—é“¾è¡¨
 {
 	int i,j;
 	MatNode *h[Max],*p,*q,*r;
-	mh=(MatNode *)malloc(sizeof(MatNode));//´´½¨Ê®×ÖÁ´±íµÄÍ·½áµã
+	mh=(MatNode *)malloc(sizeof(MatNode));//åˆ›å»ºåå­—é“¾è¡¨çš„å¤´ç»“ç‚¹
 	mh->row=M;mh->col=N;
-	r=mh;					//rÖ¸ÏòÎ²½áµã
-	for (i=0;i<Max;i++)		//²ÉÓÃÎ²²å·¨´´½¨Í·½áµãh1,h2,¡­Ñ­»·Á´±í
+	r=mh;					//ræŒ‡å‘å°¾ç»“ç‚¹
+	for (i=0;i<Max;i++)		//é‡‡ç”¨å°¾æ’æ³•åˆ›å»ºå¤´ç»“ç‚¹h1,h2,â€¦å¾ªç¯é“¾è¡¨
 	{
 		h[i]=(MatNode *)malloc(sizeof(MatNode));
-		h[i]->down=h[i]->right=h[i];		//½«downºÍright·½ÏòÖÃÎªÑ­»·µÄ
-		r->tag.link=h[i];					//½«h[i]¼Óµ½Á´±íÖĞ
+		h[i]->down=h[i]->right=h[i];		//å°†downå’Œrightæ–¹å‘ç½®ä¸ºå¾ªç¯çš„
+		r->tag.link=h[i];					//å°†h[i]åŠ åˆ°é“¾è¡¨ä¸­
 		r=h[i];
 	}
-	r->tag.link=mh;							//ÖÃÎªÑ­»·Á´±í
-	for (i=0;i<M;i++)						//´¦ÀíÃ¿Ò»ĞĞ
+	r->tag.link=mh;							//ç½®ä¸ºå¾ªç¯é“¾è¡¨
+	for (i=0;i<M;i++)						//å¤„ç†æ¯ä¸€è¡Œ
 	{
-		for (j=0;j<N;j++)					//´¦ÀíÃ¿Ò»ÁĞ
+		for (j=0;j<N;j++)					//å¤„ç†æ¯ä¸€åˆ—
 		{
-			if (a[i][j]!=0)					//´¦Àí·ÇÁãÔªËØ
+			if (a[i][j]!=0)					//å¤„ç†éé›¶å…ƒç´ 
 			{
-				p=(MatNode *)malloc(sizeof(MatNode));	//´´½¨Ò»¸öĞÂ½áµã
+				p=(MatNode *)malloc(sizeof(MatNode));	//åˆ›å»ºä¸€ä¸ªæ–°ç»“ç‚¹
 				p->row=i;p->col=j;p->tag.value=a[i][j];
-				q=h[i];      					//²éÕÒÔÚĞĞ±íÖĞµÄ²åÈëÎ»ÖÃ
+				q=h[i];      					//æŸ¥æ‰¾åœ¨è¡Œè¡¨ä¸­çš„æ’å…¥ä½ç½®
                 while (q->right!=h[i] && q->right->col<j) 
                   	q=q->right;
-				p->right=q->right;q->right=p;	//Íê³ÉĞĞ±íµÄ²åÈë
-				q=h[j];      					//²éÕÒÔÚÁĞ±íÖĞµÄ²åÈëÎ»ÖÃ
+				p->right=q->right;q->right=p;	//å®Œæˆè¡Œè¡¨çš„æ’å…¥
+				q=h[j];      					//æŸ¥æ‰¾åœ¨åˆ—è¡¨ä¸­çš„æ’å…¥ä½ç½®
 				while (q->down!=h[j] && q->down->row<i) 
 					q=q->down;
-				p->down=q->down;q->down=p;  	//Íê³ÉÁĞ±íµÄ²åÈë
+				p->down=q->down;q->down=p;  	//å®Œæˆåˆ—è¡¨çš„æ’å…¥
 			}
 		}
 	}
 }
-void DestroyMat(MatNode *&mh)		//Ïú»ÙÊ®×ÖÁ´±í
+void DestroyMat(MatNode *&mh)		//é”€æ¯åå­—é“¾è¡¨
 {
 	MatNode *pre,*p,*mp;
-	mp=mh->tag.link;				//mpÖ¸Ïòh[i]
-	while (mp!=mh)					//ÊÍ·ÅËùÓĞÊı¾İ½áµã
+	mp=mh->tag.link;				//mpæŒ‡å‘h[i]
+	while (mp!=mh)					//é‡Šæ”¾æ‰€æœ‰æ•°æ®ç»“ç‚¹
 	{
-		pre=mp->right;				//preÖ¸Ïòh[i]µÄĞĞÊ×½áµã
-		if (pre!=mp)				//h[i]²»¿Õ
+		pre=mp->right;				//preæŒ‡å‘h[i]çš„è¡Œé¦–ç»“ç‚¹
+		if (pre!=mp)				//h[i]ä¸ç©º
 		{
-			p=pre->right;			//pÖ¸Ïò½áµãpreµÄºó¼Ì½áµã
+			p=pre->right;			//pæŒ‡å‘ç»“ç‚¹preçš„åç»§ç»“ç‚¹
 			while (p!=mp)
 			{
 				free(pre);
 				pre=p; p=p->right;
 			}
 		}
-		mp=mp->tag.link;			//mpÖ¸ÏòÏÂÒ»¸öÍ·½áµã
+		mp=mp->tag.link;			//mpæŒ‡å‘ä¸‹ä¸€ä¸ªå¤´ç»“ç‚¹
 	}
-	//ÊÍ·ÅËùÓĞµÄÍ·½áµã
-	pre=mh->tag.link;				//preÖ¸Ïòh[i]
-	p=pre->tag.link;				//pÖ¸Ïòh[i+1]
+	//é‡Šæ”¾æ‰€æœ‰çš„å¤´ç»“ç‚¹
+	pre=mh->tag.link;				//preæŒ‡å‘h[i]
+	p=pre->tag.link;				//pæŒ‡å‘h[i+1]
 	while (p!=mh)
 	{
 		free(pre);
@@ -79,15 +79,15 @@ void DestroyMat(MatNode *&mh)		//Ïú»ÙÊ®×ÖÁ´±í
 	}
 	free(mh);
 }
-void DispMat(MatNode *mh)		//Êä³öÊ®×ÖÁ´±í
+void DispMat(MatNode *mh)		//è¾“å‡ºåå­—é“¾è¡¨
 {
 	MatNode *p,*q;
-	printf("ĞĞ=%d  ÁĞ=%d\n", mh->row,mh->col);
+	printf("è¡Œ=%d  åˆ—=%d\n", mh->row,mh->col);
 	p=mh->tag.link;
 	while (p!=mh) 
 	{	
 		q=p->right;
-		while (p!=q) 		//Êä³öÒ»ĞĞ·ÇÁãÔªËØ
+		while (p!=q) 		//è¾“å‡ºä¸€è¡Œéé›¶å…ƒç´ 
 		{
 			printf("%d\t%d\t%d\n", q->row,q->col,q->tag.value);
 			q=q->right;
@@ -95,13 +95,13 @@ void DispMat(MatNode *mh)		//Êä³öÊ®×ÖÁ´±í
 		p=p->tag.link;
 	}
 }
-//±¾Ö÷³ÌĞòÓÃÓÚµ÷ÊÔ
+//æœ¬ä¸»ç¨‹åºç”¨äºè°ƒè¯•
 int main()
 {
 	ElemType a[M][N]={{1,0,0,2},{0,0,3,0},{0,0,0,4}};
 	MatNode *mx;
 	CreatMat(mx,a);
-	printf("aµÄÊ®×ÖÁ´±í:\n");DispMat(mx);
+	printf("açš„åå­—é“¾è¡¨:\n");DispMat(mx);
 	DestroyMat(mx);
 	return 1;
 }

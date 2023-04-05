@@ -2,22 +2,22 @@
 
 void Sub1(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 {	LinkNode *prea=ha,*pa=ha->next,*pb,*p,*post;
-	hc=ha;					//haµÄÍ·½Úµã×÷ÎªhcµÄÍ·½Úµã
-	while (pa!=NULL)			//É¾³ıAÖĞÊôÓÚBµÄ½Úµã
+	hc=ha;					//haçš„å¤´èŠ‚ç‚¹ä½œä¸ºhcçš„å¤´èŠ‚ç‚¹
+	while (pa!=NULL)			//åˆ é™¤Aä¸­å±äºBçš„èŠ‚ç‚¹
 	{	pb=hb->next;
 		while (pb!=NULL && pb->data!=pa->data)
 			pb=pb->next;
-		if (pb!=NULL)			//pa->dataÔÚBÖĞ,´ÓAÖĞÉ¾³ı½Úµãpa
+		if (pb!=NULL)			//pa->dataåœ¨Bä¸­,ä»Aä¸­åˆ é™¤èŠ‚ç‚¹pa
 		{	prea->next=pa->next;
 			free(pa);
 			pa=prea->next;
 		}
 		else
-		{	prea=pa;			//preaºÍpaÍ¬²½ºóÒÆ
+		{	prea=pa;			//preaå’ŒpaåŒæ­¥åç§»
 			pa=pa->next;
 		}
 	}
-	p=hb; post=hb->next;		//ÊÍ·ÅBÖĞËùÓĞ½Úµã
+	p=hb; post=hb->next;		//é‡Šæ”¾Bä¸­æ‰€æœ‰èŠ‚ç‚¹
 	while (post!=NULL)
 	{	free(p);
 		p=post;
@@ -30,21 +30,21 @@ void Sub2(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 {	LinkNode *prea=ha,*pa=ha->next;
 	LinkNode *preb=hb,*pb=hb->next;
 	LinkNode *rc;
-	hc=ha;							//haµÄÍ·½Úµã×÷ÎªhcµÄÍ·½Úµã
+	hc=ha;							//haçš„å¤´èŠ‚ç‚¹ä½œä¸ºhcçš„å¤´èŠ‚ç‚¹
 	rc=hc;
 	while (pa!=NULL && pb!=NULL)
-	{	if (pa->data<pb->data)		//½«½ÏĞ¡µÄ½ÚµãpaÁ´µ½hcÖ®ºó
+	{	if (pa->data<pb->data)		//å°†è¾ƒå°çš„èŠ‚ç‚¹paé“¾åˆ°hcä¹‹å
 		{	rc->next=pa;
 			rc=pa;
-			prea=pa;				//preaºÍpÍ¬²½ºóÒÆ
+			prea=pa;				//preaå’ŒpåŒæ­¥åç§»
 			pa=pa->next;
 		}
-		else if (pa->data>pb->data)	//É¾³ı½Ï´óµÄ½Úµãpb
+		else if (pa->data>pb->data)	//åˆ é™¤è¾ƒå¤§çš„èŠ‚ç‚¹pb
 		{	preb->next=pb->next;
 			free(pb);
 			pb=preb->next;
 		}
-		else						//É¾³ıÏàµÈµÄpa½ÚµãºÍpb½Úµã
+		else						//åˆ é™¤ç›¸ç­‰çš„paèŠ‚ç‚¹å’ŒpbèŠ‚ç‚¹
 		{	prea->next=pa->next;
 			free(pa);
 			pa=prea->next;
@@ -53,13 +53,13 @@ void Sub2(LinkNode *ha,LinkNode *hb,LinkNode *&hc)
 			pb=preb->next;
 		}
 	}
-	while (pb!=NULL)				//É¾³ıpbÓàÏÂµÄ½Úµã
+	while (pb!=NULL)				//åˆ é™¤pbä½™ä¸‹çš„èŠ‚ç‚¹
 	{	preb->next=pb->next;
 		free(pb);
 		pb=preb->next;
 	}
-	free(hb);						//É¾³ıhbµÄÍ·½Úµã
-	rc->next=NULL;					//Î²½ÚµãnextÓòÖÃÎª¿Õ
+	free(hb);						//åˆ é™¤hbçš„å¤´èŠ‚ç‚¹
+	rc->next=NULL;					//å°¾èŠ‚ç‚¹nextåŸŸç½®ä¸ºç©º
 }
 
 

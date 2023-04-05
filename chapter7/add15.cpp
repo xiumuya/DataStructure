@@ -6,23 +6,23 @@ BTNode *postfirst(BTNode *b)
 	if (b!=NULL)
 		while (p->lchild!=NULL || p->rchild!=NULL)
 		{
-			while (p->lchild!=NULL)	//ÏÈÕÒµ½½ÚµãpµÄ×î×óÏÂ½Úµã
+			while (p->lchild!=NULL)	//å…ˆæ‰¾åˆ°èŠ‚ç‚¹pçš„æœ€å·¦ä¸‹èŠ‚ç‚¹
 				p=p->lchild;
-			if (p->rchild!=NULL)	//Èô½ÚµãpÓÐÓÒº¢×Ó£¬×ªÏò¸ÃÓÒº¢×Ó
+			if (p->rchild!=NULL)	//è‹¥èŠ‚ç‚¹pæœ‰å³å­©å­ï¼Œè½¬å‘è¯¥å³å­©å­
 				p=p->rchild;
 		}
-	return p;	//ÕÒµ½µÄµÚÒ»¸öÒ¶×Ó½Úµãp¼´ÎªËùÇó
+	return p;	//æ‰¾åˆ°çš„ç¬¬ä¸€ä¸ªå¶å­èŠ‚ç‚¹på³ä¸ºæ‰€æ±‚
 }
 
 int main()
 {
 	BTNode *b,*p;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶þ²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
 
 	p=postfirst(b);
 	if (p!=NULL)
-		printf("½á¹û:%c\n",p->data);
+		printf("ç»“æžœ:%c\n",p->data);
 
 	DestroyBTree(b);
 	return 1;

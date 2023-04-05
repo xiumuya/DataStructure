@@ -1,20 +1,20 @@
-#include "SqStack.cpp"			//°üº¬Ë³ĞòÕ»µÄ¶¨Òå¼°ÔËËãº¯Êı
+#include "SqStack.cpp"			//åŒ…å«é¡ºåºæ ˆçš„å®šä¹‰åŠè¿ç®—å‡½æ•°
 bool isSerial(char str[],int n)
 {	int i,j;
 	char A[MaxSize],e;
-	SqStack *st;				//½¨Á¢Ò»¸öË³ĞòÕ»
+	SqStack *st;				//å»ºç«‹ä¸€ä¸ªé¡ºåºæ ˆ
 	InitStack(st);
 	for (i=0;i<n;i++)
-		A[i]='a'+i;				//½«abcde·ÅÈëÊı×éAÖĞ
+		A[i]='a'+i;				//å°†abcdeæ”¾å…¥æ•°ç»„Aä¸­
 	i=0;j=0;
 	while (i<n)
 	{
 		Push(st,A[i]);
-		printf("  ÔªËØ%c½øÕ»\n",A[i]);
+		printf("  å…ƒç´ %cè¿›æ ˆ\n",A[i]);
 		i++;	
 		while (!StackEmpty(st) && (GetTop(st,e) && e==str[j]))
 		{	Pop(st,e);
-			printf("  ÔªËØ%c³öÕ»\n",e);
+			printf("  å…ƒç´ %cå‡ºæ ˆ\n",e);
 			j++;
 		}
 	}
@@ -22,7 +22,7 @@ bool isSerial(char str[],int n)
 	DestroyStack(st);
 	return flag;
 }
-void Disp(char str[],int n)			//Êä³östr
+void Disp(char str[],int n)			//è¾“å‡ºstr
 {	int i;
 	for (i=0;i<n;i++)
 		printf("%c",str[i]);
@@ -30,14 +30,14 @@ void Disp(char str[],int n)			//Êä³östr
 int main()
 {	int n=5;
 	char str[]="acbed";
-	Disp(str,n); printf("µÄ²Ù×÷ĞòÁĞ:\n");
+	Disp(str,n); printf("çš„æ“ä½œåºåˆ—:\n");
 	if (isSerial(str,n))
 	{	Disp(str,n);
-		printf("ÊÇºÏÊÊµÄ³öÕ»ĞòÁĞ\n");
+		printf("æ˜¯åˆé€‚çš„å‡ºæ ˆåºåˆ—\n");
 	}
 	else
 	{	Disp(str,n);
-		printf("²»ÊÇºÏÊÊµÄ³öÕ»ĞòÁĞ\n");
+		printf("ä¸æ˜¯åˆé€‚çš„å‡ºæ ˆåºåˆ—\n");
 	}
 	return 1;
 }

@@ -9,9 +9,9 @@ bool Match(char exp[],int n)
 	bool flag=true;
 	while (i<n && flag)
 	{	if (exp[i]=='(' || exp[i]=='[' || exp[i]=='{')
-								//Óöµ½'('¡¢'['»ò'{',Ôò½«Æä½øÕ»
+								//é‡åˆ°'('ã€'['æˆ–'{',åˆ™å°†å…¶è¿›æ ˆ
 			Push(ls,exp[i]);
-		if (exp[i]==')')		//Óöµ½')',ÈôÕ»¶¥ÊÇ'(',Ôò¼ÌÐø´¦Àí,·ñÔòÒÔ²»Åä¶Ô·µ»Ø
+		if (exp[i]==')')		//é‡åˆ°')',è‹¥æ ˆé¡¶æ˜¯'(',åˆ™ç»§ç»­å¤„ç†,å¦åˆ™ä»¥ä¸é…å¯¹è¿”å›ž
 		{
 			if (GetTop(ls,e))
 			{
@@ -20,7 +20,7 @@ bool Match(char exp[],int n)
 			}
 			else flag=false;
 		}
-		if (exp[i]==']')		//Óöµ½']',ÈôÕ»¶¥ÊÇ'[',Ôò¼ÌÐø´¦Àí,·ñÔòÒÔ²»Åä¶Ô·µ»Ø
+		if (exp[i]==']')		//é‡åˆ°']',è‹¥æ ˆé¡¶æ˜¯'[',åˆ™ç»§ç»­å¤„ç†,å¦åˆ™ä»¥ä¸é…å¯¹è¿”å›ž
 		{
 			if (GetTop(ls,e))
 			{
@@ -29,7 +29,7 @@ bool Match(char exp[],int n)
 			}
 			else flag=false;
 		}
-		if (exp[i]=='}')		//Óöµ½'}',ÈôÕ»¶¥ÊÇ'{',Ôò¼ÌÐø´¦Àí,·ñÔòÒÔ²»Åä¶Ô·µ»Ø
+		if (exp[i]=='}')		//é‡åˆ°'}',è‹¥æ ˆé¡¶æ˜¯'{',åˆ™ç»§ç»­å¤„ç†,å¦åˆ™ä»¥ä¸é…å¯¹è¿”å›ž
 		{
 			if (GetTop(ls,e))
 			{
@@ -40,7 +40,7 @@ bool Match(char exp[],int n)
 		}
 		i++;
 	}
-	if (!StackEmpty(ls)) flag=false;		//ÈôÕ»²»¿Õ,Ôò²»Åä¶Ô
+	if (!StackEmpty(ls)) flag=false;		//è‹¥æ ˆä¸ç©º,åˆ™ä¸é…å¯¹
 	DestroyStack(ls);
 	return flag;
 }

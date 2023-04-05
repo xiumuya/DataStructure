@@ -1,10 +1,10 @@
-#include "SqQueue.cpp"			//°üº¬Ë³Ðò¶ÓµÄÀàÐÍ¶¨ÒåºÍÔËËãº¯Êý
+#include "SqQueue.cpp"			//åŒ…å«é¡ºåºé˜Ÿçš„ç±»åž‹å®šä¹‰å’Œè¿ç®—å‡½æ•°
 ElemType Last(SqQueue *qu)
 {	ElemType x;
 	int i,count=(qu->rear-qu->front+MaxSize)%MaxSize;
 	for (i=1;i<=count;i++)
-	{	deQueue(qu,x);		//³ö¶ÓÔªËØx
-		enQueue(qu,x);		//½«ÔªËØx½ø¶Ó
+	{	deQueue(qu,x);		//å‡ºé˜Ÿå…ƒç´ x
+		enQueue(qu,x);		//å°†å…ƒç´ xè¿›é˜Ÿ
 	}
 	return x;
 }
@@ -16,7 +16,7 @@ int main()
 	enQueue(qu,'b');
 	enQueue(qu,'c');
 	enQueue(qu,'d');
-	printf("¶ÓÎ²ÔªËØ:%c\n",Last(qu));
+	printf("é˜Ÿå°¾å…ƒç´ :%c\n",Last(qu));
 	DestroyQueue(qu);
 
 	return 0;

@@ -1,46 +1,46 @@
-#include "seqlist.cpp"			//Ë³Ðò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
-void HeapInsert(RecType R[],KeyType k,int &n)	//½«k²åÈëµ½¶ÑR[1..n]ÖÐ
+void HeapInsert(RecType R[],KeyType k,int &n)	//å°†kæ’å…¥åˆ°å †R[1..n]ä¸­
 {
 	int i,j;
 	n++;
-	R[n].key=k;								//Ôö¼ÓÐÂÖµµ½Ô­±íÎ²²¿ÇÒ±í³¤¼Ó1
+	R[n].key=k;								//å¢žåŠ æ–°å€¼åˆ°åŽŸè¡¨å°¾éƒ¨ä¸”è¡¨é•¿åŠ 1
 	i=n/2;j=n;
-	while (i>0)								//µ÷ÕûÎª¶Ñ
+	while (i>0)								//è°ƒæ•´ä¸ºå †
 	{
 		if (R[i].key<R[j].key)
-			swap(R[i],R[j]);				//½»»»
-		j=i;i=i/2;							//¼ÌÐø×Ôµ×ÏòÉÏ²éÕÒ
+			swap(R[i],R[j]);				//äº¤æ¢
+		j=i;i=i/2;							//ç»§ç»­è‡ªåº•å‘ä¸ŠæŸ¥æ‰¾
 	}
 }
-void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//½¨Á¢¶ÑR[1..n]
+void BuildHeap(RecType R[],KeyType A[],int m,int &n)	//å»ºç«‹å †R[1..n]
 {	int i;
-	n=0;					//nÎª¶ÑÖÐ½Úµã¸öÊý£¬³õÊ¼Ê±Îª0
-	for (i=0;i<m;i++)		//mÎª²åÈëµÄÔªËØ¸öÊý
+	n=0;					//nä¸ºå †ä¸­èŠ‚ç‚¹ä¸ªæ•°ï¼Œåˆå§‹æ—¶ä¸º0
+	for (i=0;i<m;i++)		//mä¸ºæ’å…¥çš„å…ƒç´ ä¸ªæ•°
 		HeapInsert(R,A[i],n);
 }
 
 void sift(RecType R[],int low,int high)
-{	int i=low,j=2*i;						//R[j]ÊÇR[i]µÄ×óº¢×Ó
+{	int i=low,j=2*i;						//R[j]æ˜¯R[i]çš„å·¦å­©å­
 	RecType tmp=R[i];
 	while (j<=high)
-	{	if (j<high && R[j].key<R[j+1].key) 	//ÈôÓÒº¢×Ó½Ï´ó,°ÑjÖ¸ÏòÓÒº¢×Ó
+	{	if (j<high && R[j].key<R[j+1].key) 	//è‹¥å³å­©å­è¾ƒå¤§,æŠŠjæŒ‡å‘å³å­©å­
 			j++;
-		if (tmp.key<R[j].key) 				//Èô¸ù½ÚµãÐ¡ÓÚ×î´óº¢×ÓµÄ¹Ø¼ü×Ö
-		{	R[i]=R[j];					//½«R[j]µ÷Õûµ½Ë«Ç×½ÚµãÎ»ÖÃÉÏ
-			i=j;							//ÐÞ¸ÄiºÍjÖµ,ÒÔ±ã¼ÌÐøÏòÏÂÉ¸Ñ¡
+		if (tmp.key<R[j].key) 				//è‹¥æ ¹èŠ‚ç‚¹å°äºŽæœ€å¤§å­©å­çš„å…³é”®å­—
+		{	R[i]=R[j];					//å°†R[j]è°ƒæ•´åˆ°åŒäº²èŠ‚ç‚¹ä½ç½®ä¸Š
+			i=j;							//ä¿®æ”¹iå’Œjå€¼,ä»¥ä¾¿ç»§ç»­å‘ä¸‹ç­›é€‰
 			j=2*i;
 		}
-		else break;					//Èô¸ù½Úµã´óÓÚµÈÓÚ×î´óº¢×Ó¹Ø¼ü×Ö,É¸Ñ¡½áÊø
+		else break;					//è‹¥æ ¹èŠ‚ç‚¹å¤§äºŽç­‰äºŽæœ€å¤§å­©å­å…³é”®å­—,ç­›é€‰ç»“æŸ
 	}
-	R[i]=tmp;								//±»É¸Ñ¡½Úµã·ÅÈë×îÖÕÎ»ÖÃÉÏ
+	R[i]=tmp;								//è¢«ç­›é€‰èŠ‚ç‚¹æ”¾å…¥æœ€ç»ˆä½ç½®ä¸Š
 }
 
-void HeapDelete(RecType R[],int &n)	//½«R[1]´ÓR[1..n]µÄ¶ÑÖÐÉ¾³ý
+void HeapDelete(RecType R[],int &n)	//å°†R[1]ä»ŽR[1..n]çš„å †ä¸­åˆ é™¤
 {
 	swap(R[1],R[n]);
 	n--;
-	sift(R,1,n);		//µ÷ÓÃ¡¶½Ì³Ì¡·µÄÉ¸Ñ¡Ëã·¨
+	sift(R,1,n);		//è°ƒç”¨ã€Šæ•™ç¨‹ã€‹çš„ç­›é€‰ç®—æ³•
 }
 
 int main()
@@ -50,11 +50,11 @@ int main()
 	int a[]={3,8,7,6,5,4};
 
 	BuildHeap(R,a,m,n);
-	printf("Êä³ö¶ÑR:"); DispList1(R,n);
+	printf("è¾“å‡ºå †R:"); DispList1(R,n);
 	HeapDelete(R,n);
-	printf("É¾³ýÒ»´Î\n");
+	printf("åˆ é™¤ä¸€æ¬¡\n");
 	
-	printf("Êä³ö¶ÑR:"); DispList1(R,n);
+	printf("è¾“å‡ºå †R:"); DispList1(R,n);
 
 	return 1;
 }

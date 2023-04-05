@@ -1,14 +1,14 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void SelectSort1(RecType R[],int n,int m)
 {	int i,j,k;
-	for (i=0;i<m;i++)			//×öµÚiÌËÅÅĞò
+	for (i=0;i<m;i++)			//åšç¬¬iè¶Ÿæ’åº
 	{	k=i;
-		for (j=i+1;j<n;j++)		//ÔÚµ±Ç°ÎŞĞòÇøR[i..n-1]ÖĞÑ¡key×î´óµÄR[k]
+		for (j=i+1;j<n;j++)		//åœ¨å½“å‰æ— åºåŒºR[i..n-1]ä¸­é€‰keyæœ€å¤§çš„R[k]
 			if (R[j].key>R[k].key)
-				k=j;			//k¼ÇÏÂÄ¿Ç°ÕÒµ½µÄ×î´ó¹Ø¼ü×ÖËùÔÚµÄÎ»ÖÃ
+				k=j;			//kè®°ä¸‹ç›®å‰æ‰¾åˆ°çš„æœ€å¤§å…³é”®å­—æ‰€åœ¨çš„ä½ç½®
 		if (k!=i) 
-			swap(R[i],R[k]);	//½»»»R[i]ºÍR[k]
+			swap(R[i],R[k]);	//äº¤æ¢R[i]å’ŒR[k]
 	}
 }
 
@@ -18,12 +18,12 @@ int main()
 	int n=10,m=4;
 	int a[]={2,7,10,6,1,5,9,4,3,8};
 	CreateList(R,a,n);
-	printf("ÅÅĞòÇ°R:"); DispList(R,n);
+	printf("æ’åºå‰R:"); DispList(R,n);
 
 	SelectSort1(R,n,m);
-	printf("Ç°%d¸öÔªËØµİ¼õÅÅĞò\n",m);
+	printf("å‰%dä¸ªå…ƒç´ é€’å‡æ’åº\n",m);
 	
-	printf("ÅÅĞòºóR:"); DispList(R,n);
+	printf("æ’åºåR:"); DispList(R,n);
 	return 1;
 }
 

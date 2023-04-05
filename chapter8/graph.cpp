@@ -1,11 +1,11 @@
-//Í¼µÄ»ù±¾ÔËËãËã·¨
+//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 #include <stdio.h>
 #include <malloc.h>
 #include "graph.h"
 //------------------------------------------------------------
-//----ÁÚ½Ó¾ØÕóµÄ»ù±¾ÔËËãËã·¨----------------------------------
+//----é‚»æ¥çŸ©é˜µçš„åŸºæœ¬è¿ç®—ç®—æ³•----------------------------------
 //------------------------------------------------------------
-void CreateMat(MatGraph &g,int A[MAXV][MAXV],int n,int e) //´´½¨Í¼µÄÁÚ½Ó¾ØÕó
+void CreateMat(MatGraph &g,int A[MAXV][MAXV],int n,int e) //åˆ›å»ºå›¾çš„é‚»æ¥çŸ©é˜µ
 {
 	int i,j;
 	g.n=n; g.e=e;
@@ -13,7 +13,7 @@ void CreateMat(MatGraph &g,int A[MAXV][MAXV],int n,int e) //´´½¨Í¼µÄÁÚ½Ó¾ØÕó
 		for (j=0;j<g.n;j++)
 			g.edges[i][j]=A[i][j];
 }
-void DispMat(MatGraph g)	//Êä³öÁÚ½Ó¾ØÕóg
+void DispMat(MatGraph g)	//è¾“å‡ºé‚»æ¥çŸ©é˜µg
 {
 	int i,j;
 	for (i=0;i<g.n;i++)
@@ -22,34 +22,34 @@ void DispMat(MatGraph g)	//Êä³öÁÚ½Ó¾ØÕóg
 			if (g.edges[i][j]!=INF)
 				printf("%4d",g.edges[i][j]);
 			else
-				printf("%4s","¡Ş");
+				printf("%4s","âˆ");
 		printf("\n");
 	}
 }
 //------------------------------------------------------------
 
 //------------------------------------------------------------
-//----ÁÚ½Ó±íµÄ»ù±¾ÔËËãËã·¨------------------------------------
+//----é‚»æ¥è¡¨çš„åŸºæœ¬è¿ç®—ç®—æ³•------------------------------------
 //------------------------------------------------------------
-void CreateAdj(AdjGraph *&G,int A[MAXV][MAXV],int n,int e) //´´½¨Í¼µÄÁÚ½Ó±í
+void CreateAdj(AdjGraph *&G,int A[MAXV][MAXV],int n,int e) //åˆ›å»ºå›¾çš„é‚»æ¥è¡¨
 {
 	int i,j;
 	ArcNode *p;
 	G=(AdjGraph *)malloc(sizeof(AdjGraph));
-	for (i=0;i<n;i++)						//¸øÁÚ½Ó±íÖĞËùÓĞÍ·½ÚµãµÄÖ¸ÕëÓòÖÃ³õÖµ
+	for (i=0;i<n;i++)						//ç»™é‚»æ¥è¡¨ä¸­æ‰€æœ‰å¤´èŠ‚ç‚¹çš„æŒ‡é’ˆåŸŸç½®åˆå€¼
 		G->adjlist[i].firstarc=NULL;
-	for (i=0;i<n;i++)						//¼ì²éÁÚ½Ó¾ØÕóÖĞÃ¿¸öÔªËØ
+	for (i=0;i<n;i++)						//æ£€æŸ¥é‚»æ¥çŸ©é˜µä¸­æ¯ä¸ªå…ƒç´ 
 		for (j=n-1;j>=0;j--)
-			if (A[i][j]!=0 && A[i][j]!=INF)	//´æÔÚÒ»Ìõ±ß
-			{	p=(ArcNode *)malloc(sizeof(ArcNode));	//´´½¨Ò»¸ö½Úµãp
+			if (A[i][j]!=0 && A[i][j]!=INF)	//å­˜åœ¨ä¸€æ¡è¾¹
+			{	p=(ArcNode *)malloc(sizeof(ArcNode));	//åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹p
 				p->adjvex=j;
 				p->weight=A[i][j];
-				p->nextarc=G->adjlist[i].firstarc;	//²ÉÓÃÍ·²å·¨²åÈë½Úµãp
+				p->nextarc=G->adjlist[i].firstarc;	//é‡‡ç”¨å¤´æ’æ³•æ’å…¥èŠ‚ç‚¹p
 				G->adjlist[i].firstarc=p;
 			}
 	G->n=n; G->e=n;
 }
-void DispAdj(AdjGraph *G)	//Êä³öÁÚ½Ó±íG
+void DispAdj(AdjGraph *G)	//è¾“å‡ºé‚»æ¥è¡¨G
 {
 	int i;
 	ArcNode *p;
@@ -59,26 +59,26 @@ void DispAdj(AdjGraph *G)	//Êä³öÁÚ½Ó±íG
 		printf("%3d: ",i);
 		while (p!=NULL)
 		{
-			printf("%3d[%d]¡ú",p->adjvex,p->weight);
+			printf("%3d[%d]â†’",p->adjvex,p->weight);
 			p=p->nextarc;
 		}
-		printf("¡Ä\n");
+		printf("âˆ§\n");
 	}
 }
-void DestroyAdj(AdjGraph *&G)	//Ïú»ÙÍ¼µÄÁÚ½Ó±í
+void DestroyAdj(AdjGraph *&G)	//é”€æ¯å›¾çš„é‚»æ¥è¡¨
 {	int i;
 	ArcNode *pre,*p;
-	for (i=0;i<G->n;i++)			//É¨ÃèËùÓĞµÄµ¥Á´±í
-	{	pre=G->adjlist[i].firstarc;	//pÖ¸ÏòµÚi¸öµ¥Á´±íµÄÊ×½Úµã
+	for (i=0;i<G->n;i++)			//æ‰«ææ‰€æœ‰çš„å•é“¾è¡¨
+	{	pre=G->adjlist[i].firstarc;	//pæŒ‡å‘ç¬¬iä¸ªå•é“¾è¡¨çš„é¦–èŠ‚ç‚¹
 		if (pre!=NULL)
 		{	p=pre->nextarc;
-			while (p!=NULL)			//ÊÍ·ÅµÚi¸öµ¥Á´±íµÄËùÓĞ±ß½Úµã
+			while (p!=NULL)			//é‡Šæ”¾ç¬¬iä¸ªå•é“¾è¡¨çš„æ‰€æœ‰è¾¹èŠ‚ç‚¹
 			{	free(pre);
 				pre=p; p=p->nextarc;
 			}
 			free(pre);
 		}
 	}
-	free(G);						//ÊÍ·ÅÍ·½ÚµãÊı×é
+	free(G);						//é‡Šæ”¾å¤´èŠ‚ç‚¹æ•°ç»„
 }
 //------------------------------------------------------------

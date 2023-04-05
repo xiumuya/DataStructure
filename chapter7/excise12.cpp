@@ -10,12 +10,12 @@ void Ctree(BTNode *b,SqBTree a,int i)
 }
 
 int LeafNodes(SqBTree t,int i)
-{	//iµÄ³õÖµÎª1
+{	//içš„åˆå€¼ä¸º1
 	int num1,num2,num=0;
 	if (i<MaxSize)
 	{	if (t[i]!='#')
 		{	if (t[2*i]=='#' && t[2*i+1]=='#')
-				num++;			//Ò¶×Ó½áµã¸öÊıÔö1
+				num++;			//å¶å­ç»“ç‚¹ä¸ªæ•°å¢1
 			else
 			{	num1=LeafNodes(t,2*i);
 				num2=LeafNodes(t,2*i+1);
@@ -32,14 +32,14 @@ int LeafNodes(SqBTree t,int i)
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷:");DispBTree(b);printf("\n");
+	printf("äºŒå‰æ ‘:");DispBTree(b);printf("\n");
 	SqBTree a;
 	Ctree(b,a,1);
 	printf("a: ");
 	for(int i=1;i<10;i++)
 		printf("%c",a[i]);
 	printf("\n");
-	printf("Ò¶×Ó½áµã¸öÊı=%d\n",LeafNodes(a,1));
+	printf("å¶å­ç»“ç‚¹ä¸ªæ•°=%d\n",LeafNodes(a,1));
 
 	DestroyBTree(b);
 	return 1;

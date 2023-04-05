@@ -4,17 +4,17 @@ void maxsubstr(SqString s,SqString &t)
 {
 	int maxi=0,maxlen=0,len,i,j,k;
 	i=0;
-	while (i<s.length)				//´ÓÏÂ±êÎªiµÄ×Ö·û¿ªÊ¼
+	while (i<s.length)				//ä»ä¸‹æ ‡ä¸ºiçš„å­—ç¬¦å¼€å§‹
 	{
 		j=i+1;
 		while (j<s.length)
 		{
-			if (s.data[i]==s.data[j]) //ÕÒÒ»¸ö×Ó´®,ÆäÆğÊ¼ÏÂ±êÎªi,³¤¶ÈÎªlen
+			if (s.data[i]==s.data[j]) //æ‰¾ä¸€ä¸ªå­ä¸²,å…¶èµ·å§‹ä¸‹æ ‡ä¸ºi,é•¿åº¦ä¸ºlen
 			{
 				len=1;
 				for(k=1;s.data[i+k]==s.data[j+k];k++)
 					len++;
-				if (len>maxlen)		//½«½Ï´ó³¤¶ÈÕß¸³¸ømaxiÓëmaxlen
+				if (len>maxlen)		//å°†è¾ƒå¤§é•¿åº¦è€…èµ‹ç»™maxiä¸maxlen
 				{
 					maxi=i;
 					maxlen=len;
@@ -23,9 +23,9 @@ void maxsubstr(SqString s,SqString &t)
 			}
 			else j++;
 		}
-		i++;						//¼ÌĞøÉ¨ÃèµÚi×Ö·ûÖ®ºóµÄ×Ö·û
+		i++;						//ç»§ç»­æ‰«æç¬¬iå­—ç¬¦ä¹‹åçš„å­—ç¬¦
 	}
-	t.length=maxlen;				//½«×î³¤ÖØ¸´×Ó´®¸³¸øt
+	t.length=maxlen;				//å°†æœ€é•¿é‡å¤å­ä¸²èµ‹ç»™t
 	for (i=0;i<maxlen;i++)
 		t.data[i]=s.data[maxi+i];
 }

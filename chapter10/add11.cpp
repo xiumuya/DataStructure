@@ -1,13 +1,13 @@
-#include "seqlist.cpp"			//Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"			//é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void CountSort(RecType A[],RecType B[],int n)
 {	int i,j,count;
 	for (i=0;i<n;i++) 
 	{	count=0;
 		for (j=0;j<n;j++)
-			if (A[j].key<A[i].key)	//Í³¼ÆĞ¡ÓÚA[i].keyµÄ¼ÇÂ¼¸öÊı
+			if (A[j].key<A[i].key)	//ç»Ÿè®¡å°äºA[i].keyçš„è®°å½•ä¸ªæ•°
 				count++;
-		B[count]=A[i];				//A[i]Ó¦ÎªµÚcount´óµÄ¼ÇÂ¼
+		B[count]=A[i];				//A[i]åº”ä¸ºç¬¬countå¤§çš„è®°å½•
 	}
 }
 

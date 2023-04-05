@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MaxSize 10
-int n,r;					//»´æ÷±‰¡ø
-void print(int a[])		// ‰≥ˆ“ª∏ˆ◊È∫œ
+int n,r;					//ÂÖ®Â±ÄÂèòÈáè
+void print(int a[])		//ËæìÂá∫‰∏Ä‰∏™ÁªÑÂêà
 {	int j;
 	for (j=r-1;j>=0;j--)
 		printf("%d ",a[j]);
@@ -19,9 +19,9 @@ void comb(int a[],int m,int k)
 }
 int main()
 {	int a[MaxSize];
-	printf(" ‰»În,r(r<=n):");
+	printf("ËæìÂÖ•n,r(r<=n):");
 	scanf("%d%d",&n,&r);
-	printf("1..%d÷–%d∏ˆµƒ◊È∫œΩ·π˚»Áœ¬:\n",n,r);
+	printf("1..%d‰∏≠%d‰∏™ÁöÑÁªÑÂêàÁªìÊûúÂ¶Ç‰∏ã:\n",n,r);
 	comb(a,n,r);
 	printf("\n");
 	return 1;

@@ -1,28 +1,28 @@
-#include "graph.cpp"				//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"				//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
-int visited[MAXV];					//È«¾Ö±äÁ¿Êı×é
+int visited[MAXV];					//å…¨å±€å˜é‡æ•°ç»„
 void Cycle(AdjGraph *G,int u,int v,int d,bool &has)
-{	//µ÷ÓÃÊ±hasÖÃ³õÖµfalse,dÎª-1
+{	//è°ƒç”¨æ—¶hasç½®åˆå€¼false,dä¸º-1
 	ArcNode *p;	int w;
-	visited[u]=1; d++;				//ÖÃÒÑ·ÃÎÊ±ê¼Ç
-	p=G->adjlist[u].firstarc;		//pÖ¸Ïò¶¥µãuµÄµÚÒ»¸öÁÚ½Óµã
+	visited[u]=1; d++;				//ç½®å·²è®¿é—®æ ‡è®°
+	p=G->adjlist[u].firstarc;		//pæŒ‡å‘é¡¶ç‚¹uçš„ç¬¬ä¸€ä¸ªé‚»æ¥ç‚¹
 	while (p!=NULL)
 	{	w=p->adjvex;
-		if (visited[w]==0)			//Èô¶¥µãwÎ´·ÃÎÊ,µİ¹é·ÃÎÊËü
-			Cycle(G,w,v,d,has);		//´Ó¶¥µãw³ö·¢ËÑË÷
-		else if (w==v && d>1)		//uµ½v´æÔÚÒ»Ìõ±ßÇÒ»ØÂ·³¤¶È´óÓÚ1
+		if (visited[w]==0)			//è‹¥é¡¶ç‚¹wæœªè®¿é—®,é€’å½’è®¿é—®å®ƒ
+			Cycle(G,w,v,d,has);		//ä»é¡¶ç‚¹wå‡ºå‘æœç´¢
+		else if (w==v && d>1)		//uåˆ°vå­˜åœ¨ä¸€æ¡è¾¹ä¸”å›è·¯é•¿åº¦å¤§äº1
 		{
 			has=true;
 			return;
 		}
-		p=p->nextarc;				//ÕÒÏÂÒ»¸öÁÚ½Óµã
+		p=p->nextarc;				//æ‰¾ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹
 	}
 }
 
-bool hasCycle(AdjGraph *G,int v)   //ÅĞ¶ÏÁ¬Í¨Í¼GÖĞÊÇ·ñÓĞ¾­¹ı¶¥µãvµÄ»ØÂ·
+bool hasCycle(AdjGraph *G,int v)   //åˆ¤æ–­è¿é€šå›¾Gä¸­æ˜¯å¦æœ‰ç»è¿‡é¡¶ç‚¹vçš„å›è·¯
 {
 	bool has=false;
-	Cycle(G,v,v,-1,has);			//´Ó¶¥µãv³ö·¢ËÑË÷	
+	Cycle(G,v,v,-1,has);			//ä»é¡¶ç‚¹vå‡ºå‘æœç´¢	
 	return has;
 }
 
@@ -36,14 +36,14 @@ int main()
 		{1,1,0,0}};
 	int n=4, e=4;
 	CreateAdj(G,A,n,e);
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±í
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨
 	for (int i=0;i<n;i++)
 		visited[i]=0;
 	if (hasCycle(G,3))
-		printf("GÖĞ´æÔÚ»ØÂ·\n");
+		printf("Gä¸­å­˜åœ¨å›è·¯\n");
 	else
-		printf("GÖĞÃ»ÓĞ»ØÂ·\n");
+		printf("Gä¸­æ²¡æœ‰å›è·¯\n");
 
 	DestroyAdj(G);
 

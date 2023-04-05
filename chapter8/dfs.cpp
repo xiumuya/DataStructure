@@ -1,17 +1,17 @@
-//Éî¶ÈÓÅÏÈ±éÀúËã·¨
+//æ·±åº¦ä¼˜å…ˆéå†ç®—æ³•
 #include "graph.cpp"
 int visited[MAXV]={0};
 void DFS(AdjGraph *G,int v)  
 {
 	ArcNode *p;
-	visited[v]=1;                   //ÖÃÒÑ·ÃÎÊ±ê¼Ç
-	printf("%d  ",v); 				//Êä³ö±»·ÃÎÊ¶¥µãµÄ±àºÅ
-	p=G->adjlist[v].firstarc;      	//pÖ¸Ïò¶¥µãvµÄµÚÒ»Ìõ»¡µÄ»¡Í·½áµã
+	visited[v]=1;                   //ç½®å·²è®¿é—®æ ‡è®°
+	printf("%d  ",v); 				//è¾“å‡ºè¢«è®¿é—®é¡¶ç‚¹çš„ç¼–å·
+	p=G->adjlist[v].firstarc;      	//pæŒ‡å‘é¡¶ç‚¹vçš„ç¬¬ä¸€æ¡å¼§çš„å¼§å¤´ç»“ç‚¹
 	while (p!=NULL) 
 	{
-		if (visited[p->adjvex]==0)	//Èôp->adjvex¶¥µãÎ´·ÃÎÊ,µİ¹é·ÃÎÊËü
+		if (visited[p->adjvex]==0)	//è‹¥p->adjvexé¡¶ç‚¹æœªè®¿é—®,é€’å½’è®¿é—®å®ƒ
 			DFS(G,p->adjvex);    
-		p=p->nextarc;              	//pÖ¸Ïò¶¥µãvµÄÏÂÒ»Ìõ»¡µÄ»¡Í·½áµã
+		p=p->nextarc;              	//pæŒ‡å‘é¡¶ç‚¹vçš„ä¸‹ä¸€æ¡å¼§çš„å¼§å¤´ç»“ç‚¹
 	}
 }
 
@@ -21,10 +21,10 @@ int main()
 	int A[MAXV][MAXV]={{0,1,0,1,1},{1,0,1,1,0},
 			{0,1,0,1,1},{1,1,1,0,1},{1,0,1,1,0}};
 	int n=5, e=8;
-	CreateAdj(G,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.1(a)µÄÁÚ½Ó±í
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±íG
-	printf("Éî¶ÈÓÅÏÈĞòÁĞ:");DFS(G,2);printf("\n");
-	DestroyAdj(G);				//Ïú»ÙÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.1(a)çš„é‚»æ¥è¡¨
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨G
+	printf("æ·±åº¦ä¼˜å…ˆåºåˆ—:");DFS(G,2);printf("\n");
+	DestroyAdj(G);				//é”€æ¯é‚»æ¥è¡¨
 	return 1;
 }

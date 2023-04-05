@@ -1,49 +1,49 @@
-//˫���������㷨
+//双链表运算算法
 #include <stdio.h>
 #include <malloc.h>
 typedef int ElemType;
-typedef struct DNode		//����˫�����ڵ�����
+typedef struct DNode		//定义双链表节点类型
 {
 	ElemType data;
-	struct DNode *prior;	//ָ��ǰ���ڵ�
-	struct DNode *next;		//ָ���̽ڵ�
-	int freq;				//����2.11��
+	struct DNode *prior;	//指向前驱节点
+	struct DNode *next;		//指向后继节点
+	int freq;				//用于2.11题
 } DLinkNode;
 void CreateListF(DLinkNode *&L,ElemType a[],int n)
-//ͷ�巨��˫����
+//头插法建双链表
 {
 	DLinkNode *s;int i;
-	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//����ͷ�ڵ�
+	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//创建头节点
 	L->prior=L->next=NULL;
 	for (i=0;i<n;i++)
 	{	
-		s=(DLinkNode *)malloc(sizeof(DLinkNode));//�����½ڵ�
+		s=(DLinkNode *)malloc(sizeof(DLinkNode));//创建新节点
 		s->data=a[i];
-		s->next=L->next;			//���ڵ�s����ԭ��ʼ�ڵ�֮ǰ,ͷ�ڵ�֮��
+		s->next=L->next;			//将节点s插在原开始节点之前,头节点之后
 		if (L->next!=NULL) L->next->prior=s;
 		L->next=s;s->prior=L;
 	}
 }
 void CreateListR(DLinkNode *&L,ElemType a[],int n)
-//β�巨��˫����
+//尾插法建双链表
 {
 	DLinkNode *s,*r;int i;
-	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//����ͷ�ڵ�
+	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//创建头节点
 	L->prior=L->next=NULL;
-	r=L;					//rʼ��ָ���ն˽ڵ�,��ʼʱָ��ͷ�ڵ�
+	r=L;					//r始终指向终端节点,开始时指向头节点
 	for (i=0;i<n;i++)
 	{	
-		s=(DLinkNode *)malloc(sizeof(DLinkNode));//�����½ڵ�
+		s=(DLinkNode *)malloc(sizeof(DLinkNode));//创建新节点
 		s->data=a[i];
-		s->freq=0;					//����2.11��
-		r->next=s;s->prior=r;	//���ڵ�s����ڵ�r֮��
+		s->freq=0;					//用于2.11题
+		r->next=s;s->prior=r;	//将节点s插入节点r之后
 		r=s;
 	}
-	r->next=NULL;				//β�ڵ�next����ΪNULL
+	r->next=NULL;				//尾节点next域置为NULL
 }
 void InitList(DLinkNode *&L)
 {
-	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//����ͷ�ڵ�
+	L=(DLinkNode *)malloc(sizeof(DLinkNode));  	//创建头节点
 	L->prior=L->next=NULL;
 }
 void DestroyList(DLinkNode *&L)
@@ -77,7 +77,7 @@ void DispList(DLinkNode *L)
 	DLinkNode *p=L->next;
 	while (p!=NULL)
 	{
-		printf("%d[%d] ",p->data,p->freq);		//������ϰ��
+		printf("%d[%d] ",p->data,p->freq);		//用于练习题
 		//printf("%d ",p->data);
 		p=p->next;
 	}
@@ -123,13 +123,13 @@ bool ListInsert(DLinkNode *&L,int i,ElemType e)
 		j++;
 		p=p->next;
 	}
-	if (p==NULL)				//δ�ҵ���i-1���ڵ�
+	if (p==NULL)				//未找到第i-1个节点
 		return false;
-	else						//�ҵ���i-1���ڵ�p
+	else						//找到第i-1个节点p
 	{
-		s=(DLinkNode *)malloc(sizeof(DLinkNode));	//�����½ڵ�s
+		s=(DLinkNode *)malloc(sizeof(DLinkNode));	//创建新节点s
 		s->data=e;	
-		s->next=p->next;		//���ڵ�s���뵽�ڵ�p֮��
+		s->next=p->next;		//将节点s插入到节点p之后
 		if (p->next!=NULL) 
 			p->next->prior=s;
 		s->prior=p;
@@ -146,17 +146,17 @@ bool ListDelete(DLinkNode *&L,int i,ElemType &e)
 		j++;
 		p=p->next;
 	}
-	if (p==NULL)				//δ�ҵ���i-1���ڵ�
+	if (p==NULL)				//未找到第i-1个节点
 		return false;
-	else						//�ҵ���i-1���ڵ�p
+	else						//找到第i-1个节点p
 	{
-		q=p->next;				//qָ��Ҫɾ���Ľڵ�
+		q=p->next;				//q指向要删除的节点
 		if (q==NULL) 
-			return false;		//�����ڵ�i���ڵ�
+			return false;		//不存在第i个节点
 		e=q->data;
-		p->next=q->next;		//�ӵ�������ɾ��*q�ڵ�
+		p->next=q->next;		//从单链表中删除*q节点
 		if (p->next!=NULL) p->next->prior=p;
-		free(q);				//�ͷ�q�ڵ�
+		free(q);				//释放q节点
 		return true;
 	}
 }

@@ -4,20 +4,20 @@ int DSonNodes(BTNode *b)
 	if (b==NULL)
 		return 0;
 	else if (b->lchild!=NULL && b->rchild!=NULL)
-		n=1;					//ÎªË«·ÖÖ§½áµã
+		n=1;					//ä¸ºåŒåˆ†æ”¯ç»“ç‚¹
 	else 
-		n=0;					//ÆäËû
-	num1=DSonNodes(b->lchild);	//µİ¹éÇó×ó×ÓÊ÷µÄË«·ÖÖ§½áµãÊı
-	num2=DSonNodes(b->rchild);	//µİ¹éÇóÓÒ×ÓÊ÷µÄË«·ÖÖ§½áµãÊı
+		n=0;					//å…¶ä»–
+	num1=DSonNodes(b->lchild);	//é€’å½’æ±‚å·¦å­æ ‘çš„åŒåˆ†æ”¯ç»“ç‚¹æ•°
+	num2=DSonNodes(b->rchild);	//é€’å½’æ±‚å³å­æ ‘çš„åŒåˆ†æ”¯ç»“ç‚¹æ•°
 	return (num1+num2+n);
 }
 
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
-	printf("Ë«·ÖÖ§½Úµã¸öÊı:%d\n",DSonNodes(b));
+	printf("åŒåˆ†æ”¯èŠ‚ç‚¹ä¸ªæ•°:%d\n",DSonNodes(b));
 	DestroyBTree(b);
 	return 1;
 }

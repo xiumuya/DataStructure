@@ -2,31 +2,31 @@
 #define MaxSize 100
 void fun1()
 {	int i,n,x;
-	int st[MaxSize],top=-1;			//Õ»ºÍÕ»Ö¸Õë
-	int qu[MaxSize],front=0,rear=0;	//¶ÓÁÐºÍ¶ÓÖ¸Õë
+	int st[MaxSize],top=-1;			//æ ˆå’Œæ ˆæŒ‡é’ˆ
+	int qu[MaxSize],front=0,rear=0;	//é˜Ÿåˆ—å’Œé˜ŸæŒ‡é’ˆ
 	printf("n:");
 	scanf("%d",&n);
 	for (i=0;i<n;i++)
-	{	printf("µÚ%d¸ö³µÆ¤±àºÅ:",i+1);
+	{	printf("ç¬¬%dä¸ªè½¦çš®ç¼–å·:",i+1);
 		scanf("%d",&x);
-		if (x%2==1)		//±àºÅÎªÆæÊý,Ôò½ø¶ÓÁÐ
+		if (x%2==1)		//ç¼–å·ä¸ºå¥‡æ•°,åˆ™è¿›é˜Ÿåˆ—
 		{	qu[rear]=x;
-			printf("  %d½ø¶Ó\n",x);
+			printf("  %dè¿›é˜Ÿ\n",x);
 			rear++;
 		}
-		else			//±àºÅÎªÅ¼Êý,Ôò½øÕ»
+		else			//ç¼–å·ä¸ºå¶æ•°,åˆ™è¿›æ ˆ
 		{	top++;
 			st[top]=x;
-			printf("  %d½øÕ»\n",x);
+			printf("  %dè¿›æ ˆ\n",x);
 		}
 	}
-	printf("³ö¹ì²Ù×÷:\n  ");
-	while (front!=rear)		//¶ÓÁÐÖÐËùÓÐÔªËØ³ö¶Ó
-	{	printf("%d³ö¶Ó ",qu[front]);
+	printf("å‡ºè½¨æ“ä½œ:\n  ");
+	while (front!=rear)		//é˜Ÿåˆ—ä¸­æ‰€æœ‰å…ƒç´ å‡ºé˜Ÿ
+	{	printf("%då‡ºé˜Ÿ ",qu[front]);
 		front++;
 	}
-	while (top>=0)			//Õ»ÖÐËùÓÐÔªËØ³öÕ»
-	{	printf("%d³öÕ» ",st[top]);
+	while (top>=0)			//æ ˆä¸­æ‰€æœ‰å…ƒç´ å‡ºæ ˆ
+	{	printf("%då‡ºæ ˆ ",st[top]);
 		top--;
 	}
 	printf("\n");

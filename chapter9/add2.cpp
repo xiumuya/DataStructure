@@ -1,4 +1,4 @@
-#include "seqlist.cpp"   //Ë³Ğò±í»ù±¾ÔËËãËã·¨
+#include "seqlist.cpp"   //é¡ºåºè¡¨åŸºæœ¬è¿ç®—ç®—æ³•
 
 void swap(RecType &x,RecType &y)
 {
@@ -10,14 +10,14 @@ int SeqSearch2(RecType R[],int n,KeyType k)
 {	int i=0;
 	while (i<n && R[i].key!=k)
 		i++;
-	if (i<n)				//ÕÒµ½ÁË¹Ø¼ü×ÖÎªkµÄÔªËØR[i]
+	if (i<n)				//æ‰¾åˆ°äº†å…³é”®å­—ä¸ºkçš„å…ƒç´ R[i]
 	{
-		if (i>0)			//i>0Ê±R[i]Ç°ÒÆÒ»Î»
+		if (i>0)			//i>0æ—¶R[i]å‰ç§»ä¸€ä½
 		{
 			swap(R[i], R[i-1]);
-			return i;		//·µ»ØR[i]ĞÂÎ»ÖÃµÄÂß¼­ĞòºÅ
+			return i;		//è¿”å›R[i]æ–°ä½ç½®çš„é€»è¾‘åºå·
 		}
-		else return i+1;	//i=0Ê±²»ÄÜÒÆ¶¯R[i]£¬·µ»Ø1
+		else return i+1;	//i=0æ—¶ä¸èƒ½ç§»åŠ¨R[i]ï¼Œè¿”å›1
 	}
 	return 0;
 }
@@ -33,13 +33,13 @@ int main()
 	KeyType k;
 	while (true)
 	{
-		printf("k(ÊäÈë-1½áÊø):"); scanf("%d",&k);
+		printf("k(è¾“å…¥-1ç»“æŸ):"); scanf("%d",&k);
 		if (k==-1) break;
 		i=SeqSearch2(R,n,k);
 		if (i>0)
-			printf("½á¹û:R[%d]=%d\n",i,k);
+			printf("ç»“æœ:R[%d]=%d\n",i,k);
 		else
-			printf("Î´ÕÒµ½%d\n",k);
+			printf("æœªæ‰¾åˆ°%d\n",k);
 		printf("R:"); DispList(R,n);
 	}
 

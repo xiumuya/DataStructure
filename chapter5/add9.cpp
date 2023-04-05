@@ -2,50 +2,50 @@
 #include <string.h>
 const int MAX=100;
 char c[MAX][3];
-int st=0,sp,n;			//È«¾Ö±äÁ¿£¬st¼ÇÂ¼ÒÆ¶¯µÄ²½Öè£¬spÖ¸ÏòÎª'-'µÄÆå×Ó
-void print()				//Êä³öÒ»¸öÒÆ¶¯²½Öè
+int st=0,sp,n;			//å…¨å±€å˜é‡ï¼Œstè®°å½•ç§»åŠ¨çš„æ­¥éª¤ï¼ŒspæŒ‡å‘ä¸º'-'çš„æ£‹å­
+void print()				//è¾“å‡ºä¸€ä¸ªç§»åŠ¨æ­¥éª¤
 {	printf("  step%-2d:",++st);
 	for (int i=1;i<=2*n+2;i++)
 		printf("%s",c[i]);
 	printf("\n");
 }
-void mvtosp(int k)		//½«c[k]ºÍc[k+1]Á½¸öÆå×ÓÓë'--'½»»»
+void mvtosp(int k)		//å°†c[k]å’Œc[k+1]ä¸¤ä¸ªæ£‹å­ä¸'--'äº¤æ¢
 {	for (int j=0;j<=1;j++)
 	{	strcpy(c[sp+j],c[k+j]);
-		strcpy(c[k+j],"¨D");
+		strcpy(c[k+j],"â€•");
 	}
-	sp=k;			//spÖ¸Ïò"--"µÄÆå×Ó
-	print();			//Êä³öÒ»¸ö½â
+	sp=k;			//spæŒ‡å‘"--"çš„æ£‹å­
+	print();			//è¾“å‡ºä¸€ä¸ªè§£
 }
-void mv(int n)		//Çó½â2n¸öÆå×ÓÒÆ¶¯ÎÊÌâ
-{	if (n==4)			//µİ¹é³ö¿Ú
+void mv(int n)		//æ±‚è§£2nä¸ªæ£‹å­ç§»åŠ¨é—®é¢˜
+{	if (n==4)			//é€’å½’å‡ºå£
 	{	mvtosp(4); mvtosp(8); mvtosp(2);
 		mvtosp(7); mvtosp(1);
 	}
-	else				//Çó½ân>4µÄÇé¿ö
+	else				//æ±‚è§£n>4çš„æƒ…å†µ
 	{	mvtosp(n);
 		mvtosp(2*n-1);
 		mv(n-1); 
 	}
 }
-void init(int n)		//³õÊ¼»¯cÊı×é
+void init(int n)		//åˆå§‹åŒ–cæ•°ç»„
 {	int i;
 	st=0;
-	sp=2*n+1;			//spÖ¸ÏòµÚ2n+1µÄÆå×Ó£¬¼´"--"
+	sp=2*n+1;			//spæŒ‡å‘ç¬¬2n+1çš„æ£‹å­ï¼Œå³"--"
 	for (i=1;i<=n;i++)
-		strcpy(c[i],"¡ğ");
+		strcpy(c[i],"â—‹");
 	for (i=n+1;i<=2*n;i++)
-		strcpy(c[i],"¡ñ");
-	strcpy(c[2*n+1],"¨D");
-	strcpy(c[2*n+2],"¨D");
+		strcpy(c[i],"â—");
+	strcpy(c[2*n+1],"â€•");
+	strcpy(c[2*n+2],"â€•");
 }
 int main()
 {	do
-	{	printf("ÊäÈënÖµ(4-20):");
+	{	printf("è¾“å…¥nå€¼(4-20):");
 		scanf("%d",&n);
 	} while (n>20 || n<4);
 	init(n);
-	printf("ÒÆ¶¯¹ı³ÌÈçÏÂ:\n");
+	printf("ç§»åŠ¨è¿‡ç¨‹å¦‚ä¸‹:\n");
 	mv(n);
 	printf("\n");
 	return 1;

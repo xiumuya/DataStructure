@@ -3,20 +3,20 @@
 bool LocateNode(DLinkNode *h,ElemType x)
 {	DLinkNode *p=h->next,*pre;
 	while (p!=NULL && p->data!=x)
-		p=p->next;							//ÕÒdataÓòÖµÎªxµÄ½Úµãp
-	if (p==NULL)							//Î´ÕÒµ½µÄÇé¿ö
+		p=p->next;							//æ‰¾dataåŸŸå€¼ä¸ºxçš„èŠ‚ç‚¹p
+	if (p==NULL)							//æœªæ‰¾åˆ°çš„æƒ…å†µ
 		return false;
-	else									//ÕÒµ½µÄÇé¿ö
-	{	p->freq++;							//Æµ¶ÈÔö1
-		pre=p->prior;						//½ÚµãpreÎª½ÚµãpµÄÇ°Çı½Úµã
+	else									//æ‰¾åˆ°çš„æƒ…å†µ
+	{	p->freq++;							//é¢‘åº¦å¢1
+		pre=p->prior;						//èŠ‚ç‚¹preä¸ºèŠ‚ç‚¹pçš„å‰é©±èŠ‚ç‚¹
 		while (pre!=h && pre->freq<p->freq) 
 		{	p->prior=pre->prior;
-			p->prior->next=p;				//½»»»½ÚµãpºÍ½ÚµãpreµÄÎ»ÖÃ
+			p->prior->next=p;				//äº¤æ¢èŠ‚ç‚¹på’ŒèŠ‚ç‚¹preçš„ä½ç½®
 			pre->next=p->next;
-			if (pre->next!=NULL)			//Èôp½Úµã²»ÊÇÎ²½ÚµãÊ±
+			if (pre->next!=NULL)			//è‹¥pèŠ‚ç‚¹ä¸æ˜¯å°¾èŠ‚ç‚¹æ—¶
 				pre->next->prior=pre;
 			p->next=pre;pre->prior=p;
-			pre=p->prior;					//qÖØÖ¸Ïò½ÚµãpµÄÇ°Çı½Úµã
+			pre=p->prior;					//qé‡æŒ‡å‘èŠ‚ç‚¹pçš„å‰é©±èŠ‚ç‚¹
 		}
 		return true;
 	}
@@ -31,7 +31,7 @@ int main()
 	printf("L:");DispList(L);
 	while (true)
 	{
-		printf("(-1ÍË³ö)x:"); scanf("%d",&x);
+		printf("(-1é€€å‡º)x:"); scanf("%d",&x);
 		if (x==-1) break;
 		LocateNode(L,x);
 		printf("L:");DispList(L);

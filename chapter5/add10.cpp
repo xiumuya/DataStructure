@@ -3,26 +3,26 @@
 struct stacknode
 {	int data[MaxSize];
 	int top;
-} st;							//ȫ�ֱ���������˳��ջ
-int n=4;					//ȫ�ֱ����������������е�Ԫ�ظ���
-char str[]="abcd";				//ȫ�ֱ�����ָ����ջ����
-int sum=0;						//ȫ�ֱ������ۼƳ�ջ���и���
-//---------ջ����--------------------------------
-void initstack()				//��ʼ��˳��ջ
+} st;							//全局变量，定义顺序栈
+int n=4;					//全局变量，定义输入序列的元素个数
+char str[]="abcd";				//全局变量，指定进栈序列
+int sum=0;						//全局变量，累计出栈序列个数
+//---------栈操作--------------------------------
+void initstack()				//初始化顺序栈
 {
 	st.top=-1;
 }
-void push(int x)					//Ԫ��x��ջ����
+void push(int x)					//元素x进栈运算
 {	st.top++;
 	st.data[st.top]=x;
 }
-int pop()							//��ջ����
+int pop()							//退栈运算
 {	int temp;
 	temp=st.data[st.top];
 	st.top--;
 	return temp;
 }
-bool empty()						//�ж�ջ�շ�����
+bool empty()						//判断栈空否运算
 {	if (st.top==-1)
 		return true;
 	else
@@ -30,33 +30,33 @@ bool empty()						//�ж�ջ�շ�����
 }
 //---------------------------------------------
 
-void process(int i,int a[],int j)		//����C������iλ�õ�Ԫ��
+void process(int i,int a[],int j)		//处理C序列中i位置的元素
 {	int x,k;
-	if (i>=n && empty())				//���һ�ֿ��ܵķ���
+	if (i>=n && empty())				//输出一种可能的方案
 	{	printf("  ");
-		for (k=0;k<j;k++)				//���a�е�Ԫ�����У�����һ�ֳ�ջ����
+		for (k=0;k<j;k++)				//输出a中的元素序列，构成一种出栈序列
 			printf("%c ",str[a[k]]);
 		printf("\n");
-		sum++;							//��ջ���и�����1
+		sum++;							//出栈序列个数增1
 	}
-	if (i<n)							//���i��Ԫ�ؽ�ջʱ�ݹ�
-	{	push(i);						//i��ջ
-		process(i+1,a,j);				//�ݹ飺�Ӹ�״̬�����������ƵĲ���
-		pop();							//��ջ�Իָ�����
+	if (i<n)							//编号i的元素进栈时递归
+	{	push(i);						//i进栈
+		process(i+1,a,j);				//递归：从该状态继续进行类似的操作
+		pop();							//出栈以恢复环境
 	}
-	if (!empty())		 				//��ջʱ�ݹ�
-	{	x=pop();						//��ջx
-		a[j]=x;							//��x�����a��
-		j++;							//a��Ԫ�ظ�����1
-		process(i,a,j);					//�ݹ飺�Ӹ�״̬�����������ƵĲ���
-		push(x);						//��ջ�Իָ�����
+	if (!empty())		 				//出栈时递归
+	{	x=pop();						//出栈x
+		a[j]=x;							//将x输出到a中
+		j++;							//a中元素个数增1
+		process(i,a,j);					//递归：从该状态继续进行类似的操作
+		push(x);						//进栈以恢复环境
 	}
 }
 int main()
 {	int a[MaxSize];
 	initstack();
-	printf("���г�ջ����:\n");
-	process(0,a,0);					//i��0��ʼ��j��0��ʼ
-	printf("��ջ���и���:%d\n",sum);
+	printf("所有出栈序列:\n");
+	process(0,a,0);					//i从0开始，j从0开始
+	printf("出栈序列个数:%d\n",sum);
 	return 1;
 }

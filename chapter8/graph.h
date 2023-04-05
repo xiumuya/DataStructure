@@ -1,31 +1,31 @@
-//Í¼µÄÁ½ÖÖ´æ´¢½á¹¹
-#define INF 32767				//¶¨Òå¡Ş
-#define	MAXV 100				//×î´ó¶¥µã¸öÊı
+//å›¾çš„ä¸¤ç§å­˜å‚¨ç»“æ„
+#define INF 32767				//å®šä¹‰âˆ
+#define	MAXV 100				//æœ€å¤§é¡¶ç‚¹ä¸ªæ•°
 typedef char InfoType;
 
-//ÒÔÏÂ¶¨ÒåÁÚ½Ó¾ØÕóÀàĞÍ
+//ä»¥ä¸‹å®šä¹‰é‚»æ¥çŸ©é˜µç±»å‹
 typedef struct
-{	int no;						//¶¥µã±àºÅ
-	InfoType info;				//¶¥µãÆäËûĞÅÏ¢
-} VertexType;					//¶¥µãÀàĞÍ
+{	int no;						//é¡¶ç‚¹ç¼–å·
+	InfoType info;				//é¡¶ç‚¹å…¶ä»–ä¿¡æ¯
+} VertexType;					//é¡¶ç‚¹ç±»å‹
 typedef struct
-{	int edges[MAXV][MAXV];		//ÁÚ½Ó¾ØÕóÊı×é
-	int n,e;					//¶¥µãÊı£¬±ßÊı
-	VertexType vexs[MAXV];		//´æ·Å¶¥µãĞÅÏ¢
-} MatGraph;						//ÍêÕûµÄÍ¼ÁÚ½Ó¾ØÕóÀàĞÍ
+{	int edges[MAXV][MAXV];		//é‚»æ¥çŸ©é˜µæ•°ç»„
+	int n,e;					//é¡¶ç‚¹æ•°ï¼Œè¾¹æ•°
+	VertexType vexs[MAXV];		//å­˜æ”¾é¡¶ç‚¹ä¿¡æ¯
+} MatGraph;						//å®Œæ•´çš„å›¾é‚»æ¥çŸ©é˜µç±»å‹
 
-//ÒÔÏÂ¶¨ÒåÁÚ½Ó±íÀàĞÍ
+//ä»¥ä¸‹å®šä¹‰é‚»æ¥è¡¨ç±»å‹
 typedef struct ANode
-{	int adjvex;					//¸Ã±ßµÄÁÚ½Óµã±àºÅ
-	struct ANode *nextarc;		//Ö¸ÏòÏÂÒ»Ìõ±ßµÄÖ¸Õë
-	int weight;					//¸Ã±ßµÄÏà¹ØĞÅÏ¢£¬ÈçÈ¨Öµ£¨ÓÃÕûĞÍ±íÊ¾£©
-} ArcNode;						//±ß½ÚµãÀàĞÍ
+{	int adjvex;					//è¯¥è¾¹çš„é‚»æ¥ç‚¹ç¼–å·
+	struct ANode *nextarc;		//æŒ‡å‘ä¸‹ä¸€æ¡è¾¹çš„æŒ‡é’ˆ
+	int weight;					//è¯¥è¾¹çš„ç›¸å…³ä¿¡æ¯ï¼Œå¦‚æƒå€¼ï¼ˆç”¨æ•´å‹è¡¨ç¤ºï¼‰
+} ArcNode;						//è¾¹èŠ‚ç‚¹ç±»å‹
 typedef struct Vnode
-{	InfoType info;				//¶¥µãÆäËûĞÅÏ¢
-	int count;					//´æ·Å¶¥µãÈë¶È,½ö½öÓÃÓÚÍØÆËÅÅĞò
-	ArcNode *firstarc;			//Ö¸ÏòµÚÒ»Ìõ±ß
-} VNode;						//ÁÚ½Ó±íÍ·½ÚµãÀàĞÍ
+{	InfoType info;				//é¡¶ç‚¹å…¶ä»–ä¿¡æ¯
+	int count;					//å­˜æ”¾é¡¶ç‚¹å…¥åº¦,ä»…ä»…ç”¨äºæ‹“æ‰‘æ’åº
+	ArcNode *firstarc;			//æŒ‡å‘ç¬¬ä¸€æ¡è¾¹
+} VNode;						//é‚»æ¥è¡¨å¤´èŠ‚ç‚¹ç±»å‹
 typedef struct 
-{	VNode adjlist[MAXV];		//ÁÚ½Ó±íÍ·½ÚµãÊı×é
-	int n,e;					//Í¼ÖĞ¶¥µãÊınºÍ±ßÊıe
-} AdjGraph;						//ÍêÕûµÄÍ¼ÁÚ½Ó±íÀàĞÍ
+{	VNode adjlist[MAXV];		//é‚»æ¥è¡¨å¤´èŠ‚ç‚¹æ•°ç»„
+	int n,e;					//å›¾ä¸­é¡¶ç‚¹æ•°nå’Œè¾¹æ•°e
+} AdjGraph;						//å®Œæ•´çš„å›¾é‚»æ¥è¡¨ç±»å‹

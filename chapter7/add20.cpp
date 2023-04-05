@@ -2,32 +2,32 @@
 
 int BTWidth(BTNode *b)
 {	struct
-	{	int lno;					//½ÚµãµÄ²ã´Î±àºÅ
-		BTNode *p;					//½ÚµãÖ¸Õë
-	} Qu[MaxSize];					//¶¨ÒåË³Ğò·ÇÑ­»·¶ÓÁĞ
-	int front,rear;					//¶¨Òå¶ÓÊ×ºÍ¶ÓÎ²Ö¸Õë
+	{	int lno;					//èŠ‚ç‚¹çš„å±‚æ¬¡ç¼–å·
+		BTNode *p;					//èŠ‚ç‚¹æŒ‡é’ˆ
+	} Qu[MaxSize];					//å®šä¹‰é¡ºåºéå¾ªç¯é˜Ÿåˆ—
+	int front,rear;					//å®šä¹‰é˜Ÿé¦–å’Œé˜Ÿå°¾æŒ‡é’ˆ
 	int lnum,max,i,n;
-	front=rear=0;					//ÖÃ¶ÓÁĞÎª¿Õ¶Ó
+	front=rear=0;					//ç½®é˜Ÿåˆ—ä¸ºç©ºé˜Ÿ
 	if (b!=NULL)
 	{	rear++;	
-		Qu[rear].p=b;				//¸ù½ÚµãÖ¸ÕëÈë¶Ó
-		Qu[rear].lno=1;				//¸ù½ÚµãµÄ²ã´Î±àºÅÎª1
-		while (rear!=front)			//¶ÓÁĞ²»Îª¿Õ
+		Qu[rear].p=b;				//æ ¹èŠ‚ç‚¹æŒ‡é’ˆå…¥é˜Ÿ
+		Qu[rear].lno=1;				//æ ¹èŠ‚ç‚¹çš„å±‚æ¬¡ç¼–å·ä¸º1
+		while (rear!=front)			//é˜Ÿåˆ—ä¸ä¸ºç©º
 		{	front++;
-			b=Qu[front].p;			//¶ÓÍ·³ö¶Ó
+			b=Qu[front].p;			//é˜Ÿå¤´å‡ºé˜Ÿ
 			lnum=Qu[front].lno;
-			if (b->lchild!=NULL)		//×óº¢×ÓÈë¶Ó
+			if (b->lchild!=NULL)		//å·¦å­©å­å…¥é˜Ÿ
 			{	rear++;
 				Qu[rear].p=b->lchild;
 				Qu[rear].lno=lnum+1;
 			}
-			if (b->rchild!=NULL)		//ÓÒº¢×ÓÈë¶Ó
+			if (b->rchild!=NULL)		//å³å­©å­å…¥é˜Ÿ
 			{	rear++;
 				Qu[rear].p=b->rchild;
 				Qu[rear].lno=lnum+1;
 			}
 		}
-		printf("¸÷½ÚµãµÄ²ã±àºÅ:\n");
+		printf("å„èŠ‚ç‚¹çš„å±‚ç¼–å·:\n");
 		for (i=1;i<=rear;i++)
 			printf("   %c,%d\n",Qu[i].p->data,Qu[i].lno);
 		max=0;lnum=1;i=1;
@@ -50,9 +50,9 @@ int BTWidth(BTNode *b)
 int main()
 {
 	BTNode *b;
-	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//Í¼7.11µÄ¶ş²æÊ÷
+	CreateBTree(b,"A(B(D,E(G,H)),C(,F(I)))");	//å›¾7.11çš„äºŒå‰æ ‘
 	printf("b:"); DispBTree(b); printf("\n");
-	printf("¶ş²æÊ÷µÄ¿í¶È:%d\n",BTWidth(b));
+	printf("äºŒå‰æ ‘çš„å®½åº¦:%d\n",BTWidth(b));
 
 	DestroyBTree(b);
 	return 1;

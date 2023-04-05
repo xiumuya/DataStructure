@@ -5,11 +5,11 @@ int SSonNodes(BTNode *b)
 		return 0;
 	else if ((b->lchild==NULL && b->rchild!=NULL) ||
 		(b->lchild!=NULL && b->rchild==NULL))
-		n=1;					//Îªµ¥·ÖÖ§½áµã
+		n=1;					//ä¸ºå•åˆ†æ”¯ç»“ç‚¹
 	else 
-		n=0;					//ÆäËû½áµã
-	num1=SSonNodes(b->lchild);	//µİ¹éÇó×ó×ÓÊ÷ÖĞµ¥·ÖÖ§½áµãÊı
-	num2=SSonNodes(b->rchild);	//µİ¹éÇóÓÒ×ÓÊ÷ÖĞµ¥·ÖÖ§½áµãÊı
+		n=0;					//å…¶ä»–ç»“ç‚¹
+	num1=SSonNodes(b->lchild);	//é€’å½’æ±‚å·¦å­æ ‘ä¸­å•åˆ†æ”¯ç»“ç‚¹æ•°
+	num2=SSonNodes(b->rchild);	//é€’å½’æ±‚å³å­æ ‘ä¸­å•åˆ†æ”¯ç»“ç‚¹æ•°
 	return (num1+num2+n);
 }
 
@@ -17,8 +17,8 @@ int SSonNodes(BTNode *b)
 int main()
 {	BTNode *b;
 	CreateBTree(b,"A(B(D(,G)),C(E,F))");
-	printf("¶ş²æÊ÷:");DispBTree(b);printf("\n");
-	printf("µ¥·ÖÖ§½áµã¸öÊı=%d\n",SSonNodes(b));
+	printf("äºŒå‰æ ‘:");DispBTree(b);printf("\n");
+	printf("å•åˆ†æ”¯ç»“ç‚¹ä¸ªæ•°=%d\n",SSonNodes(b));
 
 	DestroyBTree(b);
 	return 1;

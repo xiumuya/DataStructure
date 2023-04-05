@@ -1,4 +1,4 @@
-#include "graph.cpp"		//Í¼µÄ»ù±¾ÔËËãËã·¨
+#include "graph.cpp"		//å›¾çš„åŸºæœ¬è¿ç®—ç®—æ³•
 
 void ReAdj(AdjGraph *G1,AdjGraph *&G2)
 {
@@ -30,15 +30,15 @@ int main()
 	int A[MAXV][MAXV]={
 		{0,1,1,0,0},{0,0,1,0,0},{0,0,0,1,1},
 		{0,0,0,0,1},{1,0,0,0,0}};	
-	CreateAdj(G1,A,n,e);			////½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.19µÄÁÚ½Ó±í
-	printf("ÁÚ½Ó±íG1:\n");
-	DispAdj(G1);					//Êä³öÁÚ½Ó±íG1
-	printf("ÓÉG1²úÉúÄæÁÚ½Ó±íG2\n");
+	CreateAdj(G1,A,n,e);			////å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.19çš„é‚»æ¥è¡¨
+	printf("é‚»æ¥è¡¨G1:\n");
+	DispAdj(G1);					//è¾“å‡ºé‚»æ¥è¡¨G1
+	printf("ç”±G1äº§ç”Ÿé€†é‚»æ¥è¡¨G2\n");
 	ReAdj(G1,G2);
-	printf("ÁÚ½Ó±íG2:\n");
-	DispAdj(G2);					//Êä³öÁÚ½Ó±íG2
+	printf("é‚»æ¥è¡¨G2:\n");
+	DispAdj(G2);					//è¾“å‡ºé‚»æ¥è¡¨G2
 
-	DestroyAdj(G1);					//Ïú»ÙÁÚ½Ó±íG1
-	DestroyAdj(G2);					//Ïú»ÙÁÚ½Ó±íG2
+	DestroyAdj(G1);					//é”€æ¯é‚»æ¥è¡¨G1
+	DestroyAdj(G2);					//é”€æ¯é‚»æ¥è¡¨G2
 	return 1;
 }

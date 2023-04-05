@@ -6,16 +6,16 @@ bool judge(char str[],int n)
 	bool flag=true;
 	InitStack(ls);
 	while (i<n && flag) 
-	{	if (str[i]=='I')			//½øÕ»
+	{	if (str[i]=='I')			//è¿›æ ˆ
 			Push(ls,str[i]);
-		else if (str[i]=='O')		//³öÕ»
+		else if (str[i]=='O')		//å‡ºæ ˆ
 		{	if (StackEmpty(ls))
-				flag=false;			//Õ»¿ÕÊ±
+				flag=false;			//æ ˆç©ºæ—¶
 			else
 				Pop(ls,x);
 		}
 		else 
-			flag=false;			//ÆäËûÖµÎÞÐ§
+			flag=false;			//å…¶ä»–å€¼æ— æ•ˆ
 		i++;
 	}
 	if (!StackEmpty(ls)) flag=false;

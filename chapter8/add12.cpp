@@ -1,24 +1,24 @@
 #include "graph.cpp"
 
 void Dispath(AdjGraph *G,int dist[],int path[],int S[],int v)
-//Êä³ö´Ó¶¥µãv³ö·¢µÄËùÓĞ×î¶ÌÂ·¾¶
+//è¾“å‡ºä»é¡¶ç‚¹vå‡ºå‘çš„æ‰€æœ‰æœ€çŸ­è·¯å¾„
 {	int i,j,k;
-	int apath[MAXV],d;					//´æ·ÅÒ»Ìõ×î¶ÌÂ·¾¶(ÄæÏò)¼°Æä¶¥µã¸öÊı
-	for (i=0;i<G->n;i++)				//Ñ­»·Êä³ö´Ó¶¥µãvµ½iµÄÂ·¾¶
+	int apath[MAXV],d;					//å­˜æ”¾ä¸€æ¡æœ€çŸ­è·¯å¾„(é€†å‘)åŠå…¶é¡¶ç‚¹ä¸ªæ•°
+	for (i=0;i<G->n;i++)				//å¾ªç¯è¾“å‡ºä»é¡¶ç‚¹våˆ°içš„è·¯å¾„
 		if (S[i]==1 && i!=v)
-		{	printf("  ´Ó¶¥µã%dµ½¶¥µã%dµÄÂ·¾¶³¤¶ÈÎª:%d\tÂ·¾¶Îª:",v,i,dist[i]);
-			d=0; apath[d]=i;			//Ìí¼ÓÂ·¾¶ÉÏµÄÖÕµã
+		{	printf("  ä»é¡¶ç‚¹%dåˆ°é¡¶ç‚¹%dçš„è·¯å¾„é•¿åº¦ä¸º:%d\tè·¯å¾„ä¸º:",v,i,dist[i]);
+			d=0; apath[d]=i;			//æ·»åŠ è·¯å¾„ä¸Šçš„ç»ˆç‚¹
 			k=path[i];
-			if (k==-1)					//Ã»ÓĞÂ·¾¶µÄÇé¿ö
-				printf("ÎŞÂ·¾¶\n");
-			else						//´æÔÚÂ·¾¶Ê±Êä³ö¸ÃÂ·¾¶
+			if (k==-1)					//æ²¡æœ‰è·¯å¾„çš„æƒ…å†µ
+				printf("æ— è·¯å¾„\n");
+			else						//å­˜åœ¨è·¯å¾„æ—¶è¾“å‡ºè¯¥è·¯å¾„
 			{	while (k!=v)
 				{	d++; apath[d]=k;
 					k=path[k];
 				}
-				d++; apath[d]=v;		//Ìí¼ÓÂ·¾¶ÉÏµÄÆğµã
-				printf("%d",apath[d]);	//ÏÈÊä³öÆğµã
-				for (j=d-1;j>=0;j--)	//ÔÙÊä³öÆäËû¶¥µã
+				d++; apath[d]=v;		//æ·»åŠ è·¯å¾„ä¸Šçš„èµ·ç‚¹
+				printf("%d",apath[d]);	//å…ˆè¾“å‡ºèµ·ç‚¹
+				for (j=d-1;j>=0;j--)	//å†è¾“å‡ºå…¶ä»–é¡¶ç‚¹
 					printf(",%d",apath[j]);
 				printf("\n");
 			}
@@ -28,36 +28,36 @@ void MDijkstra(AdjGraph *G,int v)
 {
 	ArcNode *p;
 	int dist[MAXV],path[MAXV];
-	int S[MAXV];				//S[i]=1±íÊ¾¶¥µãiÔÚSÖĞ, S[i]=0±íÊ¾¶¥µãiÔÚUÖĞ
+	int S[MAXV];				//S[i]=1è¡¨ç¤ºé¡¶ç‚¹iåœ¨Sä¸­, S[i]=0è¡¨ç¤ºé¡¶ç‚¹iåœ¨Uä¸­
 	int Mindis,i,j,u;
-	for (i=0;i<G->n;i++)		//¾àÀë³õÊ¼»¯Îª¡Ş£¬SÖÃÎª¿Õ		
+	for (i=0;i<G->n;i++)		//è·ç¦»åˆå§‹åŒ–ä¸ºâˆï¼ŒSç½®ä¸ºç©º		
 	{
 		dist[i]=INF;
 		S[i]=0;
 		path[i]=-1;
 	}
-	S[v]=1;						//½«Ô´µãv·ÅÈëS
+	S[v]=1;						//å°†æºç‚¹væ”¾å…¥S
 	p=G->adjlist[v].firstarc;
-	while (p!=NULL)				//ÉèÖÃdist[p->adjvex]Îª<v,p->adjvex>µÄÈ¨Öµ
+	while (p!=NULL)				//è®¾ç½®dist[p->adjvex]ä¸º<v,p->adjvex>çš„æƒå€¼
 	{
 		dist[p->adjvex]=p->weight;
 		path[p->adjvex]=v;
 		p=p->nextarc;
 	}
-	for (i=0;i<G->n-1;i++)		//Ñ­»·Ö±µ½ËùÓĞ¶¥µãµÄ×î¶ÌÂ·¾¶¶¼Çó³ö
+	for (i=0;i<G->n-1;i++)		//å¾ªç¯ç›´åˆ°æ‰€æœ‰é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„éƒ½æ±‚å‡º
 	{
-		Mindis=INF;				//MindisÖÃ×î´ó³¤¶È³õÖµ
-		for (j=0;j<G->n;j++)	//Ñ¡È¡²»ÔÚSÖĞ£¨¼´UÖĞ£©ÇÒ¾ßÓĞ×îĞ¡×î¶ÌÂ·¾¶³¤¶ÈµÄ¶¥µãu
+		Mindis=INF;				//Mindisç½®æœ€å¤§é•¿åº¦åˆå€¼
+		for (j=0;j<G->n;j++)	//é€‰å–ä¸åœ¨Sä¸­ï¼ˆå³Uä¸­ï¼‰ä¸”å…·æœ‰æœ€å°æœ€çŸ­è·¯å¾„é•¿åº¦çš„é¡¶ç‚¹u
 			if (S[j]==0 && dist[j]<Mindis) 
 			{	u=j;
 				Mindis=dist[j];
 			}
-		S[u]=1;					//¶¥µãu¼ÓÈëSÖĞ
+		S[u]=1;					//é¡¶ç‚¹uåŠ å…¥Sä¸­
 		p=G->adjlist[u].firstarc;
 		while (p!=NULL)
 		{
-			j=p->adjvex;		//¶¥µãuµÄ³ö±ßÁÚ½ÓµãÎªj
-			if (S[j]==0 && dist[u]+p->weight<dist[j]) //ĞŞ¸Ä²»ÔÚSÖĞµÄ¶¥µãµÄ×î¶ÌÂ·¾¶
+			j=p->adjvex;		//é¡¶ç‚¹uçš„å‡ºè¾¹é‚»æ¥ç‚¹ä¸ºj
+			if (S[j]==0 && dist[u]+p->weight<dist[j]) //ä¿®æ”¹ä¸åœ¨Sä¸­çš„é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
 			{
 				dist[j]=dist[u]+p->weight;
 				path[j]=u;
@@ -65,7 +65,7 @@ void MDijkstra(AdjGraph *G,int v)
 			p=p->nextarc;
 		}
 	}
-	Dispath(G,dist,path,S,v);	//Êä³ö×î¶ÌÂ·¾¶
+	Dispath(G,dist,path,S,v);	//è¾“å‡ºæœ€çŸ­è·¯å¾„
 }
 
 int main()
@@ -80,12 +80,12 @@ int main()
 		{INF,INF,INF,INF,1,0,8},
 		{INF,INF,INF,INF,INF,INF,0}};
 	int n=7, e=12;
-	CreateAdj(G,A,n,e);			//½¨Á¢¡¶½Ì³Ì¡·ÖĞÍ¼8.35µÄÁÚ½Ó±í
-	printf("Í¼GµÄÁÚ½Ó±í:\n");
-	DispAdj(G);					//Êä³öÁÚ½Ó±í
+	CreateAdj(G,A,n,e);			//å»ºç«‹ã€Šæ•™ç¨‹ã€‹ä¸­å›¾8.35çš„é‚»æ¥è¡¨
+	printf("å›¾Gçš„é‚»æ¥è¡¨:\n");
+	DispAdj(G);					//è¾“å‡ºé‚»æ¥è¡¨
 
 	int v=0;
-	printf("´Ó%d¶¥µã³ö·¢µÄ×î¶ÌÂ·¾¶ÈçÏÂ:\n",v);
+	printf("ä»%dé¡¶ç‚¹å‡ºå‘çš„æœ€çŸ­è·¯å¾„å¦‚ä¸‹:\n",v);
 	MDijkstra(G,v);
 
 	DestroyAdj(G);

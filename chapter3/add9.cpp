@@ -4,36 +4,36 @@
 typedef char ElemType;
 typedef struct 
 {	ElemType data[MaxSize];
-	int front,rear;	//¶ÓÍ·ºÍ¶ÓÎ²Ö¸Õë
-	int tag;			//Îª0±íÊ¾¶Ó¿ÉÄÜ¿Õ,Îª1Ê±±íÊ¾¶Ó¿ÉÄÜÂú
+	int front,rear;	//é˜Ÿå¤´å’Œé˜Ÿå°¾æŒ‡é’ˆ
+	int tag;			//ä¸º0è¡¨ç¤ºé˜Ÿå¯èƒ½ç©º,ä¸º1æ—¶è¡¨ç¤ºé˜Ÿå¯èƒ½æ»¡
 } QueueType;
 
-void InitQueue1(QueueType &qu)		//³õÊ¼»¯¶ÓÁĞËã·¨
+void InitQueue1(QueueType &qu)		//åˆå§‹åŒ–é˜Ÿåˆ—ç®—æ³•
 {	qu.front=qu.rear=0;
-	qu.tag=0;						//Îª0±íÊ¾¶Ó¿Õ¿ÉÄÜÎª¿Õ
+	qu.tag=0;						//ä¸º0è¡¨ç¤ºé˜Ÿç©ºå¯èƒ½ä¸ºç©º
 }
-bool QueueEmpty1(QueueType qu)		//ÅĞ¶Ó¿ÕËã·¨
+bool QueueEmpty1(QueueType qu)		//åˆ¤é˜Ÿç©ºç®—æ³•
 {
 	return(qu.front==qu.rear && qu.tag==0);
 }
-bool QueueFull1(QueueType qu)		//ÅĞ¶ÓÂúËã·¨
+bool QueueFull1(QueueType qu)		//åˆ¤é˜Ÿæ»¡ç®—æ³•
 {
 	return(qu.tag==1 && qu.front==qu.rear);
 }
-bool EnQueue1(QueueType &qu,ElemType x)//½ø¶ÓËã·¨
-{	if (QueueFull1(qu)==1)			//¶ÓÂú
+bool EnQueue1(QueueType &qu,ElemType x)//è¿›é˜Ÿç®—æ³•
+{	if (QueueFull1(qu)==1)			//é˜Ÿæ»¡
 		return false;
 	qu.rear=(qu.rear+1)%MaxSize;
 	qu.data[qu.rear]=x;
-	qu.tag=1;						//ÖÁÉÙÓĞÒ»¸öÔªËØ,¿ÉÄÜÂú
+	qu.tag=1;						//è‡³å°‘æœ‰ä¸€ä¸ªå…ƒç´ ,å¯èƒ½æ»¡
 	return true;
 }
-bool DeQueue1(QueueType &qu,ElemType &x)//³ö¶ÓËã·¨
-{	if (QueueEmpty1(qu)==1)			//¶Ó¿Õ
+bool DeQueue1(QueueType &qu,ElemType &x)//å‡ºé˜Ÿç®—æ³•
+{	if (QueueEmpty1(qu)==1)			//é˜Ÿç©º
 		return false;
 	qu.front=(qu.front+1)%MaxSize;
 	x=qu.data[qu.front];
-	qu.tag=0;						//³ö¶ÓÒ»¸öÔªËØ,¿ÉÄÜ¿Õ
+	qu.tag=0;						//å‡ºé˜Ÿä¸€ä¸ªå…ƒç´ ,å¯èƒ½ç©º
 	return true;
 }
 int main()
@@ -45,7 +45,7 @@ int main()
 	EnQueue1(qu,'c');
 	EnQueue1(qu,'d');
 	ElemType e;
-	printf("¶ÓÖĞÔªËØ: ");
+	printf("é˜Ÿä¸­å…ƒç´ : ");
 	while(!QueueEmpty1(qu))
 	{
 		DeQueue1(qu,e);

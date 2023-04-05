@@ -1,9 +1,9 @@
 #include <stdio.h>
-#define MAXL 100		//×î´ó³¤¶È
-typedef int KeyType;	//¶¨Òå¹Ø¼ü×ÖÀàĞÍÎªint
+#define MAXL 100		//æœ€å¤§é•¿åº¦
+typedef int KeyType;	//å®šä¹‰å…³é”®å­—ç±»å‹ä¸ºint
 typedef char InfoType;
 
 typedef struct
-{	KeyType key;		//¹Ø¼ü×ÖÏî
-	InfoType data;		//ÆäËûÊı¾İÏî£¬ÀàĞÍÎªInfoType
-} RecType;				//²éÕÒÔªËØµÄÀàĞÍ
+{	KeyType key;		//å…³é”®å­—é¡¹
+	InfoType data;		//å…¶ä»–æ•°æ®é¡¹ï¼Œç±»å‹ä¸ºInfoType
+} RecType;				//æŸ¥æ‰¾å…ƒç´ çš„ç±»å‹
