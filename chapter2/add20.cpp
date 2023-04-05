@@ -33,7 +33,7 @@ void merge(LinkNode *A,LinkNode *B,LinkNode *&C)
 	}
 }
 
-int main()
+int main(void)
 {
 	LinkNode *L1,*L2,*L3;
 	ElemType a[]={1,3,4,6};
